@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgxn0aynisymc"]
+
+[ext_resource type="Script" path="res://scenes/dungeon-generator/RoomInstance.cs" id="1_wjy88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uq7d"]
+size = Vector2(234, 183)
+
+[node name="TemplateRoom" type="Node2D"]
+script = ExtResource("1_wjy88")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 240.0
+offset_bottom = 188.0
+
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2(3, 172)
+
+[node name="Exit2" type="Node2D" parent="."]
+position = Vector2(239, 167)
+
+[node name="RoomCollider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomCollider"]
+position = Vector2(120, 93.5)
+shape = SubResource("RectangleShape2D_6uq7d")
