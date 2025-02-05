@@ -13,12 +13,27 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 240.0
 offset_bottom = 188.0
+color = Color(2.21401e-06, 0.669467, 0.671519, 1)
 
 [node name="Exit" type="Node2D" parent="."]
-position = Vector2(3, 172)
+position = Vector2(1, 50)
+
+[node name="ColorRect2" type="ColorRect" parent="Exit"]
+offset_left = -13.0
+offset_top = -16.0
+offset_right = 22.0
+offset_bottom = 18.0
+color = Color(1, 0.20861, 0.586851, 1)
 
 [node name="Exit2" type="Node2D" parent="."]
-position = Vector2(239, 167)
+position = Vector2(239, 97)
+
+[node name="ColorRect2" type="ColorRect" parent="Exit2"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(1, 0.20861, 0.586851, 1)
 
 [node name="RoomCollider" type="Area2D" parent="."]
 
