@@ -14,16 +14,23 @@ public partial class RoomInstance : Node2D
         }
     }
 
-    public bool Overlaps(RoomInstance other)
+    public bool Overlaps(List<Area2D> others)
     {
         Area2D myArea = GetNodeOrNull<Area2D>("RoomCollider");
-        Area2D otherArea = other.GetNodeOrNull<Area2D>("RoomCollider");
 
-        if (myArea == null || otherArea == null)
-            return false;
+        foreach (Area2D other in others)
+        {
+            if (myArea.OverlapsArea(other))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
-        // Check if the two Area2D nodes are overlapping
-        return myArea.OverlapsArea(otherArea);
+    public Area2D getRoomCollider()
+    {
+        return GetNodeOrNull<Area2D>("RoomCollider");
     }
 
     public Node2D GetOppositeExit(Node2D exit)

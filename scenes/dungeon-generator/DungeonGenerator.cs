@@ -8,7 +8,7 @@ public partial class DungeonGenerator : Node
     [Export] public int MaxRooms = 10;
 
     private List<PackedScene> roomScenes = new List<PackedScene>();
-    private List<RoomInstance> placedRooms = new List<RoomInstance>();
+    List<Area2D> colliders = new List<Area2D>();
     private RandomNumberGenerator rng = new RandomNumberGenerator();
 
     public override void _Ready()
@@ -57,7 +57,7 @@ public partial class DungeonGenerator : Node
             if (roomScenes.Count == 0) break;
 
             PackedScene roomScene = roomScenes[rng.RandiRange(0, roomScenes.Count - 1)];
-            RoomInstance newRoom = PlaceRoom(roomScene, exitToUse.GlobalTransform.Origin, exitToUse.RotationDegrees);
+            RoomInstance newRoom = PlaceRoom(roomScene, exitToUse.GlobalPosition, exitToUse.RotationDegrees);
 
             if (newRoom != null)
             {
@@ -73,23 +73,14 @@ public partial class DungeonGenerator : Node
         room.RotationDegrees = rotation;
         AddChild(room);
 
-        if (!Overlaps(room))
+        if (room.Overlaps(colliders))
         {
-            placedRooms.Add(room);
-            return room;
+            room.QueueFree();
+            return null;
         }
 
-        room.QueueFree();
-        return null;
+        colliders.Add(room.getRoomCollider());
+        return room;
     }
 
-    private bool Overlaps(RoomInstance room)
-    {
-        foreach (var placed in placedRooms)
-        {
-            if (placed.Overlaps(room))
-                return true;
-        }
-        return false;
-    }
 }
