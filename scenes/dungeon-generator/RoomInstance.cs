@@ -1,16 +1,25 @@
 using Godot;
 using System.Collections.Generic;
-[GlobalClass]
 public partial class RoomInstance : Node2D
 {
     public List<Node2D> Exits = new List<Node2D>();
 
     public override void _Ready()
     {
+        FindExits();
+    }
+    // Find Node2D named "Exits" and add all its children (Node2D) to Exits
+    private void FindExits()
+    {
         foreach (Node child in GetChildren())
         {
-            if (child is Node2D exit)
-                Exits.Add(exit);
+            if (child is Node2D && child.Name.Equals("Exits"))
+            {
+                foreach (Node2D exit in child.GetChildren())
+                {
+                    Exits.Add(exit);
+                }
+            }
         }
     }
 
@@ -31,10 +40,5 @@ public partial class RoomInstance : Node2D
     public Area2D getRoomCollider()
     {
         return GetNodeOrNull<Area2D>("RoomCollider");
-    }
-
-    public Node2D GetOppositeExit(Node2D exit)
-    {
-        return Exits.Find(e => e.GlobalPosition.DistanceTo(exit.GlobalPosition) < 5);
     }
 }
