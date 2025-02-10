@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blo0kfchj6reo"]
 
-[ext_resource type="Script" path="res://scenes/dungeon-generator/RoomInstance.cs" id="1_hsrso"]
+[ext_resource type="Script" path="res://scenes/Dungeon Generator/RoomInstance.cs" id="1_hsrso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uq7d"]
 size = Vector2(234, 183)

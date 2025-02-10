@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cavoy43bjci7j"]
+
+[node name="Ghoul" type="CharacterBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1, -35)
+color = Color(0.728609, 0.105825, 0.3046, 1)
+polygon = PackedVector2Array(1, 1, -15, 17, 1, 67, 16, 16)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(0, 12)
+scale = Vector2(0.596878, 0.691919)
+color = Color(0.359647, 0.0258149, 0.133869, 1)
+polygon = PackedVector2Array(1.67538, -4.33577, -11.7277, 34.6861, 1.67538, 66.4818, 15.0785, 34.6861)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)

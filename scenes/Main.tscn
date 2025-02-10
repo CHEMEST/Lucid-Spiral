@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://u26120hfvays"]
+
+[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Creatures/Player/Player.tscn" id="1_dse2l"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 788.0
+offset_bottom = 461.0
+color = Color(0.376459, 0.314058, 0.586888, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_dse2l")]
+position = Vector2(224, 144)
