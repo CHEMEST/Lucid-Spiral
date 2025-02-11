@@ -16,7 +16,7 @@ public class Ticker
 
     public bool Update(float delta)
     {
-        elapsedTime += delta;
+        elapsedTime += TickSpeed * delta;
         return elapsedTime >= Duration;
     }
 }
