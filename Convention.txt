@@ -1,10 +1,5 @@
-Folders: name-name
+Folders: NameName
 Scenes: NameName
 Scripts: NameName
 
 C# project
-
-in "scenes":
-	strictly folders that contain at most 1 scene with at most 1 script (tied together, single use script)
-in "scripts":
-	strictly folders that contain scripts with more than 1 usage or intended usage
