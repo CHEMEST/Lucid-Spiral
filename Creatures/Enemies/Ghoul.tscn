@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cavoy43bjci7j"]
-
-[ext_resource type="Script" path="res://Creatures/CreatureThings/Creature.cs" id="1_5eywy"]
+[gd_scene format=3 uid="uid://cavoy43bjci7j"]
 
 [node name="Ghoul" type="CharacterBody2D"]
-script = ExtResource("1_5eywy")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-1, -35)

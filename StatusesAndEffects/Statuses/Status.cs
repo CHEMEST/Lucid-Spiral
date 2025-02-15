@@ -1,18 +1,19 @@
 using Godot;
+using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 using System.Collections.Generic;
 /// <summary>
 /// Holds a value of type T and a Modify function
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class Status<T>
+public partial class Status : Node
 {
-    public T Value { get; private set; }
+    public object Value { get; private set; }
 
-    public Status(T value)
+    public Status(object value)
     {
         Value = value;
     }
 
-    public void Modify(Func<T, T> modifier) => Value = modifier.Invoke(Value);
+    public void Modify(Func<object, object> modifier) => Value = modifier.Invoke(Value);
 }

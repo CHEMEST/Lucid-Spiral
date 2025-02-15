@@ -12,14 +12,30 @@ namespace LucidSpiral.Managers
     [GlobalClass]
     internal partial class StatusManager : Node, IManager
     {
-        public Dictionary<Type, Status<object>> Statuses { get; set; } = new();
+        public Dictionary<Type, Status> Statuses { get; private set; } = new();
 
         public override void _Ready()
         {
-
+            // Register all IManager children in _managers
+            foreach (Node child in GetChildren())
+            {
+                if (child is Status status)
+                {
+                    AddStatus(status);
+                }
+            }
+            GD.Print(Statuses);
+        }
+        public override void _Process(double delta)
+        {
+            foreach (var status in Statuses)
+            {
+                GD.Print(status.Key.Name + ": " + status.Value.Value);
+            }
+            //GD.Print("--");
         }
 
-        public void AddStatus(Status<object> status, bool overrideExisting = false)
+        public void AddStatus(Status status, bool overrideExisting = false)
         {
             // if override or (not exists)
             if (overrideExisting || !Statuses.ContainsKey(status.GetType()))
@@ -28,9 +44,9 @@ namespace LucidSpiral.Managers
             }
         }
 
-        public T GetStatus<T>() where T : Status<object>
+        public T GetStatus<T>() where T : Status
         {
-            if (Statuses.TryGetValue(typeof(T), out Status<object> status))
+            if (Statuses.TryGetValue(typeof(T), out Status status))
             {
                 return status as T;
             }
