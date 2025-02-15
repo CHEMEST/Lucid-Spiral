@@ -6,4 +6,9 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="AttackActions\ActionThings\" />
+    <Folder Include="Creatures\CreatureThings\" />
+    <Folder Include="StatusesAndEffects\StatusEffects\" />
+  </ItemGroup>
 </Project>
