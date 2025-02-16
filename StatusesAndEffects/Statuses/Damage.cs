@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace LucidSpiral.StatusesAndEffects.Statuses
 {
     [GlobalClass]
-    internal partial class Health : Status<double>
+    internal partial class Damage : Status<double>
     {
-        [Export] public new double Value = 100;
-        public Health(double baseValue) : base(baseValue) {
+        [Export] public new double Value = 10;
+        public Damage(double baseValue) : base(baseValue) {
 
         }
-        public Health() : base(100)
+        public Damage() : base(10)
         {
             
         }

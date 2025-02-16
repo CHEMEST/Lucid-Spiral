@@ -9,9 +9,6 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocityTemp = Velocity;
 
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("Move Left", "Move Right", "Move Up", "Move Down");
 		if (direction != Vector2.Zero)
 		{
