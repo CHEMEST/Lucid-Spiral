@@ -1,4 +1,12 @@
-[gd_scene format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=8 format=3 uid="uid://cavoy43bjci7j"]
+
+[ext_resource type="Script" path="res://Managers/ManagerThings/ManagerHub.cs" id="1_j0iih"]
+[ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
+[ext_resource type="Script" path="res://MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
+[ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_uafii"]
+[ext_resource type="Script" path="res://Statuses/Health.cs" id="5_m7idj"]
+[ext_resource type="Script" path="res://Statuses/Damage.cs" id="6_d52n2"]
+[ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
 
 [node name="Ghoul" type="CharacterBody2D"]
 
@@ -15,3 +23,25 @@ polygon = PackedVector2Array(1.67538, -4.33577, -11.7277, 34.6861, 1.67538, 66.4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
+
+[node name="ManagerHub" type="Node" parent="."]
+script = ExtResource("1_j0iih")
+
+[node name="MovementManager" type="Node" parent="ManagerHub"]
+script = ExtResource("2_4dcmn")
+
+[node name="ChasePlayer" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+script = ExtResource("3_asbm4")
+Body = NodePath("../../..")
+
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("4_uafii")
+
+[node name="Health" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("5_m7idj")
+
+[node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("6_d52n2")
+
+[node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("7_nar8j")

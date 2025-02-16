@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=11 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerThings/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
-[ext_resource type="Script" path="res://StatusesAndEffects/Statuses/Health.cs" id="5_0ltlf"]
-[ext_resource type="Script" path="res://StatusesAndEffects/Statuses/Damage.cs" id="6_r1l53"]
+[ext_resource type="Script" path="res://MovementPatterns/DefaultPlayerWASD.cs" id="5_ex3r2"]
+[ext_resource type="Script" path="res://Statuses/Health.cs" id="5_ihcj2"]
+[ext_resource type="Script" path="res://Statuses/Damage.cs" id="6_qouq7"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
-[ext_resource type="Script" path="res://MovementPatterns/EmptyMovement.cs" id="8_imgmx"]
+[ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
 radius = 22.0
@@ -28,19 +29,21 @@ shape = SubResource("CapsuleShape2D_14e03")
 [node name="ManagerHub" type="Node" parent="."]
 script = ExtResource("3_ioqc6")
 
+[node name="MovementManager" type="Node" parent="ManagerHub"]
+script = ExtResource("7_6grap")
+
+[node name="WASDMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+script = ExtResource("5_ex3r2")
+Body = NodePath("../../..")
+
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_saco2")
 
 [node name="Health" type="Node" parent="ManagerHub/StatusManager"]
-script = ExtResource("5_0ltlf")
-Value = null
+script = ExtResource("5_ihcj2")
 
 [node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
-script = ExtResource("6_r1l53")
-Value = null
+script = ExtResource("6_qouq7")
 
-[node name="MovementManager" type="Node" parent="ManagerHub"]
-script = ExtResource("7_6grap")
-
-[node name="EmptyMovement" type="Node" parent="ManagerHub/MovementManager"]
-script = ExtResource("8_imgmx")
+[node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("7_blgq1")

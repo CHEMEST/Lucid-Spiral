@@ -6,11 +6,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="AttackActions\**" />
-    <EmbeddedResource Remove="AttackActions\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Creatures\CreatureThings\" />
-  </ItemGroup>
 </Project>

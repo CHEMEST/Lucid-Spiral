@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using LucidSpiral.MovementPatterns;
 using LucidSpiral.MovementPatterns.MovementPatternThings;
+using System.Diagnostics;
 
 namespace LucidSpiral.Managers
 {
     [GlobalClass]
     internal partial class MovementManager : Node, IManager
     {
-        public List<MovementPattern> MovementPatterns { get; private set; }
+        public List<MovementPattern> MovementPatterns { get; private set; } = new();
         public MovementPattern ActiveMovementPattern { get; set; }
         public int ActiveIndex { get; private set; } = 0;
         public MovementManager() { }
@@ -23,10 +24,11 @@ namespace LucidSpiral.Managers
             foreach (Node child in GetChildren())
             {
                 if (child is MovementPattern)
-                {
+                    {
                     MovementPatterns.Add(child as MovementPattern);
                 }
             }
+            Debug.Assert(MovementPatterns.Count > 0);
             ActiveMovementPattern = MovementPatterns[0];
         }
         public void NextMovementPattern()
@@ -40,6 +42,17 @@ namespace LucidSpiral.Managers
                 ActiveIndex = 0;
             }
             ActiveMovementPattern = MovementPatterns[ActiveIndex];
+        }
+        public void SetMovementPattern<T>()
+        {
+            foreach(MovementPattern pattern in MovementPatterns)
+            {
+                if (pattern is T)
+                {
+                    ActiveIndex = MovementPatterns.IndexOf(pattern);
+                    ActiveMovementPattern = MovementPatterns[ActiveIndex];
+                }
+            }
         }
         public void ResetMovementCycle()
         {
