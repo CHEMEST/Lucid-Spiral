@@ -7,8 +7,10 @@
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="AttackActions\ActionThings\" />
+    <Compile Remove="AttackActions\**" />
+    <EmbeddedResource Remove="AttackActions\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Creatures\CreatureThings\" />
-    <Folder Include="StatusesAndEffects\StatusEffects\" />
   </ItemGroup>
 </Project>

@@ -27,10 +27,10 @@ namespace LucidSpiral.Managers
         }
         public override void _Process(double delta)
         {
-            foreach (var status in Statuses)
-            {
-                GD.Print(status.Value.ToString());
-            }
+            //foreach (var status in Statuses)
+            //{
+            //    GD.Print(status.Value.ToString());
+            //}
         }
 
         public void AddStatus(IStatus status, bool overrideExisting = false)
