@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// Holds a value of type T and a Modify function
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public partial class Status<T> : Node, IStatus
+public partial class Status<T> : Node, IStatus where T : class
 {
     public T Value { get; private set; }
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cavoy43bjci7j"]
 
-[ext_resource type="Script" path="res://Managers/ManagerThings/ManagerHub.cs" id="1_j0iih"]
+[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
 [ext_resource type="Script" path="res://MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_uafii"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
-[ext_resource type="Script" path="res://Managers/ManagerThings/ManagerHub.cs" id="3_ioqc6"]
+[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" path="res://MovementPatterns/DefaultPlayerWASD.cs" id="5_ex3r2"]
 [ext_resource type="Script" path="res://Statuses/Health.cs" id="5_ihcj2"]
