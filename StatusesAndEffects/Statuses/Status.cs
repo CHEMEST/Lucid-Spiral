@@ -6,14 +6,18 @@ using System.Collections.Generic;
 /// Holds a value of type T and a Modify function
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public partial class Status : Node
+public partial class Status<T> : Node, IStatus
 {
-    public object Value { get; private set; }
+    public T Value { get; private set; }
 
-    public Status(object value)
+    public Status(T value)
     {
         Value = value;
     }
 
-    public void Modify(Func<object, object> modifier) => Value = modifier.Invoke(Value);
+    public void Modify(Func<T, T> modifier) => Value = modifier.Invoke(Value);
+    public override string ToString()
+    {
+        return $"{GetType().Name}: ({Value})";
+    }
 }

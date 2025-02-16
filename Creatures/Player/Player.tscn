@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=8 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerThings/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" path="res://StatusesAndEffects/Statuses/Health.cs" id="5_0ltlf"]
+[ext_resource type="Script" path="res://StatusesAndEffects/Statuses/Damage.cs" id="6_r1l53"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
 radius = 22.0
@@ -30,3 +31,6 @@ script = ExtResource("4_saco2")
 
 [node name="Health" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("5_0ltlf")
+
+[node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("6_r1l53")
