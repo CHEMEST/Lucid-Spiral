@@ -31,6 +31,10 @@ namespace LucidSpiral.Managers
             Debug.Assert(MovementPatterns.Count > 0);
             ActiveMovementPattern = MovementPatterns[0];
         }
+        public override void _Process(double delta)
+        {
+            ActiveMovementPattern.Move();
+        }
         public void NextMovementPattern()
         {
             if (ActiveIndex < MovementPatterns.Count)

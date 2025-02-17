@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 namespace LucidSpiral.StatusesAndEffects.Statuses
 {
     [GlobalClass]
-    internal partial class Damage : Status<double>
+    internal partial class Damage : Status
     {
-        [Export] public new double Value = 10;
-        public Damage(double baseValue) : base(baseValue) {
-
-        }
-        public Damage() : base(10)
+        public Damage(Variant value) : base(value)
         {
-            
         }
+        public Damage() : base(0) { }
     }
 }
