@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace LucidSpiral.StatusesAndEffects.Statuses
 {
     [GlobalClass]
-    internal partial class Damage : Status
+    internal partial class Damage : StatusD
     {
-        public Damage(Variant value) : base(value)
+        public Damage(double value) : base(value)
         {
         }
         public Damage() : base(0) { }

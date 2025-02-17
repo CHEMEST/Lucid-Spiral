@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=10 format=3 uid="uid://cavoy43bjci7j"]
 
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
-[ext_resource type="Script" path="res://MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
+[ext_resource type="Script" path="res://Behaviors/MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_uafii"]
 [ext_resource type="Script" path="res://Statuses/Health.cs" id="5_m7idj"]
 [ext_resource type="Script" path="res://Statuses/Damage.cs" id="6_d52n2"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
+[ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
+[ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/EmptyAction.cs" id="9_l0liy"]
 
 [node name="Ghoul" type="CharacterBody2D"]
 
@@ -45,3 +47,11 @@ script = ExtResource("6_d52n2")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_nar8j")
+Value = 300.0
+
+[node name="ActionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("8_bgq24")
+
+[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager" node_paths=PackedStringArray("Source")]
+script = ExtResource("9_l0liy")
+Source = NodePath("../../..")

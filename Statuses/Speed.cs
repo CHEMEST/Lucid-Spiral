@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace LucidSpiral.Statuses
 {
     [GlobalClass]
-    internal partial class Speed : Status
+    internal partial class Speed : StatusD
     {
-        public Speed(Variant value) : base(value)
+        public Speed(double value) : base(value)
         {
         }
         public Speed() : base(0)

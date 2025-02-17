@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.StatusesAndEffects.Statuses
 {
-    internal partial class EmptyStatus : Status<object>
+    internal partial class EmptyStatus : StatusD
     {
-        public static EmptyStatus Instance { get; } = new EmptyStatus("");
+        public static EmptyStatus Instance { get; } = new EmptyStatus();
 
-        public EmptyStatus(object value) : base(value) { } 
+        public EmptyStatus() : base(0) { } 
     }
 }

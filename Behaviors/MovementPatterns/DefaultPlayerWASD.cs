@@ -17,7 +17,7 @@ namespace LucidSpiral.MovementPatterns
         public DefaultPlayerWASD() { }
         public override void Move()
         {
-            float Speed = GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
+            float Speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
 
             
             Vector2 velocityTemp = Body.Velocity;

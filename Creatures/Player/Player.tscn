@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
-[ext_resource type="Script" path="res://MovementPatterns/DefaultPlayerWASD.cs" id="5_ex3r2"]
 [ext_resource type="Script" path="res://Statuses/Health.cs" id="5_ihcj2"]
+[ext_resource type="Script" path="res://Behaviors/MovementPatterns/DefaultPlayerWASD.cs" id="5_ln2bl"]
 [ext_resource type="Script" path="res://Statuses/Damage.cs" id="6_qouq7"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
@@ -33,7 +33,7 @@ script = ExtResource("3_ioqc6")
 script = ExtResource("7_6grap")
 
 [node name="WASDMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
-script = ExtResource("5_ex3r2")
+script = ExtResource("5_ln2bl")
 Body = NodePath("../../..")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
@@ -47,3 +47,4 @@ script = ExtResource("6_qouq7")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_blgq1")
+Value = 300.0

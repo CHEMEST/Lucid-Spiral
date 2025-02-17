@@ -21,7 +21,7 @@ namespace LucidSpiral.MovementPatterns
         public override void Move()
         {
             //GD.Print(GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value);
-            float speed = GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
+            float speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
             CharacterBody2D Player = Global.Player;
 
             Vector2 velocityTemp = Body.Velocity;

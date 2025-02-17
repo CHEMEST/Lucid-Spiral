@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace LucidSpiral.StatusesAndEffects.Statuses
 {
     [GlobalClass]
-    internal partial class Health : Status
+    internal partial class Health : StatusD
     {
-        public Health(Variant value) : base(value)
+        public Health(double value) : base(value)
         {
         }
         public Health() : base(0) { }
