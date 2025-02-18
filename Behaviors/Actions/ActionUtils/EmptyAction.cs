@@ -12,7 +12,7 @@ namespace LucidSpiral.Actions
     internal partial class EmptyAction : ActionPattern
 
     {
-        public override void Act()
+        public override void Action()
         {
             GD.Print("Acting!");
         }
