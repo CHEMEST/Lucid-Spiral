@@ -8,28 +8,30 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Behaviors.BehaviorUtils
 {
-    internal abstract partial class BehaviorSet<T> : Node, IBehavior where T : class, IBehavior
+    [GlobalClass]
+    internal partial class BehaviorSet : Node, IBehavior
     {
-        [Export] public CharacterBody2D Source { get; private set; }
         /// <summary>
         /// Values less than 1 means no max
         /// </summary>
         //// Values less than 1 means no max
         [Export] public int RepeatMax { get; private set; } = 1;
-        public T Behavior { get; private set; }
+        public IBehavior Behavior { get; private set; }
         [Export] public double RepeatDelayS { get; private set; } = 0;
+        private bool _ready = false;
 
         private int repeated = 0;
         private Timer delayTimer;
 
         public void Act()
         {
-            Behavior.Act();
+            
         }
 
         public override void _Ready()
         {
-            Debug.Assert(Source != null, "Action missing a CharacterBody2D Body to Act upon");
+            Behavior = (IBehavior) GetChild(0, true);
+            Debug.Assert(Behavior != null, "Action missing a CharacterBody2D Body to Act upon");
             if (RepeatDelayS > 0)
             {
                 delayTimer = new Timer
@@ -46,7 +48,7 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
             {
                 for (int i = 0; i < RepeatMax; i++)
                 {
-                    Act();
+                    Behavior.Act();
                 }
             }
         }
@@ -55,8 +57,11 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         {
             if (repeated < RepeatMax)
             {
-                Act();
-                if (RepeatMax > 0) repeated++;
+                if (!_ready)
+                {
+                    if (RepeatMax > 0) repeated++;
+                    _ready = true;
+                }
             }
             else
             {

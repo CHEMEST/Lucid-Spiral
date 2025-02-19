@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=11 format=3 uid="uid://cavoy43bjci7j"]
 
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
 [ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/EmptyAction.cs" id="9_l0liy"]
+[ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/ActionPatternSet.cs" id="9_smn2o"]
 
 [node name="Ghoul" type="CharacterBody2D"]
 
@@ -52,6 +53,11 @@ Value = 300.0
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")
 
-[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager" node_paths=PackedStringArray("Source")]
+[node name="ActionPatternSet" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("9_smn2o")
+RepeatMax = 5
+RepeatDelayS = 0.5
+
+[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager/ActionPatternSet" node_paths=PackedStringArray("Source")]
 script = ExtResource("9_l0liy")
-Source = NodePath("../../..")
+Source = NodePath("../../../..")

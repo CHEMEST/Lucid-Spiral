@@ -14,7 +14,6 @@ namespace LucidSpiral.Managers.ManagerUtils
     internal abstract partial class BehaviorManager<T> : Node, IManager where T : class, IBehavior
     {
         public List<T> Behaviors { get; private set; } = new();
-        public T ActiveBehavior { get; set; }
         public int ActiveIndex { get; private set; } = 0;
         public BehaviorManager() { }
 
@@ -27,12 +26,11 @@ namespace LucidSpiral.Managers.ManagerUtils
                     Behaviors.Add(child as T);
                 }
             }
-            Debug.Assert(Behaviors.Count > 0);
-            ActiveBehavior = Behaviors[0];
         }
         public override void _Process(double delta)
         {
-            ActiveBehavior.Act();
+            if (ActiveIndex >= Behaviors.Count) ActiveIndex = 0;
+            Behaviors[ActiveIndex].Act();
         }
         public void NextBehaviorPattern()
         {
@@ -44,12 +42,10 @@ namespace LucidSpiral.Managers.ManagerUtils
             {
                 ActiveIndex = 0;
             }
-            ActiveBehavior = Behaviors[ActiveIndex];
         }
         public void ResetBehaviorCycle()
         {
             ActiveIndex = 0;
-            ActiveBehavior = Behaviors[ActiveIndex];
         }
     }
 }
