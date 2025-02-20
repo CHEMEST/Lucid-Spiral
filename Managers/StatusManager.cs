@@ -23,7 +23,7 @@ namespace LucidSpiral.Managers
                     AddStatus(status);
                 }
             }
-            GD.Print(Statuses);
+            //GD.Print(Statuses);
         }
         public override void _Process(double delta)
         {

@@ -25,13 +25,17 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
 
         public void Act()
         {
-            
+            if (_ready)
+            {
+                Behavior.Act();
+                _ready = false;
+            }
         }
 
         public override void _Ready()
         {
             Behavior = (IBehavior) GetChild(0, true);
-            Debug.Assert(Behavior != null, "Action missing a CharacterBody2D Body to Act upon");
+            Debug.Assert(Behavior != null, "BehaviorSet missing IBehavior to Act upon");
             if (RepeatDelayS > 0)
             {
                 delayTimer = new Timer
@@ -44,13 +48,14 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
                 AddChild(delayTimer);
                 delayTimer.Timeout += OnDelayTimerTimeout;
             }
-            else // instant all
+            else
             {
-                for (int i = 0; i < RepeatMax; i++)
-                {
-                    Behavior.Act();
-                }
+                // wait for external trigger
             }
+        }
+        public void Trigger()
+        {
+            _ready = true;
         }
 
         private void OnDelayTimerTimeout()

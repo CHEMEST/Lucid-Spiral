@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://Statuses/Damage.cs" id="6_d52n2"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
+[ext_resource type="Script" path="res://Behaviors/BehaviorUtils/BehaviorSet.cs" id="9_7du7u"]
 [ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/EmptyAction.cs" id="9_l0liy"]
-[ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/ActionPatternSet.cs" id="9_smn2o"]
 
 [node name="Ghoul" type="CharacterBody2D"]
 
@@ -53,11 +53,11 @@ Value = 300.0
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")
 
-[node name="ActionPatternSet" type="Node" parent="ManagerHub/ActionManager"]
-script = ExtResource("9_smn2o")
-RepeatMax = 5
-RepeatDelayS = 0.5
+[node name="BehaviorSet" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("9_7du7u")
+RepeatMax = 10
+RepeatDelayS = 1.0
 
-[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager/ActionPatternSet" node_paths=PackedStringArray("Source")]
+[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager/BehaviorSet" node_paths=PackedStringArray("Source")]
 script = ExtResource("9_l0liy")
 Source = NodePath("../../../..")

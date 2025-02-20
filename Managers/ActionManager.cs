@@ -17,6 +17,12 @@ namespace LucidSpiral.Managers
     internal partial class ActionManager : BehaviorManager<ActionPattern>
     {
         public ActionManager() { }
+        public override void _Ready()
+        {
+            base._Ready();
+            GD.Print(Behaviors.ToString());
+
+        }
 
     }
 }
