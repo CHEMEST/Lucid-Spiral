@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 namespace LucidSpiral.MovementPatterns
 {
     [GlobalClass]
-    internal partial class DefaultPlayerWASD : MovementPattern
+    internal partial class WASDMovement : MovementPattern
     {
-        public DefaultPlayerWASD() { }
+        public WASDMovement() { }
         public override void Move()
         {
             float Speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
