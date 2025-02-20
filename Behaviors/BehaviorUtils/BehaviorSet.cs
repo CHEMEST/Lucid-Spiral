@@ -17,11 +17,11 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         //// Values less than 1 means no max
         [Export] public int RepeatMax { get; private set; } = 1;
         public IBehavior Behavior { get; private set; }
-        [Export] public double RepeatDelayS { get; private set; } = 0;
+        [Export] public double RepeatDelayS { get; private set; }
         private bool _ready = false;
 
-        private int repeated = 0;
-        private Timer delayTimer;
+        private int _repeated = 0;
+        private Timer _delayTimer;
 
         public void Act()
         {
@@ -38,15 +38,15 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
             Debug.Assert(Behavior != null, "BehaviorSet missing IBehavior to Act upon");
             if (RepeatDelayS > 0)
             {
-                delayTimer = new Timer
+                _delayTimer = new Timer
                 {
                     WaitTime = RepeatDelayS,
                     Autostart = true,
                     OneShot = false
                 };
 
-                AddChild(delayTimer);
-                delayTimer.Timeout += OnDelayTimerTimeout;
+                AddChild(_delayTimer);
+                _delayTimer.Timeout += OnDelayTimerTimeout;
             }
             else
             {
@@ -57,14 +57,18 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         {
             _ready = true;
         }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
 
         private void OnDelayTimerTimeout()
         {
-            if (repeated < RepeatMax)
+            if (_repeated < RepeatMax)
             {
                 if (!_ready)
                 {
-                    if (RepeatMax > 0) repeated++;
+                    if (RepeatMax > 0) _repeated++;
                     _ready = true;
                 }
             }

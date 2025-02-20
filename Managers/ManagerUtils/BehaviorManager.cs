@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Managers.ManagerUtils
 {
-    internal abstract partial class BehaviorManager<T> : Node, IManager where T : class, IBehavior
+    internal abstract partial class BehaviorManager : Node, IManager
     {
-        public List<T> Behaviors { get; private set; } = new();
+        public List<IBehavior> Behaviors { get; private set; } = new();
         public int ActiveIndex { get; private set; } = 0;
         public BehaviorManager() { }
 
@@ -23,7 +23,7 @@ namespace LucidSpiral.Managers.ManagerUtils
             {
                 if (child is IBehavior)
                 {
-                    Behaviors.Add(child as T);
+                    Behaviors.Add(child as IBehavior);
                 }
             }
         }

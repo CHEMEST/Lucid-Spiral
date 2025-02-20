@@ -6,7 +6,7 @@ using LucidSpiral.Managers.ManagerUtils;
 namespace LucidSpiral.Managers
 {
     [GlobalClass]
-    internal partial class MovementManager : BehaviorManager<MovementPattern>
+    internal partial class MovementManager : BehaviorManager
     {
     }
 }

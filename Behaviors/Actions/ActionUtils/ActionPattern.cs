@@ -21,7 +21,6 @@ namespace LucidSpiral.Actions.ActionUtils
             {
                 Action();
             }
-            
         }
         public abstract void Action();
 

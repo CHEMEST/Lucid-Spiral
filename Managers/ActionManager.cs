@@ -14,14 +14,12 @@ using LucidSpiral.Managers.ManagerUtils;
 namespace LucidSpiral.Managers
 {
     [GlobalClass]
-    internal partial class ActionManager : BehaviorManager<ActionPattern>
+    internal partial class ActionManager : BehaviorManager
     {
         public ActionManager() { }
         public override void _Ready()
         {
             base._Ready();
-            GD.Print(Behaviors.ToString());
-
         }
 
     }

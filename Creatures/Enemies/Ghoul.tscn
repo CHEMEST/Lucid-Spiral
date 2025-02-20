@@ -55,8 +55,8 @@ script = ExtResource("8_bgq24")
 
 [node name="BehaviorSet" type="Node" parent="ManagerHub/ActionManager"]
 script = ExtResource("9_7du7u")
-RepeatMax = 10
-RepeatDelayS = 1.0
+RepeatMax = 100
+RepeatDelayS = 0.1
 
 [node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager/BehaviorSet" node_paths=PackedStringArray("Source")]
 script = ExtResource("9_l0liy")
