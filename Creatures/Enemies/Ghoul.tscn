@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=14 format=3 uid="uid://cavoy43bjci7j"]
 
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
@@ -9,9 +9,22 @@
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
 [ext_resource type="Script" path="res://Behaviors/BehaviorUtils/BehaviorSet.cs" id="9_7du7u"]
-[ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/EmptyAction.cs" id="9_l0liy"]
+[ext_resource type="Script" path="res://Behaviors/Actions/CheckColliding.cs" id="9_g4253"]
+[ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="11_l7e5k"]
+[ext_resource type="Script" path="res://Behaviors/CollisionUtils/CollisionSet.cs" id="12_jvlgx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ifk0"]
+radius = 38.3275
 
 [node name="Ghoul" type="CharacterBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_2ifk0")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-1, -35)
@@ -24,9 +37,6 @@ scale = Vector2(0.596878, 0.691919)
 color = Color(0.359647, 0.0258149, 0.133869, 1)
 polygon = PackedVector2Array(1.67538, -4.33577, -11.7277, 34.6861, 1.67538, 66.4818, 15.0785, 34.6861)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
-
 [node name="ManagerHub" type="Node" parent="."]
 script = ExtResource("1_j0iih")
 
@@ -35,6 +45,7 @@ script = ExtResource("2_4dcmn")
 
 [node name="ChasePlayer" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
 script = ExtResource("3_asbm4")
+stopDistance = 0.0
 Body = NodePath("../../..")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
@@ -55,9 +66,16 @@ script = ExtResource("8_bgq24")
 
 [node name="BehaviorSet" type="Node" parent="ManagerHub/ActionManager"]
 script = ExtResource("9_7du7u")
-RepeatMax = 10
-RepeatDelayS = 1.0
+RepeatMax = 1000
+RepeatDelayS = 0.1
 
-[node name="EmptyAction" type="Node" parent="ManagerHub/ActionManager/BehaviorSet" node_paths=PackedStringArray("Source")]
-script = ExtResource("9_l0liy")
+[node name="CheckColliding" type="Node" parent="ManagerHub/ActionManager/BehaviorSet" node_paths=PackedStringArray("Source")]
+script = ExtResource("9_g4253")
 Source = NodePath("../../../..")
+
+[node name="CollisionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("11_l7e5k")
+
+[node name="CollisionSet" type="Node" parent="ManagerHub/CollisionManager" node_paths=PackedStringArray("Area")]
+script = ExtResource("12_jvlgx")
+Area = NodePath("../../../HurtBox")

@@ -15,6 +15,8 @@ namespace LucidSpiral.Managers.ManagerUtils
     {
         public List<IBehavior> Behaviors { get; private set; } = new();
         public int ActiveIndex { get; private set; } = 0;
+        public IBehavior GetActiveBehavior() { return Behaviors[ActiveIndex]; }
+
         public BehaviorManager() { }
 
         public override void _Ready()
