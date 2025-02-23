@@ -1,5 +1,7 @@
 ﻿using Godot;
 using LucidSpiral.Actions.ActionUtils;
+using LucidSpiral.Behaviors.Collisions.CollisionUtils;
+using LucidSpiral.Globals;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerThings;
 using LucidSpiral.Statuses;
@@ -12,26 +14,24 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Behaviors.Actions
 {
+    /// <summary>
+    /// This action checks for collisions between the source's Hitbox and other objects' hitboxes.
+    /// </summary>
     [GlobalClass]
     internal partial class CheckColliding : ActionPattern
     {
         public override void Action()
         {
             CollisionManager collisionManager = Source.GetNodeOrNull<ManagerHub>("ManagerHub").GetManager<CollisionManager>();
-            CollisionSet collisionSet = collisionManager.GetActiveBehavior() as CollisionSet;
+            CollisionSet collisionSet = collisionManager.GetCollisionSet(CollisionType.Hitbox);
+            if (collisionSet == null) { throw new NotSupportedException(); }
 
-            Godot.Collections.Array<Area2D> overlappingAreas = collisionSet.Area.GetOverlappingAreas();
-            foreach (Area2D area in overlappingAreas)
+            List<CollisionSet> overlappingAreas = collisionSet.GetOverlappingCollisionSets(CollisionType.Hitbox);
+            foreach (CollisionSet collision in overlappingAreas)
             {
                 GD.Print("Detected");
-                ManagerHub hub = area.GetTree().Root.GetNodeOrNull<ManagerHub>("ManagerHub");
-                if (hub == null) {
-                    GD.Print("Error?");
-                    continue; }
-
-                Speed status = hub.GetManager<StatusManager>().GetStatus<Speed>();
-                status.Modify(x => x * 2);
-                GD.Print(status.Value);
+                Speed status = Utils.FindManager<StatusManager>(collision).GetStatus<Speed>();
+                GD.Print(collision.GetOwner().Name + " " + status);
 
             }
         }

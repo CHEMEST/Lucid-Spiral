@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\actions\\checkcolliding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|solutionrelative:behaviors\\actions\\checkcolliding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\collisions\\collisionutils\\collisionset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|solutionrelative:behaviors\\collisions\\collisionutils\\collisionset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\managerutils\\managerhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC17C883-C928-4640-A927-7010478DD7A4}|Lucid Spiral.csproj|solutionrelative:managers\\managerutils\\managerhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 325,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CheckColliding.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\CheckColliding.cs",
+              "RelativeDocumentMoniker": "Behaviors\\Actions\\CheckColliding.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\CheckColliding.cs",
+              "RelativeToolTip": "Behaviors\\Actions\\CheckColliding.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T03:05:53.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CollisionSet.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Collisions\\CollisionUtils\\CollisionSet.cs",
+              "RelativeDocumentMoniker": "Behaviors\\Collisions\\CollisionUtils\\CollisionSet.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Collisions\\CollisionUtils\\CollisionSet.cs",
+              "RelativeToolTip": "Behaviors\\Collisions\\CollisionUtils\\CollisionSet.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T03:05:34.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManagerHub.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\ManagerHub.cs",
+              "RelativeDocumentMoniker": "Managers\\ManagerUtils\\ManagerHub.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\ManagerHub.cs",
+              "RelativeToolTip": "Managers\\ManagerUtils\\ManagerHub.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T03:00:42.072Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

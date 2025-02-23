@@ -11,20 +11,15 @@
 [ext_resource type="Script" path="res://Behaviors/BehaviorUtils/BehaviorSet.cs" id="9_7du7u"]
 [ext_resource type="Script" path="res://Behaviors/Actions/CheckColliding.cs" id="9_g4253"]
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="11_l7e5k"]
-[ext_resource type="Script" path="res://Behaviors/CollisionUtils/CollisionSet.cs" id="12_jvlgx"]
+[ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_w5cif"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ifk0"]
-radius = 38.3275
+radius = 19.2354
 
 [node name="Ghoul" type="CharacterBody2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
-
-[node name="HurtBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_2ifk0")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-1, -35)
@@ -37,7 +32,7 @@ scale = Vector2(0.596878, 0.691919)
 color = Color(0.359647, 0.0258149, 0.133869, 1)
 polygon = PackedVector2Array(1.67538, -4.33577, -11.7277, 34.6861, 1.67538, 66.4818, 15.0785, 34.6861)
 
-[node name="ManagerHub" type="Node" parent="."]
+[node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("1_j0iih")
 
 [node name="MovementManager" type="Node" parent="ManagerHub"]
@@ -73,9 +68,13 @@ RepeatDelayS = 0.1
 script = ExtResource("9_g4253")
 Source = NodePath("../../../..")
 
-[node name="CollisionManager" type="Node" parent="ManagerHub"]
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("11_l7e5k")
 
-[node name="CollisionSet" type="Node" parent="ManagerHub/CollisionManager" node_paths=PackedStringArray("Area")]
-script = ExtResource("12_jvlgx")
-Area = NodePath("../../../HurtBox")
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("12_w5cif")
+
+[node name="HurtBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/HurtBox"]
+shape = SubResource("CircleShape2D_2ifk0")

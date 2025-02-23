@@ -20,7 +20,6 @@ namespace LucidSpiral.MovementPatterns
         public ChasePlayer() { }
         public override void Move()
         {
-            //GD.Print(GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value);
             float speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
             CharacterBody2D Player = Global.Player;
 

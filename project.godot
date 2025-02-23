@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Globals/Global.cs"
+Utils="*res://Globals/Utils.cs"
 
 [dotnet]
 

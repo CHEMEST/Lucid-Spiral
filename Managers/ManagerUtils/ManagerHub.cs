@@ -8,7 +8,7 @@ using Godot;
 namespace LucidSpiral.Managers.ManagerThings
 {
     [GlobalClass]
-    internal partial class ManagerHub : Node
+    internal partial class ManagerHub : Node2D
     {
         private Dictionary<Type, IManager> _managers = new();
 
