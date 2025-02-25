@@ -23,7 +23,9 @@ namespace LucidSpiral.Globals
         /// <returns></returns>
         public static T FindManager<T>(Node root) where T : class, IManager
         {
-            return root.GetNodeOrNull<ManagerHub>("ManagerHub").GetManager<T>();
+            ManagerHub hub = root.GetNodeOrNull<ManagerHub>("ManagerHub");
+            if (hub == null) { throw new NullReferenceException("ManagerHub cannot be found for the searched node. Make sure the right root is being passed"); }
+            return hub.GetManager<T>();
         }
         public static T FindStatus<T>(Node root) where T : class, IStatus
         {
@@ -33,5 +35,21 @@ namespace LucidSpiral.Globals
         {
             return FindManager<CollisionManager>(root).GetCollisionSet(type);
         }
+        // this function makes me happy
+        public static void ProcessCollisions(Node root, CollisionType rootCollisionType, CollisionType targetCollisionType, Action<CollisionSet> onCollision)
+        {
+            CollisionSet nodeCollisionSet = FindCollisionSet(root, rootCollisionType);
+            if (nodeCollisionSet.Type == CollisionType.Empty)
+            {
+                throw new NotSupportedException($"No valid {rootCollisionType} collision found for the given node.");
+            }
+
+            List<CollisionSet> overlappingCollisions = nodeCollisionSet.GetOverlappingCollisionSets(targetCollisionType);
+            foreach (CollisionSet collision in overlappingCollisions)
+            {
+                onCollision(collision);
+            }
+        }
+
     }
 }

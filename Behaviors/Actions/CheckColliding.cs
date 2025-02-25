@@ -22,19 +22,16 @@ namespace LucidSpiral.Behaviors.Actions
     {
         public override void Action(double delta)
         {
-            CollisionSet collisionSet = Utils.FindCollisionSet(Source, CollisionType.Hitbox);
-            if (collisionSet.Type == CollisionType.Empty) { throw new NotSupportedException(); }
+            Utils.ProcessCollisions(
+                Source, CollisionType.Hitbox, CollisionType.Hitbox,
+                (collision) =>
+                {
 
-            List<CollisionSet> collisions = collisionSet.GetOverlappingCollisionSets(CollisionType.Hitbox);
-            foreach (CollisionSet collision in collisions)
-            {
-                
-                GD.Print("Detected : " + collision.GetOwner().Name);
+                    GD.Print("Detected : " + collision.GetOwner().Name);
 
-                Speed status = Utils.FindStatus<Speed>(collision.GetOwner());
-                GD.Print(collision.GetOwner().Name + " " + status);
-
-            }
+                    Speed status = Utils.FindStatus<Speed>(collision.GetOwner());
+                    GD.Print(collision.GetOwner().Name + " " + status);
+                });
         }
     }
 }
