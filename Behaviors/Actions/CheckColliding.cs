@@ -26,10 +26,10 @@ namespace LucidSpiral.Behaviors.Actions
             CollisionSet collisionSet = collisionManager.GetCollisionSet(CollisionType.Hitbox);
             if (collisionSet == null) { throw new NotSupportedException(); }
 
-            List<CollisionSet> overlappingAreas = collisionSet.GetOverlappingCollisionSets(CollisionType.Hitbox);
-            foreach (CollisionSet collision in overlappingAreas)
+            List<CollisionSet> collisions = collisionSet.GetOverlappingCollisionSets(CollisionType.Hitbox);
+            foreach (CollisionSet collision in collisions)
             {
-                GD.Print("Detected");
+                GD.Print("Detected : " + collision);
                 Speed status = Utils.FindManager<StatusManager>(collision).GetStatus<Speed>();
                 GD.Print(collision.GetOwner().Name + " " + status);
 

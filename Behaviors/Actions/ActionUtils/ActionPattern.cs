@@ -1,4 +1,5 @@
 ﻿using Godot;
+using LucidSpiral.Behaviors.Actions.ActionUtils;
 using LucidSpiral.Behaviors.BehaviorUtils;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,10 @@ using System.Diagnostics;
 
 namespace LucidSpiral.Actions.ActionUtils
 {
-    internal abstract partial class ActionPattern : Node, IBehavior
+    internal abstract partial class ActionPattern : Node, IAction
     {
         [Export] public CharacterBody2D Source { get; private set; }
+        [Export] public bool IsActive { get; set; } = true;
         /// <summary>
         /// Values less than 1 means no max
         /// </summary>
@@ -17,6 +19,7 @@ namespace LucidSpiral.Actions.ActionUtils
 
         public void Act()
         {
+            if (!IsActive) return;
             for (int i = 0; i < Repeats; i++)
             {
                 Action();

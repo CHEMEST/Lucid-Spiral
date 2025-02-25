@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Globals
 {
-    class Utils
+    partial class Utils : Node
     {
         public static T FindManager<T>(Node root) where T : class, IManager
         {
-            return root.GetNodeOrNull<ManagerHub>("ManagerHub").GetManager<T>();
+            return root.GetOwner().GetNodeOrNull<ManagerHub>("ManagerHub").GetManager<T>();
         }
     }
 }
