@@ -28,7 +28,7 @@ namespace LucidSpiral.Managers.ManagerUtils
             base._Process(delta);
             foreach (T behavior in Behaviors)
             {
-                behavior.Act();
+                behavior.Act(delta);
             }
         }
     }

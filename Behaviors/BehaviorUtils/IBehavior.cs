@@ -9,6 +9,6 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
 {
     internal interface IBehavior
     {
-        public abstract void Act();
+        public abstract void Act(double delta);
     }
 }

@@ -11,13 +11,13 @@ namespace LucidSpiral.MovementPatterns
     [GlobalClass]
     internal partial class EmptyMovement : MovementPattern
     {
-        public override void Move()
+        public override void Move(double delta)
         {
             GD.Print("No Movement");
         }
         public override void _Process(double delta)
         {
-            Move();
+            Move(delta);
         }
     }
 }

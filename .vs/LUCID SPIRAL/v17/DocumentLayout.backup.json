@@ -3,6 +3,38 @@
   "WorkspaceRootPath": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\behaviorutils\\ibehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\behaviorutils\\ibehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\managerutils\\focusedmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:managers\\managerutils\\focusedmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\movementpatterns\\movementutils\\imovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\movementpatterns\\movementutils\\imovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\movementpatterns\\movementutils\\movementpattern.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\movementpatterns\\movementutils\\movementpattern.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\movementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:managers\\movementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\actions\\actionutils\\actionpattern.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\actions\\actionutils\\actionpattern.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\actions\\checkcolliding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\actions\\checkcolliding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\globals\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:globals\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\behaviorutils\\behaviorset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\behaviorutils\\behaviorset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,12 +55,116 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\BehaviorUtils\\IBehavior.cs",
+              "RelativeDocumentMoniker": "Behaviors\\BehaviorUtils\\IBehavior.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\BehaviorUtils\\IBehavior.cs",
+              "RelativeToolTip": "Behaviors\\BehaviorUtils\\IBehavior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAlwAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T02:24:59.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MovementPattern.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\MovementUtils\\MovementPattern.cs",
+              "RelativeDocumentMoniker": "Behaviors\\MovementPatterns\\MovementUtils\\MovementPattern.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\MovementUtils\\MovementPattern.cs",
+              "RelativeToolTip": "Behaviors\\MovementPatterns\\MovementUtils\\MovementPattern.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T02:15:31.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IMovement.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\MovementUtils\\IMovement.cs",
+              "RelativeDocumentMoniker": "Behaviors\\MovementPatterns\\MovementUtils\\IMovement.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\MovementUtils\\IMovement.cs",
+              "RelativeToolTip": "Behaviors\\MovementPatterns\\MovementUtils\\IMovement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T02:14:42.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovementManager.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\MovementManager.cs",
+              "RelativeDocumentMoniker": "Managers\\MovementManager.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\MovementManager.cs",
+              "RelativeToolTip": "Managers\\MovementManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T02:14:22.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FocusedManager.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\FocusedManager.cs",
+              "RelativeDocumentMoniker": "Managers\\ManagerUtils\\FocusedManager.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\FocusedManager.cs",
+              "RelativeToolTip": "Managers\\ManagerUtils\\FocusedManager.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAADwvygAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T02:13:37.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ActionPattern.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\ActionUtils\\ActionPattern.cs",
+              "RelativeDocumentMoniker": "Behaviors\\Actions\\ActionUtils\\ActionPattern.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\ActionUtils\\ActionPattern.cs",
+              "RelativeToolTip": "Behaviors\\Actions\\ActionUtils\\ActionPattern.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIAxwAkAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T01:35:48.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CheckColliding.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\CheckColliding.cs",
+              "RelativeDocumentMoniker": "Behaviors\\Actions\\CheckColliding.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\CheckColliding.cs",
+              "RelativeToolTip": "Behaviors\\Actions\\CheckColliding.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAawB4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T01:35:41.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Globals\\Utils.cs",
+              "RelativeDocumentMoniker": "Globals\\Utils.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Globals\\Utils.cs",
+              "RelativeToolTip": "Globals\\Utils.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T01:27:41.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "BehaviorSet.cs",
               "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\BehaviorUtils\\BehaviorSet.cs",
               "RelativeDocumentMoniker": "Behaviors\\BehaviorUtils\\BehaviorSet.cs",
               "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\BehaviorUtils\\BehaviorSet.cs",
               "RelativeToolTip": "Behaviors\\BehaviorUtils\\BehaviorSet.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAMwDgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwDwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T01:18:30.49Z",
               "EditorCaption": ""
@@ -43,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "ActionSet.cs",
               "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\Actions\\ActionUtils\\ActionSet.cs",
               "RelativeDocumentMoniker": "Behaviors\\Actions\\ActionUtils\\ActionSet.cs",

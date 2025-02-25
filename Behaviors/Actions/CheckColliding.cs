@@ -20,7 +20,7 @@ namespace LucidSpiral.Behaviors.Actions
     [GlobalClass]
     internal partial class CheckColliding : ActionPattern
     {
-        public override void Action()
+        public override void Action(double delta)
         {
             CollisionManager collisionManager = Source.GetNodeOrNull<ManagerHub>("ManagerHub").GetManager<CollisionManager>();
             CollisionSet collisionSet = collisionManager.GetCollisionSet(CollisionType.Hitbox);
@@ -29,7 +29,7 @@ namespace LucidSpiral.Behaviors.Actions
             List<CollisionSet> collisions = collisionSet.GetOverlappingCollisionSets(CollisionType.Hitbox);
             foreach (CollisionSet collision in collisions)
             {
-                GD.Print("Detected : " + collision);
+                GD.Print("Detected : " + collision.GetOwner().Name);
                 Speed status = Utils.FindManager<StatusManager>(collision).GetStatus<Speed>();
                 GD.Print(collision.GetOwner().Name + " " + status);
 

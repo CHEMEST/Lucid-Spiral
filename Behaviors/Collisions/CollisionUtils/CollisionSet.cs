@@ -37,7 +37,7 @@ public partial class CollisionSet : Node2D, IBehavior
         return collisionSets;
     }
 
-    public void Act()
+    public void Act(double delta)
     {
 
     }

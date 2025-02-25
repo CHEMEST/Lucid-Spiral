@@ -17,15 +17,15 @@ namespace LucidSpiral.Actions.ActionUtils
         //// Values less than 1 means no max
         [Export] public int Repeats { get; private set; } = 1;
 
-        public void Act()
+        public void Act(double delta)
         {
             if (!IsActive) return;
             for (int i = 0; i < Repeats; i++)
             {
-                Action();
+                Action(delta);
             }
         }
-        public abstract void Action();
+        public abstract void Action(double delta);
 
         public override void _Ready()
         {

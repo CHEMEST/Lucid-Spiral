@@ -11,28 +11,34 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Managers.ManagerUtils
 {
-    internal abstract partial class BehaviorManager : Node, IManager
+    /// <summary>
+    /// Not currently being used by anything. Same core structure as MovementManager 
+    /// but that needs to run off of Physics Process 
+    /// and needs a param that IBehavior.Act() does not have
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    internal abstract partial class FocusedManager<T> : Node, IManager where T : class, IBehavior
     {
-        public List<IBehavior> Behaviors { get; private set; } = new();
+        public List<T> Behaviors { get; private set; } = new();
         public int ActiveIndex { get; private set; } = 0;
-        public IBehavior GetActiveBehavior() { return Behaviors[ActiveIndex]; }
+        public T GetActiveBehavior() { return Behaviors[ActiveIndex]; }
 
-        public BehaviorManager() { }
+        public FocusedManager() { }
 
         public override void _Ready()
         {
             foreach (Node child in GetChildren())
             {
-                if (child is IBehavior)
+                if (child is T)
                 {
-                    Behaviors.Add(child as IBehavior);
+                    Behaviors.Add(child as T);
                 }
             }
         }
         public override void _Process(double delta)
         {
             if (ActiveIndex >= Behaviors.Count) ActiveIndex = 0;
-            Behaviors[ActiveIndex].Act();
+            Behaviors[ActiveIndex].Act(delta);
         }
         public void NextBehaviorPattern()
         {

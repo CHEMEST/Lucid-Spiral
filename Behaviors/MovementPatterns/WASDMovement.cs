@@ -15,7 +15,7 @@ namespace LucidSpiral.MovementPatterns
     internal partial class WASDMovement : MovementPattern
     {
         public WASDMovement() { }
-        public override void Move()
+        public override void Move(double delta)
         {
             float Speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
 
@@ -33,7 +33,7 @@ namespace LucidSpiral.MovementPatterns
                 velocityTemp.Y = Mathf.MoveToward(Body.Velocity.Y, 0, Speed);
             }
 
-            Body.Velocity = velocityTemp;
+            Body.Velocity = velocityTemp; // how  * (float)delta
             Body.MoveAndSlide();
         }
 

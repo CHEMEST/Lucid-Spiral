@@ -18,7 +18,7 @@ namespace LucidSpiral.MovementPatterns
         [Export] private float slowingSpeed = 20f;
 
         public ChasePlayer() { }
-        public override void Move()
+        public override void Move(double delta)
         {
             float speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
             CharacterBody2D Player = Global.Player;

@@ -25,11 +25,11 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
 
         private int _repeated = 0;
         private Timer _delayTimer;
-        public void Act()
+        public void Act(double delta)
         {
             if (!_ready) return;
 
-            Behavior.Act();
+            Behavior.Act(delta);
             _ready = false;
 
         }
