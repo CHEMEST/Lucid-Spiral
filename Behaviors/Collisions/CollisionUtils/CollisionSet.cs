@@ -5,13 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 /// <summary>
-/// CollisionSet is currently just a wrapper for Area2D but this allows for integration with the ManagerHub system and future implementations of multiple Areas
+/// stores an Area, a Type, and some helper functions
 /// </summary>
 [GlobalClass]
-public partial class CollisionSet : Node2D, IBehavior
+public partial class CollisionSet : Node2D
 {
-
-    [Export] public CollisionType Type { get; private set; }
+    [Export] public CollisionType Type { get; private set; } = CollisionType.Empty;
     public Area2D Area { get; private set; }
     public override void _Ready()
     {
@@ -37,8 +36,4 @@ public partial class CollisionSet : Node2D, IBehavior
         return collisionSets;
     }
 
-    public void Act(double delta)
-    {
-
-    }
 }

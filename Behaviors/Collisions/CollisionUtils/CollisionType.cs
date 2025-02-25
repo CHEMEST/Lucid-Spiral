@@ -8,6 +8,7 @@ namespace LucidSpiral.Behaviors.Collisions.CollisionUtils
 {
     public enum CollisionType
     {
+        Empty,
         Hitbox,
         EffectPickup
     }

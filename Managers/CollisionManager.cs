@@ -33,13 +33,17 @@ namespace LucidSpiral.Managers
             }
         }
         /// <summary>
-        /// throws an error if not found. fix this asap
+        /// Returns a CollisionSet of default type (Empty) if Type not found
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         public CollisionSet GetCollisionSet(CollisionType type)
         {
-            return CollisionSets[type];
+            if (CollisionSets.TryGetValue(type, out CollisionSet collision))
+            {
+                return collision;
+            }
+            return new CollisionSet();
         }
     }
 }

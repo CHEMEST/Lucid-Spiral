@@ -60,6 +60,7 @@ script = ExtResource("10_c4ctk")
 
 [node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
 script = ExtResource("11_od378")
+Type = 1
 
 [node name="HitBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
