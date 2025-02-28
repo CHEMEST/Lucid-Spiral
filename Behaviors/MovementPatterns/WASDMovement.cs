@@ -1,4 +1,5 @@
 ﻿using Godot;
+using LucidSpiral.Globals;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerThings;
 using LucidSpiral.MovementPatterns.MovementPatternThings;
@@ -17,23 +18,21 @@ namespace LucidSpiral.MovementPatterns
         public WASDMovement() { }
         public override void Move(double delta)
         {
-            float Speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
-
+            float speed = (float)Utils.FindStatus<Speed>(Body).Value;
             
             Vector2 velocityTemp = Body.Velocity;
 
             Vector2 direction = Input.GetVector("Move Left", "Move Right", "Move Up", "Move Down");
             if (direction != Vector2.Zero)
             {
-                velocityTemp = direction * Speed;
+                velocityTemp = direction * speed;
             }
             else
             {
-                velocityTemp.X = Mathf.MoveToward(Body.Velocity.X, 0, Speed);
-                velocityTemp.Y = Mathf.MoveToward(Body.Velocity.Y, 0, Speed);
+                velocityTemp = velocityTemp.MoveToward(Vector2.Zero, speed*(float)delta);
             }
 
-            Body.Velocity = velocityTemp; // how  * (float)delta
+            Body.Velocity = velocityTemp;
             Body.MoveAndSlide();
         }
 

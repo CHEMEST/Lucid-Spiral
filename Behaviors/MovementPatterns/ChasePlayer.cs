@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LucidSpiral.Statuses;
+using LucidSpiral.Globals;
 
 namespace LucidSpiral.MovementPatterns
 {
@@ -20,7 +21,8 @@ namespace LucidSpiral.MovementPatterns
         public ChasePlayer() { }
         public override void Move(double delta)
         {
-            float speed = (float)GetNode<ManagerHub>("../..").GetManager<StatusManager>().GetStatus<Speed>().Value;
+            float speed = (float)Utils.FindStatus<Speed>(Body).Value;
+            speed = (speed * Global.Random.Next()) + (speed * 0.75f);
             CharacterBody2D Player = Global.Player;
 
             Vector2 velocityTemp = Body.Velocity;
