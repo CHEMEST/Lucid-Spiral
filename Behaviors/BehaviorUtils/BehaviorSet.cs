@@ -20,12 +20,12 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         /// Values of 0 or less mean no timed trigger, only triggers by external action
         /// </summary>
         //// Values of 0 or less mean no timed trigger, only triggers by external action
-        [Export] public double RepeatDelayS { get; private set; }
-        private bool _ready = false;
+        [Export] public double RepeatDelayS { get; private set; } = 0;
+        public bool _ready { get; protected set; } = false;
 
         private int _repeated = 0;
         private Timer _delayTimer;
-        public void Act(double delta)
+        public void Act(double delta) 
         {
             if (!_ready) return;
 

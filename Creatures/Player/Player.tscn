@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
-[ext_resource type="Script" path="res://Behaviors/MovementPatterns/WASDMovement.cs" id="5_ln2bl"]
+[ext_resource type="Script" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="10_c4ctk"]
@@ -29,6 +29,7 @@ scale = Vector2(0.390625, 0.625)
 texture = ExtResource("2_aky8t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
@@ -36,8 +37,9 @@ script = ExtResource("3_ioqc6")
 [node name="MovementManager" type="Node" parent="ManagerHub"]
 script = ExtResource("7_6grap")
 
-[node name="WASDMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
-script = ExtResource("5_ln2bl")
+[node name="PlayerMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+script = ExtResource("5_ulenn")
+DashCooldown = 1.0
 Body = NodePath("../../..")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
@@ -45,7 +47,7 @@ script = ExtResource("4_saco2")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_blgq1")
-Value = 300.0
+Value = 900.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")
