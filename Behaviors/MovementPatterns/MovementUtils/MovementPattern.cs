@@ -9,6 +9,7 @@ namespace LucidSpiral.MovementPatterns.MovementPatternThings
 {
     internal abstract partial class MovementPattern : Node, IMovement
     {
+        public bool CanMove { get; set; } = true;
         [Export] public CharacterBody2D Body { get; private set; }
 
         public void Act(double delta)

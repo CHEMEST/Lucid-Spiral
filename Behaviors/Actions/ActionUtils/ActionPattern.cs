@@ -11,10 +11,7 @@ namespace LucidSpiral.Actions.ActionUtils
     {
         [Export] public CharacterBody2D Source { get; private set; }
         [Export] public bool IsActive { get; set; } = true;
-        /// <summary>
-        /// Values less than 1 means no max
-        /// </summary>
-        //// Values less than 1 means no max
+        //// amount of times the Action() is run per _Process()
         [Export] public int Repeats { get; private set; } = 1;
 
         public void Act(double delta)

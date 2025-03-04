@@ -2,6 +2,7 @@
 using LucidSpiral.Behaviors.Collisions.CollisionUtils;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerThings;
+using LucidSpiral.Managers.ManagerUtils;
 using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,15 @@ namespace LucidSpiral.Globals
         /// <typeparam name="T"></typeparam>
         /// <param name="root"> the owner of the tree you are searching (ie. the root)</param>
         /// <returns></returns>
-        public static T FindManager<T>(Node root) where T : class, IManager
+        public static T FindManager<T>(Node root) where T : class, IManager 
         {
             ManagerHub hub = root.GetNodeOrNull<ManagerHub>("ManagerHub");
             if (hub == null) { throw new NullReferenceException("ManagerHub cannot be found for the searched node. Make sure the right root is being passed"); }
             return hub.GetManager<T>();
+        }
+        public static void SetState(Node root, State state) 
+        {
+            FindManager<StateManager>(root).ActiveState = state;
         }
         public static T FindStatus<T>(Node root) where T : class, IStatus
         {

@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=15 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
+[ext_resource type="Script" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
+[ext_resource type="Script" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
 [ext_resource type="Script" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="10_c4ctk"]
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="11_od378"]
+[ext_resource type="Script" path="res://Managers/StateManager.cs" id="12_wbvux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1a5j"]
 radius = 25.0
@@ -34,13 +37,23 @@ zoom = Vector2(0.75, 0.75)
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
 
+[node name="ActionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("4_p88h7")
+
+[node name="PlayerDash" type="Node" parent="ManagerHub/ActionManager" node_paths=PackedStringArray("Source")]
+script = ExtResource("5_0ag6w")
+dashCooldown = 0.5
+Source = NodePath("../../..")
+
 [node name="MovementManager" type="Node" parent="ManagerHub"]
 script = ExtResource("7_6grap")
 
 [node name="PlayerMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
 script = ExtResource("5_ulenn")
-DashCooldown = 1.0
 Body = NodePath("../../..")
+
+[node name="StateManager" type="Node" parent="ManagerHub"]
+script = ExtResource("12_wbvux")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_saco2")
