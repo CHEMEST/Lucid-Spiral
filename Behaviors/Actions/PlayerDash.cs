@@ -1,6 +1,7 @@
 ﻿using System;
 using Godot;
 using LucidSpiral.Actions.ActionUtils;
+using LucidSpiral.Behaviors.Collisions.CollisionUtils;
 using LucidSpiral.Globals;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerUtils;
@@ -10,6 +11,9 @@ using LucidSpiral.Statuses;
 namespace LucidSpiral.Behaviors.Actions
 {
     [GlobalClass]
+    /// <summary>
+    /// Makes player invincible during dash, every some number of dashes triggers a hyper dash (faster)
+    /// </summary>
     internal partial class PlayerDash : ActionPattern
     {
         [Export] private int dashesForHyper = 3;
@@ -53,20 +57,22 @@ namespace LucidSpiral.Behaviors.Actions
 
         private void StartDash()
         {
-            //setting state
+            // setting state
             Utils.SetState(Source, State.Dashing);
-
-            isDashing = true;
-            dashTimer = dashTime;
-            cooldownTimer = dashCooldown;
-            Player player = Global.Player;
+            // invincibility by turning off hitbox
+            Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = false;
+            // Cutting active movement during dash
+            Utils.GetActiveMovementPattern(Source).CanMove = false;
 
             // Decrement untill hyper
             dashesUntilHyper--;
             if (dashesUntilHyper <= 0) isHyper = true;
-            
-            // Cutting active movement during dash
-            Utils.GetActiveMovementPattern(Source).CanMove = false;
+
+            // Dash
+            isDashing = true;
+            dashTimer = dashTime;
+            cooldownTimer = dashCooldown;
+            Player player = Global.Player;
 
             // Calculating direction
             Vector2 mousePosition = player.GetGlobalMousePosition();
@@ -90,7 +96,8 @@ namespace LucidSpiral.Behaviors.Actions
 
             //resetting state
             Utils.SetState(Source, State.Idle);
-
+            // Re-enable hitbox
+            Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = true;
             // Re-enable movement
             Utils.GetActiveMovementPattern(Source).CanMove = true;
         }
