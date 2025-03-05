@@ -32,7 +32,6 @@ namespace LucidSpiral.Behaviors.Actions
 
         public override void Action(double delta)
         {
-            GD.Print(Utils.FindManager<StateManager>(Source).ActiveState);
             if (cooldownTimer > 0)
             {
                 cooldownTimer -= (float)delta;
@@ -48,56 +47,52 @@ namespace LucidSpiral.Behaviors.Actions
             }
             else if (Input.IsActionJustPressed("Dash") && cooldownTimer <= 0)
             {
-                if (isHyper) StartHyperDash();
-                else StartDash();
+                StartDash();
             }
-        }
-
-        private void StartHyperDash()
-        {
-            dashSpeed *= hyperDashMult;
-            StartDash();
-            dashSpeed /= hyperDashMult;
-            isHyper = false;
-            dashesUntilHyper = dashesForHyper;
         }
 
         private void StartDash()
         {
             //setting state
-            Utils.FindManager<StateManager>(Source).ActiveState = State.Dashing;
+            Utils.SetState(Source, State.Dashing);
 
             isDashing = true;
             dashTimer = dashTime;
             cooldownTimer = dashCooldown;
+            Player player = Global.Player;
+
             // Decrement untill hyper
             dashesUntilHyper--;
             if (dashesUntilHyper <= 0) isHyper = true;
-
+            
             // Cutting active movement during dash
-            MovementPattern movement = (MovementPattern) Utils.FindManager<MovementManager>(Source).GetActiveBehavior();
-            movement.CanMove = false;
+            Utils.GetActiveMovementPattern(Source).CanMove = false;
 
-            Player player = Global.Player;
-
+            // Calculating direction
             Vector2 mousePosition = player.GetGlobalMousePosition();
             Vector2 playerPosition = player.GlobalPosition;
             Vector2 dashDirection = playerPosition.DirectionTo(mousePosition);
 
-            player.Velocity = dashDirection * dashSpeed;
+            // hyper
+            float speed = (isHyper) ? dashSpeed * hyperDashMult : dashSpeed;
+            if (isHyper) { 
+                isHyper = false;
+                dashesUntilHyper = dashesForHyper;
+            }
 
+            player.Velocity = dashDirection * speed;
             player.MoveAndSlide();
         }
 
         private void EndDash()
         {
-            //resetting state
-            Utils.FindManager<StateManager>(Source).ActiveState = State.Idle;
-
             isDashing = false;
+
+            //resetting state
+            Utils.SetState(Source, State.Idle);
+
             // Re-enable movement
-            MovementPattern movement = (MovementPattern)Utils.FindManager<MovementManager>(Source).GetActiveBehavior();
-            movement.CanMove = true;
+            Utils.GetActiveMovementPattern(Source).CanMove = true;
         }
     }
 }

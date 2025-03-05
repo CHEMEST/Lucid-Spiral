@@ -26,6 +26,7 @@ namespace LucidSpiral.Actions.ActionUtils
 
         public override void _Ready()
         {
+            base._Ready();
             Debug.Assert(Source != null, "Action missing a CharacterBody2D Body to Act upon");
         }
     }

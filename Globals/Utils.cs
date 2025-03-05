@@ -3,6 +3,7 @@ using LucidSpiral.Behaviors.Collisions.CollisionUtils;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerThings;
 using LucidSpiral.Managers.ManagerUtils;
+using LucidSpiral.MovementPatterns.MovementPatternThings;
 using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ namespace LucidSpiral.Globals
             ManagerHub hub = root.GetNodeOrNull<ManagerHub>("ManagerHub");
             if (hub == null) { throw new NullReferenceException("ManagerHub cannot be found for the searched node. Make sure the right root is being passed"); }
             return hub.GetManager<T>();
+        }
+        public static MovementPattern GetActiveMovementPattern(Node root)
+        {
+            return FindManager<MovementManager>(root).GetActiveBehavior() as MovementPattern;
         }
         public static void SetState(Node root, State state) 
         {
