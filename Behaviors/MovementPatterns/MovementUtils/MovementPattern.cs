@@ -14,6 +14,7 @@ namespace LucidSpiral.MovementPatterns.MovementPatternThings
 
         public void Act(double delta)
         {
+            if (!CanMove) return;
             Move(delta);
         }
 

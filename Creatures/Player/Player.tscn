@@ -42,8 +42,6 @@ script = ExtResource("4_p88h7")
 
 [node name="PlayerDash" type="Node" parent="ManagerHub/ActionManager" node_paths=PackedStringArray("Source")]
 script = ExtResource("5_0ag6w")
-dashSpeed = 2000.0
-dashTime = 0.2
 dashCooldown = 0.5
 Source = NodePath("../../..")
 
@@ -62,7 +60,7 @@ script = ExtResource("4_saco2")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_blgq1")
-Value = 900.0
+Value = 1200.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")

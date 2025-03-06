@@ -17,9 +17,9 @@ namespace LucidSpiral.Behaviors.Actions
     internal partial class PlayerDash : ActionPattern
     {
         [Export] private int dashesForHyper = 3;
-        [Export] private float dashSpeed = 1200f;
+        [Export] private float dashSpeed = 2000f;
         [Export] private float hyperDashMult = 2f;
-        [Export] private float dashTime = 0.4f;
+        [Export] private float dashTime = 0.2f;
         [Export] private float dashCooldown = 2f;
 
         private int dashesUntilHyper;
@@ -27,7 +27,6 @@ namespace LucidSpiral.Behaviors.Actions
         private float cooldownTimer = 0f;
         private bool isDashing = false;
         private bool isHyper = false;
-
         public override void _Ready()
         {
             base._Ready();
@@ -43,11 +42,7 @@ namespace LucidSpiral.Behaviors.Actions
 
             if (isDashing)
             {
-                dashTimer -= (float)delta;
-                if (dashTimer <= 0)
-                {
-                    EndDash();
-                }
+                DuringDash(delta);
             }
             else if (Input.IsActionJustPressed("Dash") && cooldownTimer <= 0)
             {
@@ -55,8 +50,22 @@ namespace LucidSpiral.Behaviors.Actions
             }
         }
 
+        private void DuringDash(double delta)
+        {
+            dashTimer -= (float)delta;
+            if (dashTimer <= 0)
+            {
+                EndDash();
+            }
+
+            Player player = Global.Player;
+            player.Velocity = player.Velocity.MoveToward(Vector2.Zero, (float)delta);
+            player.MoveAndSlide();
+        }
+
         private void StartDash()
         {
+            GD.Print("dash started");
             // setting state
             Utils.SetState(Source, State.Dashing);
             // invincibility by turning off hitbox
@@ -93,7 +102,7 @@ namespace LucidSpiral.Behaviors.Actions
         private void EndDash()
         {
             isDashing = false;
-
+            GD.Print("dash ended");
             //resetting state
             Utils.SetState(Source, State.Idle);
             // Re-enable hitbox
