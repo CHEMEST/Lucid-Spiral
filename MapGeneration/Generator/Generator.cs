@@ -26,7 +26,10 @@ namespace LucidSpiral.MapGeneration.Generator
 
         private void DisplayRooms()
         {
-
+            foreach (Vector2I cord in roomPositions.Keys) 
+            {
+                GD.Print(cord + ": " + roomPositions[cord]);
+            }
         }
         /// <summary>
         /// Marks true at a certain location in dictionary if that slot is available for a room
