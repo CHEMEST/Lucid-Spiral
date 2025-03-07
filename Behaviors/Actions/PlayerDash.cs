@@ -65,7 +65,6 @@ namespace LucidSpiral.Behaviors.Actions
 
         private void StartDash()
         {
-            GD.Print("dash started");
             // setting state
             Utils.SetState(Source, State.Dashing);
             // invincibility by turning off hitbox
@@ -102,7 +101,6 @@ namespace LucidSpiral.Behaviors.Actions
         private void EndDash()
         {
             isDashing = false;
-            GD.Print("dash ended");
             //resetting state
             Utils.SetState(Source, State.Idle);
             // Re-enable hitbox

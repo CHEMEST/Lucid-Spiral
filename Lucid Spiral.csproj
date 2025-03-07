@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
 </Project>

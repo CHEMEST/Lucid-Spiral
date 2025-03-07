@@ -32,7 +32,6 @@ scale = Vector2(0.390625, 0.625)
 texture = ExtResource("2_aky8t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")

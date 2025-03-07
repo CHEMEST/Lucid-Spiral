@@ -19,7 +19,6 @@ namespace LucidSpiral.MovementPatterns
         public PlayerMovement() { }
         public override void Move(double delta)
         {
-            GD.Print("moving");
             float speed = (float)Utils.FindStatus<Speed>(Body).Value;
             float friction = speed * 4;
             
