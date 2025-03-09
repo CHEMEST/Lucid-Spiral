@@ -33,7 +33,7 @@ polygon = PackedVector2Array(1.67538, -4.33577, -11.7277, 34.6861, 1.67538, 66.4
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("1_j0iih")
 
-[node name="MovementManager" type="Node" parent="ManagerHub"]
+[node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("2_4dcmn")
 
 [node name="ChasePlayer" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]

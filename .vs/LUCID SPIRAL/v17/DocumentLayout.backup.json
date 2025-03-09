@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\mapgeneration\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:mapgeneration\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\utility\\navcam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:utility\\navcam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\behaviors\\movementpatterns\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:behaviors\\movementpatterns\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 325,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,13 +38,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NavCam.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Utility\\NavCam.cs",
+              "RelativeDocumentMoniker": "Utility\\NavCam.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Utility\\NavCam.cs",
+              "RelativeToolTip": "Utility\\NavCam.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T00:11:04.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Behaviors\\MovementPatterns\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Behaviors\\MovementPatterns\\PlayerMovement.cs",
+              "RelativeToolTip": "Behaviors\\MovementPatterns\\PlayerMovement.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T00:05:40.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Creatures\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Creatures\\Player\\Player.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Creatures\\Player\\Player.cs",
+              "RelativeToolTip": "Creatures\\Player\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T00:05:33.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Generator.cs",
               "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapGeneration\\Generator\\Generator.cs",
               "RelativeDocumentMoniker": "MapGeneration\\Generator\\Generator.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapGeneration\\Generator\\Generator.cs*",
-              "RelativeToolTip": "MapGeneration\\Generator\\Generator.cs*",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAxwB0AAAAUAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapGeneration\\Generator\\Generator.cs",
+              "RelativeToolTip": "MapGeneration\\Generator\\Generator.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAjwFgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-06T19:50:12.527Z",
               "EditorCaption": ""

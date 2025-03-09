@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://gm45qbcyk0t2"]
 
-[ext_resource type="Script" path="res://MapGeneration/Generator/Generator.cs" id="1_80ojc"]
+[ext_resource type="Script" path="res://MapTools/Generator/Generator.cs" id="1_80ojc"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_4wrqn"]
 [ext_resource type="Script" path="res://Utility/NavCam.cs" id="3_8ee7u"]
 

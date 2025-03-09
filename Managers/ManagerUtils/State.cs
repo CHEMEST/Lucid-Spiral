@@ -10,6 +10,7 @@ namespace LucidSpiral.Managers.ManagerUtils
     {
         Idle,
         Dashing,
-        Moving
+        Moving,
+        Attacking
     }
 }

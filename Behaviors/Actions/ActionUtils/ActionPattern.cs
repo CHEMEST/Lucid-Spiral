@@ -27,6 +27,14 @@ namespace LucidSpiral.Actions.ActionUtils
         public override void _Ready()
         {
             base._Ready();
+            if (Source == null)
+            {
+                Node owner = GetOwner();
+                if (owner is CharacterBody2D)
+                {
+                    Source = owner as CharacterBody2D;
+                }
+            }
             Debug.Assert(Source != null, "Action missing a CharacterBody2D Body to Act upon");
         }
     }

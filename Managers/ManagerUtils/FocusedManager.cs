@@ -17,7 +17,7 @@ namespace LucidSpiral.Managers.ManagerUtils
     /// and needs a param that IBehavior.Act() does not have
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal abstract partial class FocusedManager<T> : Node, IManager where T : class, IBehavior
+    internal abstract partial class FocusedManager<T> : Node2D, IManager where T : class, IBehavior
     {
         public List<T> Behaviors { get; private set; } = new();
         public int ActiveIndex { get; private set; } = 0;

@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
+[ext_resource type="Script" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
+[ext_resource type="PackedScene" uid="uid://drdnt0xl2mtmg" path="res://Weapons/Katana/Katana.tscn" id="5_ob61e"]
 [ext_resource type="Script" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
@@ -36,6 +38,11 @@ texture = ExtResource("2_aky8t")
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
 
+[node name="WeaponManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("4_4gjqr")
+
+[node name="Katana" parent="ManagerHub/WeaponManager" instance=ExtResource("5_ob61e")]
+
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_p88h7")
 
@@ -44,7 +51,7 @@ script = ExtResource("5_0ag6w")
 dashCooldown = 0.5
 Source = NodePath("../../..")
 
-[node name="MovementManager" type="Node" parent="ManagerHub"]
+[node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("7_6grap")
 
 [node name="PlayerMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
