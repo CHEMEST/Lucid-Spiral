@@ -1,0 +1,12 @@
+Player colors:
+-- Primary: #030042
+-- Secondary: #02001F
+-- Accent: #070094
+-- Border: #00000F
+
+Environment colors (to contrast sharply with the player):
+--text: #f2cefe;
+--background: #09000c;
+--primary: #dd71fb;
+--secondary: #9f0465;
+--accent: #f9187a;
