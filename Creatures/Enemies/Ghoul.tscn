@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=13 format=3 uid="uid://cavoy43bjci7j"]
 
+[ext_resource type="Script" path="res://Creatures/Enemies/Ghoul.cs" id="1_2acmq"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
 [ext_resource type="Script" path="res://Behaviors/MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
@@ -12,9 +13,10 @@
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_w5cif"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ifk0"]
-radius = 19.2354
+radius = 46.1736
 
 [node name="Ghoul" type="CharacterBody2D"]
+script = ExtResource("1_2acmq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
@@ -36,9 +38,9 @@ script = ExtResource("1_j0iih")
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("2_4dcmn")
 
-[node name="ChasePlayer" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+[node name="ChasePlayer" type="Node2D" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
 script = ExtResource("3_asbm4")
-stopDistance = 0.0
+stopDistance = 5.0
 Body = NodePath("../../..")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
@@ -46,7 +48,7 @@ script = ExtResource("4_uafii")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_nar8j")
-Value = 50.0
+Value = 900.0
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")

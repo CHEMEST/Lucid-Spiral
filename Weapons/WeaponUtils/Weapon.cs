@@ -1,6 +1,7 @@
 ﻿using Godot;
 using LucidSpiral.Actions.ActionUtils;
 using LucidSpiral.Globals;
+using LucidSpiral.Managers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Behaviors.Weapons.WeaponUtils
 {
-    internal abstract partial class Weapon : Node2D, IWeapon
+    internal abstract partial class Weapon : CharacterBody2D, IWeapon
     {
         [Export] public CharacterBody2D Source { get; private set; }
         [Export] public bool IsActive { get; set; } = true;
+        private WeaponActionManager ActionManager;
         public override void _Ready()
         {
             base._Ready();
@@ -26,18 +28,20 @@ namespace LucidSpiral.Behaviors.Weapons.WeaponUtils
                 }
             }
             Debug.Assert(Source != null, "Weapon missing a CharacterBody2D Body to Act upon");
+
+            ActionManager = Utils.FindManager<WeaponActionManager>(this);
         }
         public void Act(double delta)
         {
             if (CanBasicAttack())
             {
                 Utils.SetState(Source, Managers.ManagerUtils.State.Attacking);
-                BasicAttack(delta);
+                ActionManager.BasicAttack.Action(delta);
             }
             if (CanSpecialAttack())
             {
                 Utils.SetState(Source, Managers.ManagerUtils.State.Attacking);
-                SpecialAttack(delta);
+                ActionManager.SpecialAttack.Action(delta);
             }
         }
         // can be overridden if a specific weapon needs different reqs
@@ -49,8 +53,5 @@ namespace LucidSpiral.Behaviors.Weapons.WeaponUtils
         {
             return Input.IsActionJustPressed("Special Attack");
         }
-
-        public abstract void BasicAttack(double delta);
-        public abstract void SpecialAttack(double delta);
     }
 }

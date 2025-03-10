@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
-[ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_aky8t"]
+[ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="4_p88h7"]
@@ -15,23 +15,28 @@
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="11_od378"]
 [ext_resource type="Script" path="res://Managers/StateManager.cs" id="12_wbvux"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1a5j"]
-radius = 25.0
-height = 78.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
-radius = 43.0
-height = 132.0
+radius = 11.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv2sh"]
+radius = 19.0
+height = 78.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w1wst")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_f1a5j")
+[node name="Player" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -10)
+scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("2_tb6ca")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.390625, 0.625)
-texture = ExtResource("2_aky8t")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_14e03")
+debug_color = Color(0.657587, 0.0671721, 0.592715, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -42,6 +47,7 @@ script = ExtResource("3_ioqc6")
 script = ExtResource("4_4gjqr")
 
 [node name="Katana" parent="ManagerHub/WeaponManager" instance=ExtResource("5_ob61e")]
+position = Vector2(0, -3)
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_p88h7")
@@ -54,9 +60,8 @@ Source = NodePath("../../..")
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("7_6grap")
 
-[node name="PlayerMovement" type="Node" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+[node name="PlayerMovement" type="Node2D" parent="ManagerHub/MovementManager"]
 script = ExtResource("5_ulenn")
-Body = NodePath("../../..")
 
 [node name="StateManager" type="Node" parent="ManagerHub"]
 script = ExtResource("12_wbvux")
@@ -66,7 +71,7 @@ script = ExtResource("4_saco2")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_blgq1")
-Value = 1200.0
+Value = 2400.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")
@@ -78,4 +83,6 @@ Type = 1
 [node name="HitBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/HitBox"]
-shape = SubResource("CapsuleShape2D_14e03")
+position = Vector2(0, 23)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_uv2sh")

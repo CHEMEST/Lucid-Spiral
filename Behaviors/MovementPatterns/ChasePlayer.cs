@@ -16,13 +16,13 @@ namespace LucidSpiral.MovementPatterns
     internal partial class ChasePlayer : MovementPattern
     {
         [Export] private float stopDistance = 150.0f;
-        [Export] private float slowingSpeed = 20f;
+        [Export] private float slowingSpeed = 5f;
 
         public ChasePlayer() { }
         public override void Move(double delta)
         {
             float speed = (float)Utils.FindStatus<Speed>(Body).Value;
-            speed = (speed * Global.Random.Next()) + (speed * 0.75f);
+            speed = (float)(speed * Global.Random.NextDouble()) + (speed * 0.75f);
             CharacterBody2D Player = Global.Player;
 
             Vector2 velocityTemp = Body.Velocity;
@@ -31,12 +31,12 @@ namespace LucidSpiral.MovementPatterns
             
             if (Body.Position.DistanceTo(Player.Position) > stopDistance)
             {
-                velocityTemp = direction * speed;
+                velocityTemp = direction * speed * (float)delta;
             }
             else
             {
-                velocityTemp.X = Mathf.MoveToward(Body.Velocity.X, 0, speed / slowingSpeed);
-                velocityTemp.Y = Mathf.MoveToward(Body.Velocity.Y, 0, speed / slowingSpeed);
+                velocityTemp.X = Mathf.MoveToward(Body.Velocity.X, 0, speed / slowingSpeed * (float)delta);
+                velocityTemp.Y = Mathf.MoveToward(Body.Velocity.Y, 0, speed / slowingSpeed * (float)delta);
             }
 
             Body.Velocity = velocityTemp;

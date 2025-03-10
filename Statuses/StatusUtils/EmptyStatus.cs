@@ -9,7 +9,7 @@ namespace LucidSpiral.StatusesAndEffects.Statuses
     internal partial class EmptyStatus : StatusD
     {
         public static EmptyStatus Instance { get; } = new EmptyStatus();
-
+        public override string ToString() => GetType().Name;
         public EmptyStatus() : base(0) { } 
     }
 }

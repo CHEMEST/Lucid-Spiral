@@ -13,6 +13,7 @@ public partial class CollisionSet : Node2D
     [Export] public CollisionType Type { get; private set; } = CollisionType.Empty;
     public Area2D Area { get; private set; }
     public bool IsDetectable { get; set; } = true;
+    public CharacterBody2D GetSource() { return GetOwner() as CharacterBody2D; }
     public override void _Ready()
     {
         base._Ready();

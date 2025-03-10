@@ -20,7 +20,7 @@ namespace LucidSpiral.MovementPatterns
         public override void Move(double delta)
         {
             float speed = (float)Utils.FindStatus<Speed>(Body).Value;
-            float friction = speed * 4;
+            float friction = speed * 8;
             
             Vector2 velocityTemp = Body.Velocity;
 
@@ -28,7 +28,7 @@ namespace LucidSpiral.MovementPatterns
 
             if (direction != Vector2.Zero)
             {
-                velocityTemp = direction * speed;
+                velocityTemp = direction * speed * (float)delta;
                 Utils.SetState(Body, State.Moving);
             }
             else

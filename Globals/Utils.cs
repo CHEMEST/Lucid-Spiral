@@ -39,7 +39,10 @@ namespace LucidSpiral.Globals
         }
         public static T FindStatus<T>(Node root) where T : class, IStatus
         {
-            return FindManager<StatusManager>(root).GetStatus<T>();
+            StatusManager manager = FindManager<StatusManager>(root);
+            T status = manager.GetStatus<T>();
+            if (status == null) {  return EmptyStatus.Instance as T; }
+            return status;
         }
         public static CollisionSet FindCollisionSet(Node root, CollisionType type)
         {

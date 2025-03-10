@@ -34,10 +34,12 @@ namespace LucidSpiral.Managers.ManagerUtils
                     Behaviors.Add(child as T);
                 }
             }
+            Debug.Assert(Behaviors.Count > 0, "FocusedManager is missing its first Behavior");
         }
         public override void _Process(double delta)
         {
             if (ActiveIndex >= Behaviors.Count) ActiveIndex = 0;
+            // GD.Print(Name, " | ", Behaviors.Count);
             Behaviors[ActiveIndex].Act(delta);
         }
         public void NextBehaviorPattern()

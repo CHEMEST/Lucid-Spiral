@@ -13,7 +13,7 @@ offset_bottom = 609.0
 color = Color(0.403319, 0.38194, 0.761971, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_nksrd")]
-position = Vector2(338, 247)
+position = Vector2(748, 463)
 
 [node name="Ghoul" parent="." instance=ExtResource("2_gk7t2")]
-position = Vector2(225, 78)
+position = Vector2(70, 165)
