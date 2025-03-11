@@ -19,7 +19,7 @@ radius = 46.1736
 script = ExtResource("1_2acmq")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 0, 31)
+polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 1, 30, 0, 30, -1, 30)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-1, -35)
