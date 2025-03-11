@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c1vrdhivg7a1b"
+path="res://.godot/imported/SampleRoomFlooring.aseprite-b1a95a6ddaa74b0c2fb7c031affc083a.res"
+
+[deps]
+
+source_file="res://Assets/Sprites/Tiles/SampleRoomFlooring.aseprite"
+dest_files=["res://.godot/imported/SampleRoomFlooring.aseprite-b1a95a6ddaa74b0c2fb7c031affc083a.res"]
+
+[params]
+

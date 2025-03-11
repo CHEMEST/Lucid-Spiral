@@ -17,7 +17,7 @@ namespace LucidSpiral.Behaviors.Actions
     internal partial class PlayerDash : ActionPattern
     {
         [Export] private int dashesForHyper = 3;
-        [Export] private float dashSpeed = 2000f;
+        [Export] private float dashSpeedMult = 4;
         [Export] private float hyperDashMult = 2f;
         [Export] private float dashTime = 0.2f;
         [Export] private float dashCooldown = 2f;
@@ -27,9 +27,11 @@ namespace LucidSpiral.Behaviors.Actions
         private float cooldownTimer = 0f;
         private bool isDashing = false;
         private bool isHyper = false;
+        private CollisionShape2D sourcePhysicsCollider;
         public override void _Ready()
         {
             base._Ready();
+            sourcePhysicsCollider = Source.GetChild<CollisionShape2D>(0);
             dashesUntilHyper = dashesForHyper;
         }
 
@@ -59,7 +61,7 @@ namespace LucidSpiral.Behaviors.Actions
             }
 
             Player player = Global.Player;
-            player.Velocity = player.Velocity.MoveToward(Vector2.Zero, (float)delta);
+            player.Velocity = player.Velocity.MoveToward(Vector2.Zero, (float)delta * Global.dtk);
             player.MoveAndSlide();
         }
 
@@ -67,8 +69,9 @@ namespace LucidSpiral.Behaviors.Actions
         {
             // setting state
             Utils.SetState(Source, State.Dashing);
-            // invincibility by turning off hitbox
+            // invincibility & passthrough by turning off hitbox
             Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = false;
+            sourcePhysicsCollider.Disabled = true; 
             // Cutting active movement during dash
             Utils.GetActiveMovementPattern(Source).CanMove = false;
 
@@ -88,11 +91,14 @@ namespace LucidSpiral.Behaviors.Actions
             Vector2 dashDirection = playerPosition.DirectionTo(mousePosition);
 
             // hyper
-            float speed = (isHyper) ? dashSpeed * hyperDashMult : dashSpeed;
+            float speedMult = (isHyper) ? dashSpeedMult * hyperDashMult : dashSpeedMult;
             if (isHyper) { 
                 isHyper = false;
                 dashesUntilHyper = dashesForHyper;
             }
+
+            double sourceSpeed = Utils.FindStatus<Speed>(Source).Value;
+            float speed = (float)sourceSpeed * speedMult;
 
             player.Velocity = dashDirection * speed;
             player.MoveAndSlide();
@@ -105,6 +111,7 @@ namespace LucidSpiral.Behaviors.Actions
             Utils.SetState(Source, State.Idle);
             // Re-enable hitbox
             Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = true;
+            sourcePhysicsCollider.Disabled = false;
             // Re-enable movement
             Utils.GetActiveMovementPattern(Source).CanMove = true;
         }

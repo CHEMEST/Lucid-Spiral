@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
 
-[ext_resource type="Script" path="res://Creatures/Player/Player.cs" id="1_w1wst"]
+[ext_resource type="Script" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
@@ -26,17 +26,17 @@ height = 78.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_w1wst")
 
-[node name="Player" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1, -10)
-scale = Vector2(3.0625, 3.0625)
-texture = ExtResource("2_tb6ca")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 30)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_14e03")
 debug_color = Color(0.657587, 0.0671721, 0.592715, 0.42)
+
+[node name="Player" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -10)
+scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("2_tb6ca")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -54,6 +54,8 @@ script = ExtResource("4_p88h7")
 
 [node name="PlayerDash" type="Node" parent="ManagerHub/ActionManager" node_paths=PackedStringArray("Source")]
 script = ExtResource("5_0ag6w")
+dashSpeedMult = 30.0
+dashTime = 0.3
 dashCooldown = 0.5
 Source = NodePath("../../..")
 
@@ -71,7 +73,7 @@ script = ExtResource("4_saco2")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_blgq1")
-Value = 2400.0
+Value = 50.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4ehxkct06wcd"]
 
-[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Creatures/Player/Player.tscn" id="1_nksrd"]
-[ext_resource type="PackedScene" uid="uid://cavoy43bjci7j" path="res://Creatures/Enemies/Ghoul.tscn" id="2_gk7t2"]
+[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_nksrd"]
+[ext_resource type="PackedScene" uid="uid://cavoy43bjci7j" path="res://Entities/Creatures/Enemies/Ghoul.tscn" id="2_gk7t2"]
 
 [node name="TestingArea" type="Node2D"]
 
@@ -11,6 +11,7 @@ offset_top = -49.0
 offset_right = 898.0
 offset_bottom = 609.0
 color = Color(0.403319, 0.38194, 0.761971, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_nksrd")]
 position = Vector2(748, 463)

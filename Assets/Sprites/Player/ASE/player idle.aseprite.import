@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://chqliscm1lj3h"
+path="res://.godot/imported/player idle.aseprite-6da6306129844f6c2c05120aa91f9116.res"
+
+[deps]
+
+source_file="res://Assets/Sprites/Player/ASE/player idle.aseprite"
+dest_files=["res://.godot/imported/player idle.aseprite-6da6306129844f6c2c05120aa91f9116.res"]
+
+[params]
+

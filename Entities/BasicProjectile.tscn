@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://onb0ibds3vhx"]
+
+[ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="1_qc445"]
+[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="2_g102k"]
+[ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="3_34p4i"]
+[ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="4_kfnkf"]
+[ext_resource type="Script" path="res://Managers/ActionManager.cs" id="5_72bki"]
+[ext_resource type="Script" path="res://Behaviors/Actions/DamageAndDie.cs" id="6_v6yll"]
+[ext_resource type="Script" path="res://Managers/StatusManager.cs" id="7_ykslx"]
+[ext_resource type="Script" path="res://Statuses/Damage.cs" id="8_rrvbo"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gn3d3"]
+b = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iutlm"]
+size = Vector2(18, 19)
+
+[node name="BasicProjectile" type="CharacterBody2D"]
+
+[node name="EmptyCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_gn3d3")
+disabled = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("1_qc445")
+
+[node name="ManagerHub" type="Node2D" parent="."]
+script = ExtResource("2_g102k")
+
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("3_34p4i")
+
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("4_kfnkf")
+Type = 1
+
+[node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
+shape = SubResource("RectangleShape2D_iutlm")
+
+[node name="ActionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("5_72bki")
+
+[node name="DamageAndDie" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("6_v6yll")
+
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("7_ykslx")
+
+[node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("8_rrvbo")
+Value = 20.0

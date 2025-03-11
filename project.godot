@@ -24,6 +24,10 @@ Utils="*res://Globals/Utils.cs"
 
 project/assembly_name="Lucid Spiral"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 "Move Up"={

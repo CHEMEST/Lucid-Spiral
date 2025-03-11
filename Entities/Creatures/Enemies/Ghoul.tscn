@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cavoy43bjci7j"]
 
-[ext_resource type="Script" path="res://Creatures/Enemies/Ghoul.cs" id="1_2acmq"]
+[ext_resource type="Script" path="res://Entities/Creatures/Enemies/Ghoul.cs" id="1_2acmq"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
 [ext_resource type="Script" path="res://Behaviors/MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
@@ -48,7 +48,7 @@ script = ExtResource("4_uafii")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_nar8j")
-Value = 900.0
+Value = 25.0
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")

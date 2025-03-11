@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcn16slrah41"]
+
+[ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_4q1d8"]
+[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_gowac"]
+[ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="4_qv8c7"]
+[ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="5_qlxsy"]
+[ext_resource type="Script" path="res://Managers/WeaponActionManager.cs" id="6_yyjx5"]
+[ext_resource type="Script" path="res://Behaviors/Actions/CheckColliding.cs" id="7_0sls3"]
+[ext_resource type="Script" path="res://Behaviors/Actions/BounceAwayNearby.cs" id="8_7m7og"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qt7g0"]
+b = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whutq"]
+size = Vector2(18, 73)
+
+[node name="Template Weapon" type="CharacterBody2D"]
+
+[node name="EmptyCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_qt7g0")
+disabled = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -36)
+scale = Vector2(0.117187, 0.554688)
+texture = ExtResource("2_4q1d8")
+
+[node name="ManagerHub" type="Node2D" parent="."]
+script = ExtResource("3_gowac")
+
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("4_qv8c7")
+
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("5_qlxsy")
+Type = 1
+
+[node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
+position = Vector2(0, -36.5)
+shape = SubResource("RectangleShape2D_whutq")
+
+[node name="WeaponActionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("6_yyjx5")
+
+[node name="CheckColliding" type="Node" parent="ManagerHub/WeaponActionManager"]
+script = ExtResource("7_0sls3")
+
+[node name="BounceAwayNearby" type="Node" parent="ManagerHub/WeaponActionManager"]
+script = ExtResource("8_7m7og")

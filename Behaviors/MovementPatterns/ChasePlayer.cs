@@ -22,7 +22,8 @@ namespace LucidSpiral.MovementPatterns
         public override void Move(double delta)
         {
             float speed = (float)Utils.FindStatus<Speed>(Body).Value;
-            speed = (float)(speed * Global.Random.NextDouble()) + (speed * 0.75f);
+            speed = (float)(speed * Global.Random.NextDouble())*(0.25f) + (speed);
+            float dt = (float)delta * Global.dtk;
             CharacterBody2D Player = Global.Player;
 
             Vector2 velocityTemp = Body.Velocity;
@@ -31,12 +32,11 @@ namespace LucidSpiral.MovementPatterns
             
             if (Body.Position.DistanceTo(Player.Position) > stopDistance)
             {
-                velocityTemp = direction * speed * (float)delta;
+                velocityTemp = direction * speed * dt;
             }
             else
             {
-                velocityTemp.X = Mathf.MoveToward(Body.Velocity.X, 0, speed / slowingSpeed * (float)delta);
-                velocityTemp.Y = Mathf.MoveToward(Body.Velocity.Y, 0, speed / slowingSpeed * (float)delta);
+                velocityTemp = velocityTemp.MoveToward(Vector2.Zero, slowingSpeed * dt);
             }
 
             Body.Velocity = velocityTemp;

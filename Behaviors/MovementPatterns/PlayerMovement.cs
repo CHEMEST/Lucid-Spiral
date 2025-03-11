@@ -16,11 +16,13 @@ namespace LucidSpiral.MovementPatterns
     [GlobalClass]
     internal partial class PlayerMovement : MovementPattern
     {
+        [Export] private float frictionConst = 3;
         public PlayerMovement() { }
         public override void Move(double delta)
         {
             float speed = (float)Utils.FindStatus<Speed>(Body).Value;
-            float friction = speed * 8;
+            float friction = speed * frictionConst;
+            float dt = Global.dtk * (float)delta;
             
             Vector2 velocityTemp = Body.Velocity;
 
@@ -28,12 +30,12 @@ namespace LucidSpiral.MovementPatterns
 
             if (direction != Vector2.Zero)
             {
-                velocityTemp = direction * speed * (float)delta;
+                velocityTemp = direction * speed * dt;
                 Utils.SetState(Body, State.Moving);
             }
             else
             {
-                velocityTemp = velocityTemp.MoveToward(Vector2.Zero, friction * (float)delta);
+                velocityTemp = velocityTemp.MoveToward(Vector2.Zero, friction * dt);
             }
             
             if (velocityTemp == Vector2.Zero)
