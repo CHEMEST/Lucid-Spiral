@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://onb0ibds3vhx"]
+[gd_scene load_steps=14 format=3 uid="uid://onb0ibds3vhx"]
 
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="1_qc445"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="2_g102k"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Behaviors/Actions/DamageAndDie.cs" id="6_v6yll"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="7_ykslx"]
 [ext_resource type="Script" path="res://Statuses/Damage.cs" id="8_rrvbo"]
+[ext_resource type="Script" path="res://Statuses/Speed.cs" id="9_81ccb"]
+[ext_resource type="Script" path="res://Managers/MovementManager.cs" id="10_xmsp4"]
+[ext_resource type="Script" path="res://Behaviors/MovementPatterns/StraightLineMotionToPlayer.cs" id="11_o7g8g"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gn3d3"]
 b = Vector2(0, 0)
@@ -52,3 +55,13 @@ script = ExtResource("7_ykslx")
 [node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("8_rrvbo")
 Value = 20.0
+
+[node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("9_81ccb")
+Value = 200.0
+
+[node name="MovementManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("10_xmsp4")
+
+[node name="StraightLineMotionToPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
+script = ExtResource("11_o7g8g")

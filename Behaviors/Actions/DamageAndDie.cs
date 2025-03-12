@@ -16,12 +16,16 @@ namespace LucidSpiral.Behaviors.Actions
     {
         public override void Action(double delta)
         {
+            GD.Print("pewpew");
             Utils.ProcessCollisions(
                 Source, CollisionType.Hitbox, CollisionType.Hitbox,
                 (collision) =>
                 {
+                    GD.Print("Hit " + collision.GetOwner().Name);
                     double damage = Utils.FindStatus<Damage>(Source).Value;
-                    Utils.FindStatus<Health>(collision.GetOwner()).Modify(x => x - damage);
+                    Utils.FindStatus<Health>(collision.GetOwner())?.Modify(x => x - damage);
+
+                    Source.QueueFree();
                 });
         }
     }

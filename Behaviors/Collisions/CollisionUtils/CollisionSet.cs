@@ -11,9 +11,10 @@ using System.Diagnostics;
 public partial class CollisionSet : Node2D
 {
     [Export] public CollisionType Type { get; private set; } = CollisionType.Empty;
+    public List<Node> Ignoring { get; private set; } = new();
     public Area2D Area { get; private set; }
     public bool IsDetectable { get; set; } = true;
-    public CharacterBody2D GetSource() { return GetOwner() as CharacterBody2D; }
+    public CharacterBody2D Source() { return GetOwner() as CharacterBody2D; }
     public override void _Ready()
     {
         base._Ready();
@@ -29,6 +30,7 @@ public partial class CollisionSet : Node2D
             if (area.GetParent() is CollisionSet)
             {
                 CollisionSet collisionSet = area.GetParent() as CollisionSet;
+                if (Ignoring.Contains(collisionSet.Source())) continue;
                 if (collisionSet.Type == collisionType && collisionSet.IsDetectable)
                 {
                     collisionSets.Add(collisionSet);

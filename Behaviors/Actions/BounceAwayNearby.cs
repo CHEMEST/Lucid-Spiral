@@ -20,7 +20,7 @@ namespace LucidSpiral.Behaviors.Actions
                 Source, CollisionType.Hitbox, CollisionType.Hitbox,
                 (collision) =>
                 {
-                    CharacterBody2D source = collision.GetSource();
+                    CharacterBody2D source = collision.Source();
                        // apply an effect lmao
                 });
         }

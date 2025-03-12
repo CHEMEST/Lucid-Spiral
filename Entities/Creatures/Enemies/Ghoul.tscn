@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_uafii"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
-[ext_resource type="Script" path="res://Behaviors/Actions/CheckColliding.cs" id="9_g4253"]
+[ext_resource type="Script" path="res://Behaviors/Actions/ProjectileSummon.cs" id="9_h7rpm"]
 [ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/ActionSet.cs" id="9_nogrb"]
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="11_l7e5k"]
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_w5cif"]
@@ -56,11 +56,10 @@ script = ExtResource("8_bgq24")
 [node name="ActionSet" type="Node" parent="ManagerHub/ActionManager"]
 script = ExtResource("9_nogrb")
 RepeatMax = -1
-RepeatDelayS = 0.1
+RepeatDelayS = 1.0
 
-[node name="CheckColliding" type="Node" parent="ManagerHub/ActionManager/ActionSet" node_paths=PackedStringArray("Source")]
-script = ExtResource("9_g4253")
-Source = NodePath("../../../..")
+[node name="ProjectileSummon" type="Node" parent="ManagerHub/ActionManager/ActionSet"]
+script = ExtResource("9_h7rpm")
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("11_l7e5k")

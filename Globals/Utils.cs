@@ -61,10 +61,12 @@ namespace LucidSpiral.Globals
             }
 
             List<CollisionSet> overlappingCollisions = nodeCollisionSet.GetOverlappingCollisionSets(targetCollisionType);
-            foreach (CollisionSet collision in overlappingCollisions)
+            // filtering all parents
+            for (int i = 0; i < overlappingCollisions.Count; i++)
             {
-                onCollision(collision);
+                if (root.IsAncestorOf(overlappingCollisions[i].GetOwner())) overlappingCollisions.RemoveAt(i);
             }
+            overlappingCollisions.ForEach(onCollision);
         }
 
     }
