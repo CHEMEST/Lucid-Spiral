@@ -19,9 +19,10 @@ namespace LucidSpiral.Behaviors.Actions
         {
             CharacterBody2D projectile = projectileScene.Instantiate() as CharacterBody2D;
             projectile.Position = Source.Position;
+            projectile.Rotation = Source.Rotation;
+            Source.GetParent().AddChild(projectile);
             // ignore source
             Utils.FindManager<CollisionManager>(projectile).GetCollisionSet(CollisionType.Hitbox).Ignoring.Add(Source);
-            Source.GetParent().AddChild(projectile);
         }
     }
 }

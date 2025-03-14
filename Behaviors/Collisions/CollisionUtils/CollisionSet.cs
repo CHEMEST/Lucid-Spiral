@@ -8,6 +8,7 @@ using System.Diagnostics;
 /// stores an Area, a Type, and some helper functions
 /// </summary>
 [GlobalClass]
+
 public partial class CollisionSet : Node2D
 {
     [Export] public CollisionType Type { get; private set; } = CollisionType.Empty;

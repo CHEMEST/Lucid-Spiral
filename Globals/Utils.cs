@@ -50,6 +50,10 @@ namespace LucidSpiral.Globals
         {
             return FindManager<CollisionManager>(root)?.GetCollisionSet(type);
         }
+        public static void HitboxAddIgnore(Node root, Node ignoring)
+        {
+            FindManager<CollisionManager>(root)?.GetCollisionSet(CollisionType.Hitbox)?.Ignoring.Add(ignoring);
+        }
         // this function makes me happy
         public static void ProcessCollisions(Node root, CollisionType rootCollisionType, CollisionType targetCollisionType, Action<CollisionSet> onCollision)
         {
@@ -62,10 +66,10 @@ namespace LucidSpiral.Globals
 
             List<CollisionSet> overlappingCollisions = nodeCollisionSet.GetOverlappingCollisionSets(targetCollisionType);
             // filtering all parents
-            for (int i = 0; i < overlappingCollisions.Count; i++)
-            {
-                if (root.IsAncestorOf(overlappingCollisions[i].GetOwner())) overlappingCollisions.RemoveAt(i);
-            }
+            //for (int i = 0; i < overlappingCollisions.Count; i++)
+            //{
+            //    if (root.IsAncestorOf(overlappingCollisions[i].GetOwner())) overlappingCollisions.RemoveAt(i);
+            //}
             overlappingCollisions.ForEach(onCollision);
         }
 

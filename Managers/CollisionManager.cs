@@ -16,6 +16,7 @@ using LucidSpiral.Behaviors.Collisions.CollisionUtils;
 
 namespace LucidSpiral.Managers
 {
+
     [GlobalClass]
     internal partial class CollisionManager : Node2D, IManager
     {
@@ -37,13 +38,14 @@ namespace LucidSpiral.Managers
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public CollisionSet GetCollisionSet(CollisionType type)
+        #nullable enable
+        public CollisionSet? GetCollisionSet(CollisionType type)
         {
-            if (CollisionSets.TryGetValue(type, out CollisionSet collision))
+            if (CollisionSets.TryGetValue(type, out CollisionSet? collision))
             {
                 return collision;
             }
-            return new CollisionSet();
+            return null;
         }
     }
 }
