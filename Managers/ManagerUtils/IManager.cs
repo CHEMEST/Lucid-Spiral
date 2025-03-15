@@ -15,7 +15,7 @@ namespace LucidSpiral.Managers.ManagerThings
     {
         public string GetManagerName()
         {
-            return GetType().ToString(); // Returns the name of the runtime IManager subclass
+            return GetType().ToString();
         }
     }
 

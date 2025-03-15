@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="3_34p4i"]
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="4_kfnkf"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="5_72bki"]
-[ext_resource type="Script" path="res://Behaviors/Actions/DamageAndDie.cs" id="6_v6yll"]
+[ext_resource type="Script" path="res://Behaviors/Actions/InflictAndDie/DamageOnImpactAndDie.cs" id="6_6diul"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="7_ykslx"]
 [ext_resource type="Script" path="res://Statuses/Damage.cs" id="8_rrvbo"]
 [ext_resource type="Script" path="res://Statuses/Speed.cs" id="9_81ccb"]
@@ -46,8 +46,8 @@ shape = SubResource("RectangleShape2D_iutlm")
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("5_72bki")
 
-[node name="DamageAndDie" type="Node" parent="ManagerHub/ActionManager"]
-script = ExtResource("6_v6yll")
+[node name="DamageOnImpactAndDie" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("6_6diul")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("7_ykslx")
@@ -58,7 +58,7 @@ Value = 20.0
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("9_81ccb")
-Value = 200.0
+Value = 900.0
 
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_xmsp4")

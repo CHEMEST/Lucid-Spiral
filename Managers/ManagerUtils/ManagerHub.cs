@@ -24,13 +24,21 @@ namespace LucidSpiral.Managers.ManagerThings
             }
         }
         // Searches through _managers for a T type object that inherits from IManager (ie. T is the parameter)
-        public T GetManager<T>() where T : class, IManager
+        #nullable enable
+        public T? GetManager<T>() where T : class, IManager
         {
-            if (_managers.TryGetValue(typeof(T), out IManager manager))
+            if (_managers.TryGetValue(typeof(T), out IManager? manager))
             {
                 return manager as T;
             }
-            return EmptyManager.Instance as T; // Return EmptyManager if not found
+            return null;
+        }
+
+        public void AddManager<T>(T manager) where T : Node, IManager
+        {
+            if (_managers.TryAdd(typeof(T), manager)) return;
+
+            manager.QueueFree();
         }
     }
 

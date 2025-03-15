@@ -5,8 +5,8 @@ Player colors:
 -- Border: #00000F
 
 Environment colors (to contrast sharply with the player):
---text: #f2cefe;
---background: #09000c;
---primary: #dd71fb;
---secondary: #9f0465;
---accent: #f9187a;
+--text: #f2cefe
+--background: #09000c
+--primary: #dd71fb
+--secondary: #9f0465
+--accent: #f9187a

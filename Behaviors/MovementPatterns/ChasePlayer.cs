@@ -32,7 +32,7 @@ namespace LucidSpiral.MovementPatterns
             
             if (Body.Position.DistanceTo(Player.Position) > stopDistance)
             {
-                velocityTemp = direction * speed * dt;
+                velocityTemp = direction * speed;
             }
             else
             {
