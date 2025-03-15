@@ -1,13 +1,14 @@
-﻿using LucidSpiral.Behaviors.BehaviorUtils;
+﻿using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LucidSpiral.Behaviors.Effects.EffectUtils
+namespace LucidSpiral.Entities.Creatures
 {
-    internal interface IEffect
+    [GlobalClass]
+    public partial class Entity : CharacterBody2D
     {
     }
 }

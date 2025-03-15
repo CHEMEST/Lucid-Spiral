@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4ehxkct06wcd"]
 
 [ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_nksrd"]
-[ext_resource type="PackedScene" uid="uid://cavoy43bjci7j" path="res://Entities/Creatures/Enemies/Ghoul.tscn" id="2_gk7t2"]
+[ext_resource type="PackedScene" uid="uid://c5dsqo6kai6j" path="res://Entities/Creatures/Enemies/Ghoul.tscn" id="2_gk7t2"]
 
 [node name="TestingArea" type="Node2D"]
 

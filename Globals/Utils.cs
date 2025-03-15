@@ -1,5 +1,7 @@
 ﻿using Godot;
 using LucidSpiral.Behaviors.Collisions.CollisionUtils;
+using LucidSpiral.Behaviors.Effects.EffectUtils;
+using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Managers;
 using LucidSpiral.Managers.ManagerThings;
 using LucidSpiral.Managers.ManagerUtils;
@@ -16,20 +18,31 @@ namespace LucidSpiral.Globals
 #nullable enable
     partial class Utils : Node
     {
-        // This can technically return a null but if it does that most likely
-        // means you're searching the wrong thing or that thing's scene tree is messed up
-        // since I doubt you would be looking for a manager in something without a ManagerHub...
-        /// <summary>
-        /// </summary>
+
         /// <typeparam name="T"></typeparam>
         /// <param name="root"> the owner of the tree you are searching (ie. the root)</param>
         /// <returns></returns>
         public static T? FindManager<T>(Node root) where T : class, IManager 
         {
             ManagerHub hub = root.GetNodeOrNull<ManagerHub>("ManagerHub");
-            if (hub == null) { return null; }
             return hub.GetManager<T>();
         }
+        public static Entity? FindEntityCarrying(Node child)
+        {
+            Node current = child;
+
+            while (current != null)
+            {
+                if (current is Entity entity)
+                {
+                    return entity;
+                }
+                current = current.GetParent();
+            }
+
+            return null;
+        }
+
         public static MovementPattern? GetActiveMovementPattern(Node root)
         {
             return FindManager<MovementManager>(root)?.GetActiveBehavior() as MovementPattern;
@@ -54,7 +67,6 @@ namespace LucidSpiral.Globals
         {
             FindManager<CollisionManager>(root)?.GetCollisionSet(CollisionType.Hitbox)?.Ignoring.Add(ignoring);
         }
-        // this function makes me happy
         public static void ProcessCollisions(Node root, CollisionType rootCollisionType, CollisionType targetCollisionType, Action<CollisionSet> onCollision)
         {
             CollisionSet? nodeCollisionSet = FindCollisionSet(root, rootCollisionType);
@@ -71,6 +83,19 @@ namespace LucidSpiral.Globals
             //    if (root.IsAncestorOf(overlappingCollisions[i].GetOwner())) overlappingCollisions.RemoveAt(i);
             //}
             overlappingCollisions.ForEach(onCollision);
+        }
+
+        public static void ApplyEffect(Node root, Effect effect)
+        {
+            EffectManager? manager = FindManager<EffectManager>(root);
+            if (manager == null)
+            {
+                EffectManager newManager = new EffectManager();
+                root.GetNodeOrNull<ManagerHub>("ManagerHub")?.AddChild(newManager);
+                manager = newManager;
+            }
+
+            manager.AddChild(effect);
         }
 
     }

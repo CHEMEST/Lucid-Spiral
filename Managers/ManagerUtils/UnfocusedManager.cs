@@ -11,24 +11,15 @@ namespace LucidSpiral.Managers.ManagerUtils
 {
     internal abstract partial class UnfocusedManager<T> : Node, IManager where T : class, IBehavior
     {
-        public List<T> Behaviors { get; private set; } = new();
-        public override void _Ready()
-        {
-            foreach (Node child in GetChildren())
-            {
-                if (child is T)
-                {
-                    Behaviors.Add(child as T);
-                }
-            }
-        }
-
         public override void _Process(double delta)
         {
             base._Process(delta);
-            foreach (T behavior in Behaviors)
+            foreach (Node child in GetChildren())
             {
-                behavior.Act(delta);
+                if (child is T behavior)
+                {
+                    behavior.Act(delta);
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cavoy43bjci7j"]
+[gd_scene load_steps=14 format=3 uid="uid://c5dsqo6kai6j"]
 
-[ext_resource type="Script" path="res://Entities/Creatures/Enemies/Ghoul.cs" id="1_2acmq"]
+[ext_resource type="Script" path="res://Entities/Creatures/Entity.cs" id="1_07n8e"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
 [ext_resource type="Script" path="res://Behaviors/MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="8_bgq24"]
 [ext_resource type="Script" path="res://Behaviors/Actions/ProjectileSummon.cs" id="9_h7rpm"]
 [ext_resource type="Script" path="res://Behaviors/Actions/ActionUtils/ActionSet.cs" id="9_nogrb"]
+[ext_resource type="PackedScene" uid="uid://b6rorvdt8oyhg" path="res://Entities/Projectiles/FireProjectile.tscn" id="10_v54nl"]
 [ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="11_l7e5k"]
 [ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_w5cif"]
 
@@ -16,7 +17,7 @@
 radius = 46.1736
 
 [node name="Ghoul" type="CharacterBody2D"]
-script = ExtResource("1_2acmq")
+script = ExtResource("1_07n8e")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, -18, 0, -34, 15, -19, 1, 30, 0, 30, -1, 30)
@@ -40,15 +41,14 @@ script = ExtResource("2_4dcmn")
 
 [node name="ChasePlayer" type="Node2D" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
 script = ExtResource("3_asbm4")
-stopDistance = 5.0
-Body = NodePath("../../..")
+Body = NodePath("")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_uafii")
 
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_nar8j")
-Value = 25.0
+Value = 400.0
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")
@@ -60,6 +60,7 @@ RepeatDelayS = 1.0
 
 [node name="ProjectileSummon" type="Node" parent="ManagerHub/ActionManager/ActionSet"]
 script = ExtResource("9_h7rpm")
+projectileScene = ExtResource("10_v54nl")
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("11_l7e5k")

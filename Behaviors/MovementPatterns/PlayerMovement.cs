@@ -30,7 +30,7 @@ namespace LucidSpiral.MovementPatterns
 
             if (direction != Vector2.Zero)
             {
-                velocityTemp = direction * speed * dt;
+                velocityTemp = direction * speed;
                 Utils.SetState(Body, State.Moving);
             }
             else
