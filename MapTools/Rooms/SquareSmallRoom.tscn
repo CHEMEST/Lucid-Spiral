@@ -7,12 +7,11 @@
 script = ExtResource("1_h80vg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -189.0
-offset_top = -137.0
-offset_right = 184.0
-offset_bottom = 170.0
-color = Color(0.511842, 0.122535, 0.343189, 1)
+offset_right = 600.0
+offset_bottom = 600.0
+color = Color(0.720293, 1.26584e-05, 0.495099, 1)
 
 [node name="EntryPoint" type="Node2D" parent="."]
-position = Vector2(-189, 29)
+position = Vector2(1, 151)
 script = ExtResource("2_63pe2")
+Direction = 4
