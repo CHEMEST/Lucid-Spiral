@@ -37,5 +37,10 @@ namespace LucidSpiral.MapTools.MapUtils
         { Direction.Null, new Vector2I(0, 0) }
     };
 
+        public override string ToString()
+        {
+            return "{(" + GlobalPosition.X + ", " + GlobalPosition.Y + "), " + Direction + "}";
+        }
+
     }
 }

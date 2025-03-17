@@ -14,6 +14,8 @@ public partial class BSPMapGenerator : Node2D
     [Export] public int MaxRooms = 15;
     [Export] public string RoomsFolder = "res://MapTools//Rooms";
     [Export] public Node2D roomNode;
+    private TileMapLayer corridorTileMap;
+    Vector2I tileSize;
 
     private List<Rect2> rooms = new List<Rect2>();
     private List<PackedScene> roomScenes = new List<PackedScene>();
@@ -23,6 +25,8 @@ public partial class BSPMapGenerator : Node2D
 
     public override void _Ready()
     {
+        corridorTileMap = GetNode<TileMapLayer>("CorridoorTileMap");
+        tileSize = corridorTileMap.TileSet.TileSize;
         LoadRoomScenes();
     }
 
@@ -39,18 +43,31 @@ public partial class BSPMapGenerator : Node2D
         rooms.Clear();
         availableEntries.Clear();
         connections.Clear();
+        corridorTileMap.Clear();
+
         foreach (Node child in roomNode.GetChildren())
         {
             child.QueueFree();
         }
 
         GenerateBSP();
+        GD.Print("Entries: ");
+        foreach (EntryPoint entry in availableEntries)
+        {
+            GD.Print(entry);
+        }
         ConnectEntryPoints();
+        GD.Print("Connections: ");
+        foreach ((EntryPoint, EntryPoint) connection in connections)
+        {
+            GD.Print(connection);
+        }
+        BuildPaths();
     }
 
     private void LoadRoomScenes()
     {
-        var dir = DirAccess.Open(RoomsFolder);
+        DirAccess dir = DirAccess.Open(RoomsFolder);
         if (dir != null && dir.ListDirBegin() == Error.Ok)
         {
             string file;
@@ -77,10 +94,10 @@ public partial class BSPMapGenerator : Node2D
         List<Rect2> partitions = new() { };
         while (partitions.Count < MinRooms)
         {
-            GD.Print("Attempting Partitioning");
+            //GD.Print("Attempting Partitioning");
             partitions = PartitionSpace(new Rect2(0, 0, MapWidth, MapHeight), MinRooms, MaxRooms);
         }
-        GD.Print("Resulting Partitions: " + partitions.Count);
+        //GD.Print("Resulting Partitions: " + partitions.Count);
         foreach (Rect2 partition in partitions)
         {
             PlaceRoom(partition);
@@ -91,7 +108,7 @@ public partial class BSPMapGenerator : Node2D
     {
         List<Rect2> partitions = new List<Rect2> { space };
         int numPartitions = rand.Next(minPartitions, maxPartitions + 1);
-        GD.Print("Starting BSP for " +  numPartitions + " partitions");
+        //GD.Print("Starting BSP for " +  numPartitions + " partitions");
 
         while (partitions.Count > 0 && partitions.Count < numPartitions)
         {
@@ -101,10 +118,10 @@ public partial class BSPMapGenerator : Node2D
             bool splitVertically = rand.Next(2) == 0;
             if (partition.Size.X < MaxRoomSize * 2 || partition.Size.Y < MaxRoomSize * 2)
             {
-                GD.Print("Skipped partition");
+                //GD.Print("Skipped partition");
                 continue;
             }
-            GD.Print("Successful partition");
+            //GD.Print("Successful partition");
 
             if (splitVertically)
             {
@@ -134,10 +151,11 @@ public partial class BSPMapGenerator : Node2D
         float roomY = partition.Position.Y + (partition.Size.Y - roomHeight) / 2;
 
         Rect2 newRoom = new Rect2(roomX, roomY, roomWidth, roomHeight);
-        GD.Print("Attempting room at " + roomX + ", " + roomY);
+        //GD.Print("Attempting room at " + roomX + ", " + roomY);
         if (!rooms.Any(r => r.Intersects(newRoom)))
         {
-            GD.Print("Success");
+            //GD.Print("Success");
+
             roomInstance.Position = new Vector2(roomX, roomY);
             roomNode.AddChild(roomInstance);
             rooms.Add(newRoom);
@@ -182,4 +200,62 @@ public partial class BSPMapGenerator : Node2D
             }
         }
     }
+
+    private void BuildPaths()
+    {
+        Vector2I tileToPlace = new Vector2I(0, 0);
+
+        foreach ((EntryPoint start, EntryPoint end) in connections)
+        {
+            Vector2I startTile = corridorTileMap.LocalToMap(start.GlobalPosition);
+            Vector2I endTile = corridorTileMap.LocalToMap(end.GlobalPosition);
+
+            // Get the tiles forming the path
+            List<Vector2I> path = GetBresenhamLine(startTile, endTile);
+
+            // Place tiles along the path
+            foreach (Vector2I tilePos in path)
+            {
+                corridorTileMap.SetCell(tilePos, 0, tileToPlace);
+            }
+        }
+        //corridoorTileMap.SetCell(pos, 0, new Vector2I(0, 0));
+    }
+
+    private List<Vector2I> GetBresenhamLine(Vector2I start, Vector2I end)
+    {
+        List<Vector2I> line = new List<Vector2I>();
+
+        int dx = Mathf.Abs(end.X - start.X);
+        int dy = Mathf.Abs(end.Y - start.Y);
+        int sx = start.X < end.X ? 1 : -1;
+        int sy = start.Y < end.Y ? 1 : -1;
+        int err = dx - dy;
+
+        int x = start.X;
+        int y = start.Y;
+
+        while (true)
+        {
+            line.Add(new Vector2I(x, y));
+
+            if (x == end.X && y == end.Y)
+                break;
+
+            int e2 = err * 2;
+            if (e2 > -dy)
+            {
+                err -= dy;
+                x += sx;
+            }
+            if (e2 < dx)
+            {
+                err += dx;
+                y += sy;
+            }
+        }
+
+        return line;
+    }
+
 }
