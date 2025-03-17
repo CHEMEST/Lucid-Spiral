@@ -11,7 +11,7 @@ namespace LucidSpiral.MapTools.MapUtils
     [GlobalClass]
     partial class Room : Node2D
     {
-        private List<EntryPoint> entries { get; } = new();
+        public List<EntryPoint> Entries { get; private set; } = new();
         public override void _Ready()
         {
             base._Ready();
@@ -20,10 +20,10 @@ namespace LucidSpiral.MapTools.MapUtils
             {
                 if (child is EntryPoint entry)
                 {
-                    entries.Add(entry);
+                    Entries.Add(entry);
                 }
             }
-            Debug.Assert(entries.Count > 0, Name + " is missing an " + nameof(EntryPoint));
+            Debug.Assert(Entries.Count > 0, Name + " is missing an " + nameof(EntryPoint));
         }
     }
 }

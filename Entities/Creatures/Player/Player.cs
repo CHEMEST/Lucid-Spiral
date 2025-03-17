@@ -16,6 +16,7 @@ public partial class Player : Entity
     public override void _Process(double delta)
     {
         base._Process(delta);
+        //GD.Print(GlobalPosition);
         //GD.Print(this);
         //GD.Print(Utils.FindStatus<Health>(this));
         //GD.Print(Utils.FindManager<EffectManager>(this));
