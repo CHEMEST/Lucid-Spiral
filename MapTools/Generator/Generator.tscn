@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MapTools/Generator/Generator.cs" id="1_80ojc"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="2_4wrqn"]
-[ext_resource type="Script" path="res://Utility/NavCam.cs" id="3_8ee7u"]
+[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="4_iqx15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvpt0"]
 texture = ExtResource("2_4wrqn")
@@ -19,13 +19,9 @@ sources/0 = SubResource("TileSetAtlasSource_yvpt0")
 [node name="Generator" type="Node2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_80ojc")
-RoomSize = 40
+
+[node name="Player" parent="." instance=ExtResource("4_iqx15")]
+position = Vector2(2, -2)
 
 [node name="CorridoorTileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_mu7gj")
-
-[node name="RoomTileMap" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_mu7gj")
-
-[node name="NavCam" type="Camera2D" parent="."]
-script = ExtResource("3_8ee7u")

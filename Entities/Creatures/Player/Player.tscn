@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=19 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
 [ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
+[ext_resource type="Script" path="res://Utility/NavCam.cs" id="3_y2etw"]
 [ext_resource type="Script" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
 [ext_resource type="Script" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
@@ -25,6 +26,7 @@ radius = 19.0
 height = 78.0
 
 [node name="Player" type="CharacterBody2D"]
+top_level = true
 script = ExtResource("1_w1wst")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -40,6 +42,7 @@ scale = Vector2(3.0625, 3.0625)
 texture = ExtResource("2_tb6ca")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_y2etw")
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")

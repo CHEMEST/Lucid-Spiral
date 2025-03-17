@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\weapons\\weaponutils\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:weapons\\weaponutils\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\entities\\creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:entities\\creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\weaponmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:managers\\weaponmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\movementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:managers\\movementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\managers\\managerutils\\focusedmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:managers\\managerutils\\focusedmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\weapons\\katana\\katana.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:weapons\\katana\\katana.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\globals\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:globals\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:maptools\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 171,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,75 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MovementManager.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\MovementManager.cs",
-              "RelativeDocumentMoniker": "Managers\\MovementManager.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\MovementManager.cs",
-              "RelativeToolTip": "Managers\\MovementManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Entities\\Creatures\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Entities\\Creatures\\Player\\Player.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Entities\\Creatures\\Player\\Player.cs",
+              "RelativeToolTip": "Entities\\Creatures\\Player\\Player.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAzwBIAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:59:38.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FocusedManager.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\FocusedManager.cs",
-              "RelativeDocumentMoniker": "Managers\\ManagerUtils\\FocusedManager.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\ManagerUtils\\FocusedManager.cs",
-              "RelativeToolTip": "Managers\\ManagerUtils\\FocusedManager.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAcwCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:58:29.915Z"
+              "WhenOpened": "2025-03-16T23:23:44.151Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "WeaponManager.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\WeaponManager.cs",
-              "RelativeDocumentMoniker": "Managers\\WeaponManager.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Managers\\WeaponManager.cs",
-              "RelativeToolTip": "Managers\\WeaponManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Title": "Generator.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\Generator.cs",
+              "RelativeDocumentMoniker": "MapTools\\Generator\\Generator.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\Generator.cs",
+              "RelativeToolTip": "MapTools\\Generator\\Generator.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAawBwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:58:22.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Katana.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Weapons\\Katana\\Katana.cs",
-              "RelativeDocumentMoniker": "Weapons\\Katana\\Katana.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Weapons\\Katana\\Katana.cs",
-              "RelativeToolTip": "Weapons\\Katana\\Katana.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:46:21.288Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Utils.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Globals\\Utils.cs",
-              "RelativeDocumentMoniker": "Globals\\Utils.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Globals\\Utils.cs",
-              "RelativeToolTip": "Globals\\Utils.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwDAAAACVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:44:37.172Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Weapon.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Weapons\\WeaponUtils\\Weapon.cs",
-              "RelativeDocumentMoniker": "Weapons\\WeaponUtils\\Weapon.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Weapons\\WeaponUtils\\Weapon.cs",
-              "RelativeToolTip": "Weapons\\WeaponUtils\\Weapon.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAowAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:36:57.321Z",
+              "WhenOpened": "2025-03-16T23:11:13.669Z",
               "EditorCaption": ""
             }
           ]

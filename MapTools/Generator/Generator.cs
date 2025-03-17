@@ -11,12 +11,12 @@ namespace LucidSpiral.MapGeneration.Generator
     internal partial class Generator : Node2D
     {
         [Export] public int MaxRooms = 10;
-        [Export] public int RoomSize = 10;
+        [Export] public int RoomSize = 25;
         private int gridSize;
 
         private Random random;
         private TileMapLayer corridoorTileMap;
-        private TileMapLayer roomTileMap;
+        private string RoomsFolderPath = "res://MapTools/Rooms/";
 
         private Dictionary<Vector2I, bool> map = new(); // this is a dict bc I'll make it a map later. the bool will be changed to an enum to represent different things
         private List<Vector2I> roomPositions = new();
@@ -25,7 +25,6 @@ namespace LucidSpiral.MapGeneration.Generator
         public override void _Ready()
         {
             gridSize = (int)Mathf.Sqrt(MaxRooms * RoomSize);
-            roomTileMap = GetNode<TileMapLayer>("RoomTileMap");
             corridoorTileMap = GetNode<TileMapLayer>("CorridoorTileMap");
             random = Global.Random;
 
@@ -36,9 +35,21 @@ namespace LucidSpiral.MapGeneration.Generator
             PlaceCorridors();
             PlaceRooms();
 
-            Display();
+            SetPlayerPosition();
         }
 
+        private void SetPlayerPosition()
+        {
+            Vector2 tileSize = corridoorTileMap.TileSet.TileSize;
+            Vector2 startPosition = roomPositions[0] * tileSize;
+            Global.Player.GlobalPosition = startPosition;
+
+        }
+        private Vector2I GetGlobalRoomPos(int index)
+        {
+            Vector2I tileSize = corridoorTileMap.TileSet.TileSize;
+            return roomPositions[index] * tileSize;
+        }
         private void GenerateRoomPositions()
         {
             foreach (Vector2I cord in map.Keys)
@@ -50,14 +61,12 @@ namespace LucidSpiral.MapGeneration.Generator
                     ));
             }
         }
-
         private void Display()
         {
             DisplayRooms();
             GD.Print("-----");
             DisplayConnections();
         }
-
         private void DisplayRooms()
         {
             foreach (Vector2I cord in map.Keys) 
@@ -153,7 +162,6 @@ namespace LucidSpiral.MapGeneration.Generator
                 }
             }
         }
-
         private void PlaceCorridors()
         {
             foreach (var (roomA, roomB) in roomConnections)
@@ -190,14 +198,61 @@ namespace LucidSpiral.MapGeneration.Generator
             }
             corridoorTileMap.SetCell(end, 0, new Vector2I(0, 0)); // Ensure last tile is placed
         }
-
-        private void PlaceRooms()
+        //CGPT
+        private List<string> GetSceneFiles(string path)
         {
-            foreach (var roomPos in roomPositions)
+            List<string> sceneFiles = new List<string>();
+            DirAccess dir = DirAccess.Open(path);
+
+            if (dir != null)
             {
-                roomTileMap.SetCell(roomPos, 0, new Vector2I(1, 1));
+                dir.ListDirBegin();
+                string fileName = dir.GetNext();
+
+                while (!string.IsNullOrEmpty(fileName))
+                {
+                    if (fileName.EndsWith(".tscn")) // Ensure it's a Godot scene
+                    {
+                        sceneFiles.Add(path + fileName);
+                    }
+                    fileName = dir.GetNext();
+                }
+                dir.ListDirEnd();
+            }
+            else
+            {
+                GD.PrintErr($"Failed to open directory: {path}");
+            }
+
+            return sceneFiles;
+        }
+        // part CGPT
+        private void LoadAndSpawnScene(string scenePath, int index)
+        {
+            PackedScene scene = (PackedScene)ResourceLoader.Load(scenePath);
+            if (scene != null)
+            {
+                Node2D instance = scene.Instantiate() as Node2D;
+                instance.GlobalPosition = GetGlobalRoomPos(index);
+                AddChild(instance);
+                GD.Print($"Loaded scene: {scenePath}");
+            }
+            else
+            {
+                GD.PrintErr($"Failed to load scene: {scenePath}");
             }
         }
-
+        private void PlaceRooms()
+        {
+            for (int i = 0; i < roomPositions.Count; i++)
+            {
+                List<string> scenePaths = GetSceneFiles(RoomsFolderPath);
+                if (scenePaths.Count > 0)
+                {
+                    string randomScene = scenePaths[(int)(Global.Random.NextDouble() * scenePaths.Count)];
+                    LoadAndSpawnScene(randomScene, i);
+                }
+            }
+        }
     }
 }

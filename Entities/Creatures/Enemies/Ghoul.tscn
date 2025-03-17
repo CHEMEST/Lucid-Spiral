@@ -39,9 +39,8 @@ script = ExtResource("1_j0iih")
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("2_4dcmn")
 
-[node name="ChasePlayer" type="Node2D" parent="ManagerHub/MovementManager" node_paths=PackedStringArray("Body")]
+[node name="ChasePlayer" type="Node2D" parent="ManagerHub/MovementManager"]
 script = ExtResource("3_asbm4")
-Body = NodePath("")
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_uafii")
