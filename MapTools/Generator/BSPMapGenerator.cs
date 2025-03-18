@@ -22,6 +22,7 @@ public partial class BSPMapGenerator : Node2D
     private List<EntryPoint> availableEntries = new();
     private List<(EntryPoint, EntryPoint)> connections = new();
     private Random rand = Global.Random;
+    private bool x = false;
 
     public override void _Ready()
     {
@@ -40,6 +41,7 @@ public partial class BSPMapGenerator : Node2D
 
     private void GenerateMap()
     {
+
         rooms.Clear();
         availableEntries.Clear();
         connections.Clear();
@@ -62,7 +64,9 @@ public partial class BSPMapGenerator : Node2D
         {
             GD.Print(connection);
         }
-        BuildPaths();
+        BuildBasePaths();
+        CarveWalkableTiles();
+
     }
 
     private void LoadRoomScenes()
@@ -189,7 +193,7 @@ public partial class BSPMapGenerator : Node2D
                 EntryPoint entryB = availableEntries[j];
 
                 // Prevent connecting an EntryPoint to itself or the same room
-                if (entryA.Room == entryB.Room)
+                if (entryA.Room == entryB.Room || entryA.GetOppositeDirection() != entryB.Direction)
                     continue;
 
                 // Compute Euclidean distance between entry points
@@ -224,7 +228,7 @@ public partial class BSPMapGenerator : Node2D
     }
     //             corridorTileMap.SetCell(tile, 0, new Vector2I(0, 0));
 
-    private void BuildPaths()
+    private void BuildBasePaths()
     {
         // Example connections (start, end) as pairs of EntryPoint
         foreach ((EntryPoint start, EntryPoint end) in connections)
@@ -236,49 +240,80 @@ public partial class BSPMapGenerator : Node2D
             DrawLPath(startTile, endTile);
         }
     }
-
     private void DrawLPath(Vector2 start, Vector2 end)
     {
-        List<Vector2> thickPath = new List<Vector2>();
+        List<Vector2I> thickPath = new List<Vector2I>();
 
-        // Horizontal part: move from start X to end X, keeping Y constant
-        for (int x = (int)start.X; x != (int)end.X; x += (end.X > start.X ? 1 : -1))
+        Vector2I firstHorizontal = Vector2I.Zero;
+        Vector2I lastHorizontal = Vector2I.Zero;
+        Vector2I firstVertical = Vector2I.Zero;
+        Vector2I lastVertical = Vector2I.Zero;
+
+        bool firstHSet = false, firstVSet = false;
+
+        for (int x = (int)start.X; x != (int)end.X; x += Math.Sign(end.X - start.X))
         {
-            thickPath.Add(new Vector2(x, start.Y));  // Add the main horizontal path
-                                                     // Add padding for horizontal part (5 thick: 2 left, 2 right, 1 top, 1 bottom)
-            //thickPath.Add(new Vector2(x + 2, start.Y));  // Right padding
-            //thickPath.Add(new Vector2(x - 2, start.Y));  // Left padding
-            //thickPath.Add(new Vector2(x, start.Y + 2));  // Bottom padding
-            //thickPath.Add(new Vector2(x, start.Y - 2));  // Top padding
-            thickPath.Add(new Vector2(x + 1, start.Y + 1));  // Right-bottom diagonal padding
-            thickPath.Add(new Vector2(x - 1, start.Y + 1));  // Left-bottom diagonal padding
-            thickPath.Add(new Vector2(x + 1, start.Y - 1));  // Right-top diagonal padding
-            thickPath.Add(new Vector2(x - 1, start.Y - 1));  // Left-top diagonal padding
+            Vector2I tilePos = new Vector2I(x, (int)start.Y);
+            thickPath.Add(tilePos);
+
+            if (!firstHSet) { firstHorizontal = tilePos; firstHSet = true; }
+            lastHorizontal = tilePos;
+
+            thickPath.Add(new Vector2I(x + 2, (int)start.Y));
+            thickPath.Add(new Vector2I(x - 2, (int)start.Y));
+            thickPath.Add(new Vector2I(x, (int)start.Y + 2));
+            thickPath.Add(new Vector2I(x, (int)start.Y - 2));
+            thickPath.Add(new Vector2I(x + 1, (int)start.Y + 1));
+            thickPath.Add(new Vector2I(x - 1, (int)start.Y + 1));
+            thickPath.Add(new Vector2I(x + 1, (int)start.Y - 1));
+            thickPath.Add(new Vector2I(x - 1, (int)start.Y - 1));
         }
 
-        // Vertical part: move from start Y to end Y, keeping X constant at the target X
-        for (int y = (int)start.Y; y != (int)end.Y; y += (end.Y > start.Y ? 1 : -1))
+        for (int y = (int)start.Y; y != (int)end.Y; y += Math.Sign(end.Y - start.Y))
         {
-            thickPath.Add(new Vector2((int)end.X, y));  // Add the main vertical path
-                                                        // Add padding for vertical part (5 thick: 2 left, 2 right, 1 top, 1 bottom)
-            //thickPath.Add(new Vector2((int)end.X + 2, y));  // Right padding
-            //thickPath.Add(new Vector2((int)end.X - 2, y));  // Left padding
-            //thickPath.Add(new Vector2((int)end.X, y + 2));  // Bottom padding
-            //thickPath.Add(new Vector2((int)end.X, y - 2));  // Top padding
-            thickPath.Add(new Vector2((int)end.X + 1, y + 1));  // Right-bottom diagonal padding
-            thickPath.Add(new Vector2((int)end.X - 1, y + 1));  // Left-bottom diagonal padding
-            thickPath.Add(new Vector2((int)end.X + 1, y - 1));  // Right-top diagonal padding
-            thickPath.Add(new Vector2((int)end.X - 1, y - 1));  // Left-top diagonal padding
+            Vector2I tilePos = new Vector2I((int)end.X, y);
+            thickPath.Add(tilePos);
+
+            if (!firstVSet) { firstVertical = tilePos; firstVSet = true; }
+            lastVertical = tilePos;
+
+            thickPath.Add(new Vector2I((int)end.X + 2, y));
+            thickPath.Add(new Vector2I((int)end.X - 2, y));
+            thickPath.Add(new Vector2I((int)end.X, y + 2));
+            thickPath.Add(new Vector2I((int)end.X, y - 2));
+            thickPath.Add(new Vector2I((int)end.X + 1, y + 1));
+            thickPath.Add(new Vector2I((int)end.X - 1, y + 1));
+            thickPath.Add(new Vector2I((int)end.X + 1, y - 1));
+            thickPath.Add(new Vector2I((int)end.X - 1, y - 1));
         }
 
-        // Set each tile in the thickened path to a specific tile (0 for walkable tiles)
         foreach (Vector2I tile in thickPath)
         {
-            corridorTileMap.SetCell(tile, 0, new Vector2I(0, 0));
+            corridorTileMap.SetCell(tile, 1, new Vector2I(0, 0));
         }
+
+        corridorTileMap.SetCell(firstHorizontal, 0, new Vector2I(0, 0)); 
+        corridorTileMap.SetCell(lastHorizontal, 0, new Vector2I(0, 0)); 
+        corridorTileMap.SetCell(firstVertical, 0, new Vector2I(0, 0)); 
+        corridorTileMap.SetCell(lastVertical, 0, new Vector2I(0, 0)); 
     }
 
 
+    private void CarveWalkableTiles()
+    {
+        foreach (Vector2I tilePos in corridorTileMap.GetUsedCells())
+        {
+            int c = 0;
+            foreach (Vector2I neighbor in corridorTileMap.GetSurroundingCells(tilePos))
+            {
+                if (corridorTileMap.GetCellSourceId(neighbor) != -1) c++;
+            }
+            if (c == 4)
+            {
+                corridorTileMap.SetCell(tilePos, 0, new Vector2I(0, 0));
+            }
+        }
+    }
 
     private List<Vector2> BresenhamLine(int x0, int y0, int x1, int y1)
     {

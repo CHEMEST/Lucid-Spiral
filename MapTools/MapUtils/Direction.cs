@@ -13,5 +13,9 @@ namespace LucidSpiral.MapTools.MapUtils
         East,
         South,
         West
+
+
     }
+
+
 }

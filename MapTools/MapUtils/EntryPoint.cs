@@ -5,19 +5,29 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Godot.TextServer;
 
 namespace LucidSpiral.MapTools.MapUtils
 {
     [GlobalClass]
     partial class EntryPoint : Node2D
     {
-        [Export] private Direction Direction { get; set; }
+        [Export] public Direction Direction { get; private set; }
         public Room Room { get; private set; }
         public Vector2I Dir
         {
             get { return directionVectors[Direction]; }
 
+        }
+        public Direction GetOppositeDirection()
+        {
+            return Direction switch
+            {
+                Direction.North => Direction.South,
+                Direction.South => Direction.North,
+                Direction.East => Direction.West,
+                Direction.West => Direction.East,
+                _ => Direction.Null, // default
+            };
         }
         public override void _Ready()
         {
