@@ -13,7 +13,7 @@
 b = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whutq"]
-size = Vector2(18, 73)
+size = Vector2(10, 57)
 
 [node name="Katana" type="CharacterBody2D"]
 script = ExtResource("1_asfmp")
@@ -23,8 +23,8 @@ shape = SubResource("SegmentShape2D_qt7g0")
 disabled = true
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -36)
-scale = Vector2(0.117187, 0.554688)
+position = Vector2(-3.8147e-06, -29.5)
+scale = Vector2(0.0781251, 0.445313)
 texture = ExtResource("4_030lc")
 
 [node name="ManagerHub" type="Node2D" parent="."]
@@ -40,7 +40,7 @@ Type = 1
 [node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
-position = Vector2(0, -36.5)
+position = Vector2(0, -29.5)
 shape = SubResource("RectangleShape2D_whutq")
 
 [node name="WeaponActionManager" type="Node2D" parent="ManagerHub"]

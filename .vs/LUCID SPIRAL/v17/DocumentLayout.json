@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\generator\\bspmapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:maptools\\generator\\bspmapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\entities\\creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:entities\\creatures\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:maptools\\generator\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\maputils\\entrypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:maptools\\maputils\\entrypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 171,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +34,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Entities\\Creatures\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Entities\\Creatures\\Player\\Player.cs",
               "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\Entities\\Creatures\\Player\\Player.cs",
               "RelativeToolTip": "Entities\\Creatures\\Player\\Player.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAzwBIAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T23:23:44.151Z",
+              "WhenOpened": "2025-03-18T02:22:21.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Generator.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\Generator.cs",
-              "RelativeDocumentMoniker": "MapTools\\Generator\\Generator.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\Generator.cs",
-              "RelativeToolTip": "MapTools\\Generator\\Generator.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAawBwAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "EntryPoint.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\MapUtils\\EntryPoint.cs",
+              "RelativeDocumentMoniker": "MapTools\\MapUtils\\EntryPoint.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\MapUtils\\EntryPoint.cs",
+              "RelativeToolTip": "MapTools\\MapUtils\\EntryPoint.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T23:11:13.669Z",
+              "WhenOpened": "2025-03-18T02:06:39.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BSPMapGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\BSPMapGenerator.cs",
+              "RelativeDocumentMoniker": "MapTools\\Generator\\BSPMapGenerator.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\BSPMapGenerator.cs",
+              "RelativeToolTip": "MapTools\\Generator\\BSPMapGenerator.cs",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAAAAoBAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T01:56:28.567Z",
               "EditorCaption": ""
             }
           ]

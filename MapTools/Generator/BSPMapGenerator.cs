@@ -18,14 +18,14 @@ public partial class BSPMapGenerator : Node2D
     Vector2I tileSize;
 
     private List<Rect2> rooms = new List<Rect2>();
-    private List<PackedScene> roomScenes = new List<PackedScene>();
-    private List<EntryPoint> availableEntries = new List<EntryPoint>();
-    private List<(EntryPoint, EntryPoint)> connections = new List<(EntryPoint, EntryPoint)>();
+    private List<PackedScene> roomScenes = new();
+    private List<EntryPoint> availableEntries = new();
+    private List<(EntryPoint, EntryPoint)> connections = new();
     private Random rand = Global.Random;
 
     public override void _Ready()
     {
-        corridorTileMap = GetNode<TileMapLayer>("CorridoorTileMap");
+        corridorTileMap = GetNode<TileMapLayer>("CorridorTileMap");
         tileSize = corridorTileMap.TileSet.TileSize;
         LoadRoomScenes();
     }
@@ -166,96 +166,150 @@ public partial class BSPMapGenerator : Node2D
             }
         }
     }
-
+    // REVAMP everything after thus
     private void ConnectEntryPoints()
     {
-        while (availableEntries.Count > 1)
+        connections.Clear();
+
+        if (availableEntries.Count < 2)
         {
-            EntryPoint entryA = availableEntries[0];
-            EntryPoint closestEntry = null;
-            float closestDist = float.MaxValue;
+            GD.PrintErr("Not enough entry points to create connections!");
+            return;
+        }
 
-            foreach (EntryPoint entryB in availableEntries.Skip(1))
-            {
-                if (entryA.Room != entryB.Room)
-                {
-                    float dist = entryA.Position.DistanceTo(entryB.Position);
-                    if (dist < closestDist)
-                    {
-                        closestDist = dist;
-                        closestEntry = entryB;
-                    }
-                }
-            }
+        // List to store all possible connections
+        List<(EntryPoint, EntryPoint, float)> allEdges = new();
 
-            if (closestEntry != null)
+        // Compare each EntryPoint with every other EntryPoint
+        for (int i = 0; i < availableEntries.Count; i++)
+        {
+            for (int j = i + 1; j < availableEntries.Count; j++)
             {
-                connections.Add((entryA, closestEntry));
-                availableEntries.Remove(entryA);
-                availableEntries.Remove(closestEntry);
-            }
-            else
-            {
-                availableEntries.RemoveAt(0);
+                EntryPoint entryA = availableEntries[i];
+                EntryPoint entryB = availableEntries[j];
+
+                // Prevent connecting an EntryPoint to itself or the same room
+                if (entryA.Room == entryB.Room)
+                    continue;
+
+                // Compute Euclidean distance between entry points
+                float distance = entryA.GlobalPosition.DistanceTo(entryB.GlobalPosition);
+
+                // Store the connection with distance
+                allEdges.Add((entryA, entryB, distance));
             }
         }
+
+        // Sort connections by shortest distance first
+        allEdges.Sort((a, b) => a.Item3.CompareTo(b.Item3));
+
+        // Track which entry points have been connected
+        HashSet<EntryPoint> connectedEntries = new();
+
+        // Go through the sorted edges and add the shortest connections
+        foreach (var (entryA, entryB, _) in allEdges)
+        {
+            // If both entry points are not yet connected, add this connection
+            if (!connectedEntries.Contains(entryA) && !connectedEntries.Contains(entryB))
+            {
+                connections.Add((entryA, entryB));
+                connectedEntries.Add(entryA);
+                connectedEntries.Add(entryB);
+            }
+
+            // Stop when all entries are connected
+            if (connectedEntries.Count == availableEntries.Count)
+                break;
+        }
     }
+    //             corridorTileMap.SetCell(tile, 0, new Vector2I(0, 0));
 
     private void BuildPaths()
     {
-        Vector2I tileToPlace = new Vector2I(0, 0);
-
+        // Example connections (start, end) as pairs of EntryPoint
         foreach ((EntryPoint start, EntryPoint end) in connections)
         {
-            Vector2I startTile = corridorTileMap.LocalToMap(start.GlobalPosition);
-            Vector2I endTile = corridorTileMap.LocalToMap(end.GlobalPosition);
+            Vector2 startTile = corridorTileMap.LocalToMap(start.GlobalPosition);
+            Vector2 endTile = corridorTileMap.LocalToMap(end.GlobalPosition);
 
-            // Get the tiles forming the path
-            List<Vector2I> path = GetBresenhamLine(startTile, endTile);
-
-            // Place tiles along the path
-            foreach (Vector2I tilePos in path)
-            {
-                corridorTileMap.SetCell(tilePos, 0, tileToPlace);
-            }
+            // Draw the thick L-shaped path between the two tiles
+            DrawLPath(startTile, endTile);
         }
-        //corridoorTileMap.SetCell(pos, 0, new Vector2I(0, 0));
     }
 
-    private List<Vector2I> GetBresenhamLine(Vector2I start, Vector2I end)
+    private void DrawLPath(Vector2 start, Vector2 end)
     {
-        List<Vector2I> line = new List<Vector2I>();
+        List<Vector2> thickPath = new List<Vector2>();
 
-        int dx = Mathf.Abs(end.X - start.X);
-        int dy = Mathf.Abs(end.Y - start.Y);
-        int sx = start.X < end.X ? 1 : -1;
-        int sy = start.Y < end.Y ? 1 : -1;
+        // Horizontal part: move from start X to end X, keeping Y constant
+        for (int x = (int)start.X; x != (int)end.X; x += (end.X > start.X ? 1 : -1))
+        {
+            thickPath.Add(new Vector2(x, start.Y));  // Add the main horizontal path
+                                                     // Add padding for horizontal part (5 thick: 2 left, 2 right, 1 top, 1 bottom)
+            //thickPath.Add(new Vector2(x + 2, start.Y));  // Right padding
+            //thickPath.Add(new Vector2(x - 2, start.Y));  // Left padding
+            //thickPath.Add(new Vector2(x, start.Y + 2));  // Bottom padding
+            //thickPath.Add(new Vector2(x, start.Y - 2));  // Top padding
+            thickPath.Add(new Vector2(x + 1, start.Y + 1));  // Right-bottom diagonal padding
+            thickPath.Add(new Vector2(x - 1, start.Y + 1));  // Left-bottom diagonal padding
+            thickPath.Add(new Vector2(x + 1, start.Y - 1));  // Right-top diagonal padding
+            thickPath.Add(new Vector2(x - 1, start.Y - 1));  // Left-top diagonal padding
+        }
+
+        // Vertical part: move from start Y to end Y, keeping X constant at the target X
+        for (int y = (int)start.Y; y != (int)end.Y; y += (end.Y > start.Y ? 1 : -1))
+        {
+            thickPath.Add(new Vector2((int)end.X, y));  // Add the main vertical path
+                                                        // Add padding for vertical part (5 thick: 2 left, 2 right, 1 top, 1 bottom)
+            //thickPath.Add(new Vector2((int)end.X + 2, y));  // Right padding
+            //thickPath.Add(new Vector2((int)end.X - 2, y));  // Left padding
+            //thickPath.Add(new Vector2((int)end.X, y + 2));  // Bottom padding
+            //thickPath.Add(new Vector2((int)end.X, y - 2));  // Top padding
+            thickPath.Add(new Vector2((int)end.X + 1, y + 1));  // Right-bottom diagonal padding
+            thickPath.Add(new Vector2((int)end.X - 1, y + 1));  // Left-bottom diagonal padding
+            thickPath.Add(new Vector2((int)end.X + 1, y - 1));  // Right-top diagonal padding
+            thickPath.Add(new Vector2((int)end.X - 1, y - 1));  // Left-top diagonal padding
+        }
+
+        // Set each tile in the thickened path to a specific tile (0 for walkable tiles)
+        foreach (Vector2I tile in thickPath)
+        {
+            corridorTileMap.SetCell(tile, 0, new Vector2I(0, 0));
+        }
+    }
+
+
+
+    private List<Vector2> BresenhamLine(int x0, int y0, int x1, int y1)
+    {
+        List<Vector2> points = new List<Vector2>();
+
+        int dx = Math.Abs(x1 - x0);
+        int dy = Math.Abs(y1 - y0);
+        int sx = (x0 < x1) ? 1 : -1;
+        int sy = (y0 < y1) ? 1 : -1;
         int err = dx - dy;
-
-        int x = start.X;
-        int y = start.Y;
 
         while (true)
         {
-            line.Add(new Vector2I(x, y));
+            points.Add(new Vector2(x0, y0));
 
-            if (x == end.X && y == end.Y)
-                break;
+            if (x0 == x1 && y0 == y1) break;
 
             int e2 = err * 2;
             if (e2 > -dy)
             {
                 err -= dy;
-                x += sx;
+                x0 += sx;
             }
             if (e2 < dx)
             {
                 err += dx;
-                y += sy;
+                y0 += sy;
             }
         }
 
-        return line;
+        return points;
     }
 
 }
