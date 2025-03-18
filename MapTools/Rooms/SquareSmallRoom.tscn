@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://si3ilm4kyfgo"]
 
-[ext_resource type="Script" path="res://MapTools/MapUtils/Room.cs" id="1_h80vg"]
-[ext_resource type="Script" path="res://MapTools/MapUtils/EntryPoint.cs" id="2_63pe2"]
+[ext_resource type="Script" uid="uid://daysc3bel23qv" path="res://MapTools/MapUtils/Room.cs" id="1_h80vg"]
+[ext_resource type="Script" uid="uid://cnryfaprdl1f2" path="res://MapTools/MapUtils/EntryPoint.cs" id="2_63pe2"]
 
 [node name="SquareSmallRoom" type="Node2D"]
 script = ExtResource("1_h80vg")

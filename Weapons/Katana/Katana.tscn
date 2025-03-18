@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://drdnt0xl2mtmg"]
 
-[ext_resource type="Script" path="res://Weapons/Katana/Katana.cs" id="1_asfmp"]
-[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_p6ui4"]
-[ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="2_no7ik"]
-[ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="3_u85xw"]
+[ext_resource type="Script" uid="uid://y57tl01iibnf" path="res://Weapons/Katana/Katana.cs" id="1_asfmp"]
+[ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_p6ui4"]
+[ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="2_no7ik"]
+[ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="3_u85xw"]
 [ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="4_030lc"]
-[ext_resource type="Script" path="res://Managers/WeaponActionManager.cs" id="5_6gmoj"]
-[ext_resource type="Script" path="res://Behaviors/Actions/CheckColliding.cs" id="6_ugywe"]
-[ext_resource type="Script" path="res://Behaviors/Actions/BounceAwayNearby.cs" id="8_s2iin"]
+[ext_resource type="Script" uid="uid://u1t1x1aghbyc" path="res://Managers/WeaponActionManager.cs" id="5_6gmoj"]
+[ext_resource type="Script" uid="uid://pbx47llplcsx" path="res://Behaviors/Actions/CheckColliding.cs" id="6_ugywe"]
+[ext_resource type="Script" uid="uid://d4mc0vofukvog" path="res://Behaviors/Actions/BounceAwayNearby.cs" id="8_s2iin"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qt7g0"]
 b = Vector2(0, 0)
