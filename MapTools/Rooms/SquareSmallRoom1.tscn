@@ -12,11 +12,11 @@ offset_bottom = 512.0
 color = Color(0.720293, 1.26584e-05, 0.495099, 1)
 
 [node name="EntryPoint" type="Node2D" parent="."]
-position = Vector2(0, 128)
+position = Vector2(0, 256)
 script = ExtResource("2_63pe2")
 Direction = 4
 
 [node name="EntryPoint2" type="Node2D" parent="."]
-position = Vector2(256, 512)
+position = Vector2(512, 128)
 script = ExtResource("2_63pe2")
-Direction = 3
+Direction = 2

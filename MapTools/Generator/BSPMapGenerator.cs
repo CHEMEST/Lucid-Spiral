@@ -6,11 +6,11 @@ using System.Linq;
 
 public partial class BSPMapGenerator : Node2D
 {
-    [Export] public int MapWidth = 8000;
-    [Export] public int MapHeight = 8000;
-    [Export] public int MinRoomSize = 600;
-    [Export] public int MaxRoomSize = 1200;
-    [Export] public int MinRooms = 5;
+    [Export] public int MapWidth = 8024;
+    [Export] public int MapHeight = 8024;
+    [Export] public int MinRoomSize = 512;
+    [Export] public int MaxRoomSize = 1024;
+    [Export] public int MinRooms = 6;
     [Export] public int MaxRooms = 15;
     [Export] public string RoomsFolder = "res://MapTools//Rooms";
     [Export] public Node2D roomNode;
@@ -21,6 +21,7 @@ public partial class BSPMapGenerator : Node2D
     private List<PackedScene> roomScenes = new();
     private List<EntryPoint> availableEntries = new();
     private List<(EntryPoint, EntryPoint)> connections = new();
+    private AStarGrid2D astarGrid;
     private Random rand = Global.Random;
     private bool x = false;
 
@@ -170,7 +171,6 @@ public partial class BSPMapGenerator : Node2D
             }
         }
     }
-    // REVAMP everything after thus
     private void ConnectEntryPoints()
     {
         connections.Clear();
@@ -181,39 +181,32 @@ public partial class BSPMapGenerator : Node2D
             return;
         }
 
-        // List to store all possible connections
         List<(EntryPoint, EntryPoint, float)> allEdges = new();
 
-        // Compare each EntryPoint with every other EntryPoint
         for (int i = 0; i < availableEntries.Count; i++)
         {
             for (int j = i + 1; j < availableEntries.Count; j++)
             {
                 EntryPoint entryA = availableEntries[i];
                 EntryPoint entryB = availableEntries[j];
+                float distance = entryA.GlobalPosition.DistanceTo(entryB.GlobalPosition);
+                Vector2 dir = entryA.GlobalPosition.DirectionTo(entryB.GlobalPosition);
 
-                // Prevent connecting an EntryPoint to itself or the same room
-                if (entryA.Room == entryB.Room || entryA.GetOppositeDirection() != entryB.Direction)
+
+                if (entryA.Room == entryB.Room || entryA.GetOppositeDirection() != entryB.Direction || dir.Dot(entryA.Dir) <= 0)
                     continue;
 
-                // Compute Euclidean distance between entry points
-                float distance = entryA.GlobalPosition.DistanceTo(entryB.GlobalPosition);
 
-                // Store the connection with distance
                 allEdges.Add((entryA, entryB, distance));
             }
         }
 
-        // Sort connections by shortest distance first
         allEdges.Sort((a, b) => a.Item3.CompareTo(b.Item3));
 
-        // Track which entry points have been connected
         HashSet<EntryPoint> connectedEntries = new();
 
-        // Go through the sorted edges and add the shortest connections
         foreach (var (entryA, entryB, _) in allEdges)
         {
-            // If both entry points are not yet connected, add this connection
             if (!connectedEntries.Contains(entryA) && !connectedEntries.Contains(entryB))
             {
                 connections.Add((entryA, entryB));
@@ -221,7 +214,6 @@ public partial class BSPMapGenerator : Node2D
                 connectedEntries.Add(entryB);
             }
 
-            // Stop when all entries are connected
             if (connectedEntries.Count == availableEntries.Count)
                 break;
         }
@@ -230,73 +222,76 @@ public partial class BSPMapGenerator : Node2D
 
     private void BuildBasePaths()
     {
-        // Example connections (start, end) as pairs of EntryPoint
         foreach ((EntryPoint start, EntryPoint end) in connections)
         {
             Vector2 startTile = corridorTileMap.LocalToMap(start.GlobalPosition);
             Vector2 endTile = corridorTileMap.LocalToMap(end.GlobalPosition);
-
-            // Draw the thick L-shaped path between the two tiles
-            DrawLPath(startTile, endTile);
+            // A star is way too slow rn
+            //InitializeAStarGrid(MapWidth, MapHeight, 1); // Grid size: 100x100, Cell size: 1 unit
+            //DrawThickAStarPath(startTile, endTile, 5);
+            DrawThickLPath(startTile, endTile, 5);
         }
     }
+
+    private void InitializeAStarGrid(int width, int height, int cellSize)
+    {
+        astarGrid = new AStarGrid2D();
+        astarGrid.Region = new Rect2I(0, 0, width, height); // Define grid bounds
+        astarGrid.CellSize = new Vector2I(cellSize, cellSize);
+        astarGrid.DiagonalMode = AStarGrid2D.DiagonalModeEnum.Never; // Only allow cardinal directions
+        astarGrid.DefaultComputeHeuristic = AStarGrid2D.Heuristic.Manhattan; // Better for grid movement
+
+        // Mark all cells as walkable initially
+        astarGrid.Update();
+    }
+    private void DrawThickAStarPath(Vector2 start, Vector2 end, int thickness)
+    {
+        List<Vector2I> path = astarGrid.GetIdPath((Vector2I)start, (Vector2I)end).ToList();
+
+        if (path.Count > 0)
+        {
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                DrawThickBresenhamLine(path[i], path[i + 1], thickness);
+            }
+        }
+    }
+
+
+    private void DrawThickBresenhamLine(Vector2 start, Vector2 end, int thickness)
+    {
+        Vector2 perpendicular = (end - start).Normalized().Orthogonal(); // Get a perpendicular vector
+        for (int i = -thickness / 2; i <= thickness / 2; i++)
+        {
+            Vector2 offsetStart = start + perpendicular * i;
+            Vector2 offsetEnd = end + perpendicular * i;
+
+            DrawBresenhamLine(offsetStart, offsetEnd);
+        }
+    }
+
+    private void DrawBresenhamLine(Vector2 start, Vector2 end)
+    {
+        List<Vector2> points = BresenhamLine((int)start.X, (int)start.Y, (int)end.X, (int)end.Y);
+        foreach (Vector2I point in points)
+        {
+            corridorTileMap.SetCell(point, 1, new Vector2I(0, 0));
+        }
+    }
+    private void DrawThickLPath(Vector2 start, Vector2 end, int thickness)
+    {
+        Vector2 midPoint = new Vector2(end.X, start.Y); // Horizontal first, then vertical
+        DrawThickBresenhamLine(start, midPoint, thickness);
+        DrawThickBresenhamLine(midPoint, end, thickness);
+    }
+
     private void DrawLPath(Vector2 start, Vector2 end)
     {
-        List<Vector2I> thickPath = new List<Vector2I>();
-
-        Vector2I firstHorizontal = Vector2I.Zero;
-        Vector2I lastHorizontal = Vector2I.Zero;
-        Vector2I firstVertical = Vector2I.Zero;
-        Vector2I lastVertical = Vector2I.Zero;
-
-        bool firstHSet = false, firstVSet = false;
-
-        for (int x = (int)start.X; x != (int)end.X; x += Math.Sign(end.X - start.X))
-        {
-            Vector2I tilePos = new Vector2I(x, (int)start.Y);
-            thickPath.Add(tilePos);
-
-            if (!firstHSet) { firstHorizontal = tilePos; firstHSet = true; }
-            lastHorizontal = tilePos;
-
-            thickPath.Add(new Vector2I(x + 2, (int)start.Y));
-            thickPath.Add(new Vector2I(x - 2, (int)start.Y));
-            thickPath.Add(new Vector2I(x, (int)start.Y + 2));
-            thickPath.Add(new Vector2I(x, (int)start.Y - 2));
-            thickPath.Add(new Vector2I(x + 1, (int)start.Y + 1));
-            thickPath.Add(new Vector2I(x - 1, (int)start.Y + 1));
-            thickPath.Add(new Vector2I(x + 1, (int)start.Y - 1));
-            thickPath.Add(new Vector2I(x - 1, (int)start.Y - 1));
-        }
-
-        for (int y = (int)start.Y; y != (int)end.Y; y += Math.Sign(end.Y - start.Y))
-        {
-            Vector2I tilePos = new Vector2I((int)end.X, y);
-            thickPath.Add(tilePos);
-
-            if (!firstVSet) { firstVertical = tilePos; firstVSet = true; }
-            lastVertical = tilePos;
-
-            thickPath.Add(new Vector2I((int)end.X + 2, y));
-            thickPath.Add(new Vector2I((int)end.X - 2, y));
-            thickPath.Add(new Vector2I((int)end.X, y + 2));
-            thickPath.Add(new Vector2I((int)end.X, y - 2));
-            thickPath.Add(new Vector2I((int)end.X + 1, y + 1));
-            thickPath.Add(new Vector2I((int)end.X - 1, y + 1));
-            thickPath.Add(new Vector2I((int)end.X + 1, y - 1));
-            thickPath.Add(new Vector2I((int)end.X - 1, y - 1));
-        }
-
-        foreach (Vector2I tile in thickPath)
-        {
-            corridorTileMap.SetCell(tile, 1, new Vector2I(0, 0));
-        }
-
-        corridorTileMap.SetCell(firstHorizontal, 0, new Vector2I(0, 0)); 
-        corridorTileMap.SetCell(lastHorizontal, 0, new Vector2I(0, 0)); 
-        corridorTileMap.SetCell(firstVertical, 0, new Vector2I(0, 0)); 
-        corridorTileMap.SetCell(lastVertical, 0, new Vector2I(0, 0)); 
+        Vector2 midPoint = new Vector2(end.X, start.Y); // First go horizontally, then vertically
+        DrawBresenhamLine(start, midPoint);
+        DrawBresenhamLine(midPoint, end);
     }
+
 
 
     private void CarveWalkableTiles()

@@ -14,7 +14,7 @@ color = Color(0.596719, 0.16752, 0.710633, 1)
 [node name="EntryPoint" type="Node2D" parent="."]
 position = Vector2(1024, 768)
 script = ExtResource("2_svc4y")
-Direction = 4
+Direction = 2
 
 [node name="EntryPoint2" type="Node2D" parent="."]
 position = Vector2(256, 0)
