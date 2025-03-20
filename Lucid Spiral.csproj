@@ -4,8 +4,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Entities\Projectiles\" />
-    <Folder Include="Utility\" />
-  </ItemGroup>
 </Project>

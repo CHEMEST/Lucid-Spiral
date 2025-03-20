@@ -29,7 +29,7 @@ namespace LucidSpiral.MapGeneration.Generator
         public override void _Ready()
         {
             gridSize = (int)Mathf.Sqrt(MaxRooms * RoomSize);
-            corridoorTileMap = GetNode<TileMapLayer>("CorridoorTileMap");
+            corridoorTileMap = GetNode<TileMapLayer>("CorridorTileMap");
             random = Global.Random;
 
             GenerateRoomsOnMap();

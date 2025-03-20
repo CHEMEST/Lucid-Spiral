@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucid Spiral", "Lucid Spiral.csproj", "{BD465718-9BFC-4122-BD6F-13A35EBAA66A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucid Spiral", "Lucid Spiral.csproj", "{EB552352-DA69-413A-9F24-63861D6871E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{BD465718-9BFC-4122-BD6F-13A35EBAA66A}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{EB552352-DA69-413A-9F24-63861D6871E7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

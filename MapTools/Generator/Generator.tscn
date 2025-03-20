@@ -41,13 +41,8 @@ sources/0 = SubResource("TileSetAtlasSource_volnu")
 sources/1 = SubResource("TileSetAtlasSource_pj0wu")
 sources/2 = SubResource("TileSetScenesCollectionSource_rjsvh")
 
-[node name="Generator" type="Node2D" node_paths=PackedStringArray("roomNode")]
+[node name="Generator" type="Node2D"]
 script = ExtResource("1_wtexk")
-MapWidth = 25000
-MapHeight = 25000
-MinRooms = 40
-MaxRooms = 80
-roomNode = NodePath("Rooms")
 
 [node name="Player" parent="." instance=ExtResource("4_iqx15")]
 position = Vector2(2, -2)
