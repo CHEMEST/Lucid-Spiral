@@ -12,8 +12,9 @@ namespace LucidSpiral.MapGeneration.Generator
     
     internal partial class Generator : Node2D
     {
+        [Export] public int MinRooms = 5;
         [Export] public int MaxRooms = 10;
-        [Export] public int RoomSize = 25;
+        [Export] public int MaxRoomSize = 25;
         private int gridSize;
 
         private Random random;
@@ -21,6 +22,7 @@ namespace LucidSpiral.MapGeneration.Generator
         private string roomsFolderPath = "res://MapTools/Rooms/";
 
         private List<EntryPoint> entries = new();
+        private List<EntryPoint> unusableEntries = new();
         private Dictionary<Vector2I, Room> map = new();
         private Room activeRoom;
         private Vector2I mapCursor;
@@ -28,15 +30,22 @@ namespace LucidSpiral.MapGeneration.Generator
 
         public override void _Ready()
         {
-            gridSize = (int)Mathf.Sqrt(MaxRooms * RoomSize);
+            gridSize = (int)Mathf.Sqrt(MaxRooms * MaxRoomSize);
             corridoorTileMap = GetNode<TileMapLayer>("CorridorTileMap");
             random = Global.Random;
 
-            GenerateRoomsOnMap();
+            GenerateSuccessfulRoomMap();
 
         }
+        private void GenerateSuccessfulRoomMap()
+        {
+            while (map.Count < MinRooms)
+            {
+                GenerateNewRoomMap();
+            }
+        }
 
-        private void GenerateRoomsOnMap()
+        private void GenerateNewRoomMap()
         {
             map.Clear();
 
@@ -57,10 +66,9 @@ namespace LucidSpiral.MapGeneration.Generator
                 if (map.ContainsKey(mapCursor))
                 {
                     EntryPoint? oppositeEntry = FindOppositeEntryPointInRoom(map[mapCursor], entryCursor);
-                    if (oppositeEntry == null) continue;
+                    if (oppositeEntry == null) continue; // make this add to a bad entries list
                     AddConnection(entryCursor, oppositeEntry);
                     if (!entries.Contains(oppositeEntry)) throw new Exception("room overlap is happening");
-
                 }
                 else
                 {
@@ -72,6 +80,10 @@ namespace LucidSpiral.MapGeneration.Generator
 
                     AddConnection(entryCursor, roomAndEntry.Item2);
                 }
+            }
+            if (map.Count < MinRooms)
+            {
+                // pull
             }
         }
         #nullable enable
@@ -116,146 +128,34 @@ namespace LucidSpiral.MapGeneration.Generator
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Instances (does not place) a random room from the available PackedScene Rooms
+        /// </summary>
+        /// <returns>A random Room instance</returns>
+        /// <exception cref="NotImplementedException"></exception>
         private Room LoadRandomRoom()
         {
             throw new NotImplementedException();
         }
 
-        //private void SetPlayerPosition()
+        //private void PlaceSceneAtTile(Vector2I tilePosition)
         //{
-        //    Vector2 tileSize = corridoorTileMap.TileSet.TileSize;
-        //    Vector2 startPosition = roomPositions[0] * tileSize;
-        //    Global.Player.GlobalPosition = startPosition;
+        //    // Convert tile coordinates to world position
+        //    Vector2 worldPosition = TileMap.MapToLocal(tilePosition);
 
-        //}
-        //private Vector2I GetGlobalRoomPos(int index)
-        //{
-        //    Vector2I tileSize = corridoorTileMap.TileSet.TileSize;
-        //    return roomPositions[index] * tileSize;
-        //}
-        //private void GenerateRoomPositions()
-        //{
-        //    foreach (Vector2I cord in mapOld.Keys)
+        //    // Instance the scene
+        //    Node2D instance = ObjectScene.Instantiate<Node2D>();
+        //    if (instance == null)
         //    {
-        //        if (mapOld[cord] == false) continue; // for later checks
-        //        roomPositions.Add( new Vector2I(
-        //            cord.X * RoomSize,
-        //            cord.Y * RoomSize
-        //            ));
-        //    }
-        //}
-        //private void Display()
-        //{
-        //    DisplayRooms();
-        //    GD.Print("-----");
-        //    DisplayConnections();
-        //}
-        //private void DisplayRooms()
-        //{
-        //    foreach (Vector2I cord in mapOld.Keys) 
-        //    {
-        //        GD.Print(cord + ": " + mapOld[cord]);
-        //    }
-        //}
-        //private void DisplayConnections()
-        //{
-        //    foreach ((Vector2I, Vector2I) pair in roomConnections)
-        //    {
-        //        GD.Print("[" + pair.Item1 + ", " + pair.Item2 + "]");
-        //    }
-        //}
-        /// <summary>
-        /// Marks true at a certain location in dictionary if that slot is available for a room
-        /// Very greedy, will make a cluster of rooms with some branches, add random stops and minRooms
-        /// 
-        /// </summary>
-        //private void GenerateRoomsOnMapOld()
-        //{
-        //    mapOld.Clear();
-        //    Queue<Vector2I> queue = new(); // Vector2I is js pair<int, int>
-
-        //    // initial cursor at middle
-        //    Vector2I start = new(gridSize / 2, gridSize / 2);
-        //    queue.Enqueue(start);
-        //    mapOld[start] = true;
-
-        //    // while can place rooms
-        //    while (queue.Count > 0 && mapOld.Count < MaxRooms)
-        //    {
-        //        // moving cursor to next
-        //        Vector2I current = queue.Dequeue();
-        //        List<Vector2I> directions = new List<Vector2I> { Vector2I.Up, Vector2I.Down, Vector2I.Left, Vector2I.Right };
-        //        // neat shuffle trick: https://stackoverflow.com/questions/273313/randomize-a-listt
-        //        directions = directions.OrderBy(_ => random.Next()).ToList();
-                
-
-        //        foreach (Vector2I dir in directions)
-        //        {
-        //            Vector2I newPos = current + dir;
-
-        //            if (mapOld.Count >= MaxRooms) { GD.Print("Max Reached");  return; }
-        //            if (mapOld.ContainsKey(newPos)) { GD.Print("Bad Choice"); continue; }
-
-        //            if (newPos.X >= 0 && newPos.X < gridSize && newPos.Y >= 0 && newPos.Y < gridSize) // checking bounds
-        //            {
-        //                mapOld[newPos] = true; // mark a new room
-        //                queue.Enqueue(newPos); // add to queue for advancing
-        //            }
-        //        }
-        //    }
-        //}
-        ///// <summary>
-        ///// Generates a list of pairs (edges) as possible connections and cuts it down as much as possible (MST)
-        ///// </summary>
-        //private void GenerateConnections()
-        //{
-        //    List<(Vector2I, Vector2I)> edges = new();
-
-        //    // Create a fully connected graph
-        //    for (int i = 0; i < roomPositions.Count; i++)
-        //    {
-        //        for (int j = i + 1; j < roomPositions.Count; j++)
-        //        {
-        //            edges.Add((roomPositions[i], roomPositions[j]));
-        //        }
+        //        GD.PrintErr("Failed to instance scene!");
+        //        return;
         //    }
 
-        //    // Sort by distance
-        //    edges.Sort((a, b) => a.Item1.DistanceSquaredTo(a.Item2).CompareTo(b.Item1.DistanceSquaredTo(b.Item2)));
-
-        //    // Kruskal’s Algorithm with Path Compression; not that I know how it works
-        //    var parent = new Dictionary<Vector2I, Vector2I>();
-        //    Vector2I Find(Vector2I v)
-        //    {
-        //        if (parent[v] != v)
-        //            parent[v] = Find(parent[v]);
-        //        return parent[v];
-        //    }
-
-        //    foreach (var room in roomPositions) parent[room] = room;
-
-        //    foreach (var (roomA, roomB) in edges)
-        //    {
-        //        var rootA = Find(roomA);
-        //        var rootB = Find(roomB);
-        //        if (rootA != rootB)
-        //        {
-        //            roomConnections.Add((roomA, roomB));
-        //            parent[rootA] = rootB;
-        //        }
-        //    }
-        //}
-        //private void PlaceCorridors()
-        //{
-        //    foreach (var (roomA, roomB) in roomConnections)
-        //    {
-        //        DrawLine(roomA, roomB);
-        //    }
+        //    // Set position and add to the scene
+        //    instance.Position = worldPosition;
+        //    TileMap.AddChild(instance);
         //}
 
-        // Bresenham’s Line Algorithm to draw corridors
-        // I watched a vid on how/why this works but that doesn't mean I can explain it lmao
         private void DrawLine(Vector2I start, Vector2I end)
         {
             int dx = Math.Abs(end.X - start.X);

@@ -6,14 +6,14 @@ using System.Linq;
 
 public partial class BSPMapGenerator : Node2D
 {
-    [Export] public int MapWidth = 8024;
-    [Export] public int MapHeight = 8024;
+    [Export] public int MapWidth = 32096;
+    [Export] public int MapHeight = 32096;
     [Export] public int MinRoomSize = 512;
     [Export] public int MaxRoomSize = 1024;
-    [Export] public int MinRooms = 6;
-    [Export] public int MaxRooms = 15;
+    [Export] public int MinRooms = 20;
+    [Export] public int MaxRooms = 40;
     [Export] public string RoomsFolder = "res://MapTools//Rooms";
-    [Export] public Node2D roomNode;
+    private Node2D roomNode;
     private TileMapLayer corridorTileMap;
     Vector2I tileSize;
 
@@ -28,6 +28,7 @@ public partial class BSPMapGenerator : Node2D
     public override void _Ready()
     {
         corridorTileMap = GetNode<TileMapLayer>("CorridorTileMap");
+        roomNode = GetNode<Node2D>("Rooms");
         tileSize = corridorTileMap.TileSet.TileSize;
         LoadRoomScenes();
     }
