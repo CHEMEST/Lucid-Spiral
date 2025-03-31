@@ -1,14 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" uid="uid://d0brv1pqiyupx" path="res://Utility/NavCam.cs" id="3_y2etw"]
-[ext_resource type="Script" uid="uid://d4dntuvbwefy5" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" uid="uid://cdoeravh8xq7v" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
-[ext_resource type="PackedScene" uid="uid://drdnt0xl2mtmg" path="res://Weapons/Katana/Katana.tscn" id="5_ob61e"]
 [ext_resource type="Script" uid="uid://b6agf180if448" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
 [ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_blgq1"]
@@ -48,12 +46,6 @@ ZoomSpeed = 0.005
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
-
-[node name="WeaponManager" type="Node2D" parent="ManagerHub"]
-script = ExtResource("4_4gjqr")
-
-[node name="Katana" parent="ManagerHub/WeaponManager" instance=ExtResource("5_ob61e")]
-position = Vector2(0, -3)
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_p88h7")

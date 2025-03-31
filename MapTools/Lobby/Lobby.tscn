@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbkounxsd1gsm"]
+
+[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_poiug"]
+
+[node name="Lobby" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -389.0
+offset_top = -220.0
+offset_right = 1349.0
+offset_bottom = 760.0
+color = Color(0.358842, 0.00840928, 0.360161, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_poiug")]
+position = Vector2(458, 264)
