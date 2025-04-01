@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class StartButton : Button
+public partial class SwitchSceneOnPress : Button
 {
     [Export] public string LobbyPath = "";
     public override void _Ready()

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbkounxsd1gsm"]
+[gd_scene load_steps=4 format=3 uid="uid://bbkounxsd1gsm"]
 
 [ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_poiug"]
+[ext_resource type="Script" uid="uid://6jkjjrts2kxq" path="res://MapTools/Lobby/Bed.cs" id="2_vgoj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7vwp"]
+size = Vector2(164, 74)
 
 [node name="Lobby" type="Node2D"]
 
@@ -13,3 +17,19 @@ color = Color(0.358842, 0.00840928, 0.360161, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_poiug")]
 position = Vector2(458, 264)
+
+[node name="Bed" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Bed"]
+script = ExtResource("2_vgoj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area2D"]
+position = Vector2(471, -45)
+shape = SubResource("RectangleShape2D_b7vwp")
+
+[node name="ColorRect2" type="ColorRect" parent="Bed"]
+offset_left = 396.0
+offset_top = -76.0
+offset_right = 547.0
+offset_bottom = -13.0
+color = Color(0.834395, 1.05888e-06, 0.485484, 1)
