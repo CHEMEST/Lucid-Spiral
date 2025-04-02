@@ -1,4 +1,6 @@
 ﻿using Godot;
+using LucidSpiral.Entities.Creatures;
+using LucidSpiral.Globals;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,9 +11,10 @@ using System.Threading.Tasks;
 namespace LucidSpiral.MapTools.MapUtils
 {
     [GlobalClass]
-    partial class EntryPoint : Node2D
+    public partial class EntryPoint : Area2D
     {
         [Export] public Direction Direction { get; private set; }
+        private MapManager map;
         public Room Room { get; private set; }
         public Vector2I Dir
         {
@@ -35,6 +38,32 @@ namespace LucidSpiral.MapTools.MapUtils
             Debug.Assert(Direction != Direction.Null, Name + " has unset direction");
             Debug.Assert(GetParent() is Room, Name + "'s parent is not a " + nameof(Room));
             Room = GetParent() as Room;
+            FindMapManager();
+            AreaEntered += OnAreaEntered;
+
+        }
+
+        public void FindMapManager()
+        {
+            Node current = GetParent();
+
+            while (current != null)
+            {
+                if (current is MapManager mapManager)
+                {
+                    map = mapManager;
+                }
+                current = current.GetParent();
+            }
+        }
+
+        private void OnAreaEntered(Area2D area)
+        {
+            Entity entity = Utils.FindEntityCarrying(area);
+            if (entity is Player)
+            {
+                map.Call("SwitchRoom", this);
+            }
         }
 
 

@@ -22,6 +22,7 @@ position = Vector2(458, 264)
 
 [node name="Area2D" type="Area2D" parent="Bed"]
 script = ExtResource("2_vgoj3")
+MapPath = "res://MapTools/Map/Map.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area2D"]
 position = Vector2(471, -45)

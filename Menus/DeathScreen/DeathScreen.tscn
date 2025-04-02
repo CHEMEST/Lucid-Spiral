@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4gyatk7bdb07"]
+
+[ext_resource type="Script" uid="uid://en8nr5e2yvsr" path="res://Utility/SwitchSceneOnPress.cs" id="1_3yro8"]
+
+[sub_resource type="FontFile" id="FontFile_flx72"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_xvupn"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+
+[node name="DeathScreen" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 2
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.473302, 0.0252646, 0.280638, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 59.0
+offset_right = 872.0
+offset_bottom = 257.0
+theme_override_fonts/normal_font = SubResource("FontFile_flx72")
+theme_override_font_sizes/normal_font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_top = 305.0
+offset_right = 960.0
+offset_bottom = 405.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_xvupn")
+theme_override_font_sizes/font_size = 30
+text = "Try Again"
+script = ExtResource("1_3yro8")
+LobbyPath = "res://MapTools/Lobby/Lobby.tscn"

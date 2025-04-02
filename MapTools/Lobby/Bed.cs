@@ -10,9 +10,12 @@ public partial class Bed : Area2D
         AreaEntered += OnAreaEntered;
     }
 
-    private void OnAreaEntered(Area2D area)
+    private async void OnAreaEntered(Area2D area)
     {
         if (area.GetOwner() is Player player)
+        {
+            await ToSignal(GetTree(), "process_frame");
             GetTree().ChangeSceneToFile(MapPath);
+        }
     }
 }

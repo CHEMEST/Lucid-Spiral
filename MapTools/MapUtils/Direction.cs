@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.MapTools.MapUtils
 {
-    enum Direction
+    public enum Direction
     {
         Null,
         North,
