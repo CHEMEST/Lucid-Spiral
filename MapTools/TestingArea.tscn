@@ -17,4 +17,4 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(748, 463)
 
 [node name="Ghoul" parent="." instance=ExtResource("2_psi2g")]
-position = Vector2(70, 165)
+position = Vector2(82, 85)

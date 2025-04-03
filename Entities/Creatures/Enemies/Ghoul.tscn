@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c0jwdvq6wg2fs" path="res://Entities/Creatures/Entity.cs" id="1_07n8e"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
-[ext_resource type="Script" uid="uid://bkjdt736v5ll2" path="res://Behaviors/MovementPatterns/ChasePlayer.cs" id="3_asbm4"]
+[ext_resource type="Script" uid="uid://66lyw7rpbjwf" path="res://Behaviors/MovementPatterns/PathfindPlayer.cs" id="4_l45cl"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_uafii"]
 [ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="8_bgq24"]
@@ -39,8 +39,9 @@ script = ExtResource("1_j0iih")
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("2_4dcmn")
 
-[node name="ChasePlayer" type="Node2D" parent="ManagerHub/MovementManager"]
-script = ExtResource("3_asbm4")
+[node name="PathfindPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
+script = ExtResource("4_l45cl")
+metadata/_custom_type_script = "uid://66lyw7rpbjwf"
 
 [node name="StatusManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_uafii")

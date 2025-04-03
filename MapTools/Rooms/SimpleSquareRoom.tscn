@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://o2mffb2vlqt1"]
+[gd_scene load_steps=4 format=3 uid="uid://ddiw1hcn3bgp6"]
 
 [ext_resource type="Script" uid="uid://cnryfaprdl1f2" path="res://MapTools/MapUtils/EntryPoint.cs" id="1_ei3m6"]
 [ext_resource type="Script" uid="uid://daysc3bel23qv" path="res://MapTools/MapUtils/Room.cs" id="1_lv5e3"]
@@ -14,6 +14,7 @@ container = NodePath("ColorRect")
 offset_right = 730.0
 offset_bottom = 523.0
 color = Color(0.473976, 0.473976, 0.473976, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 offset_left = 689.0
@@ -21,6 +22,7 @@ offset_top = 280.0
 offset_right = 731.0
 offset_bottom = 370.0
 color = Color(0.581033, 0.581033, 0.581033, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="EntryPoint2" type="Area2D" parent="."]
 script = ExtResource("1_ei3m6")
@@ -28,7 +30,7 @@ Direction = 2
 metadata/_custom_type_script = "uid://cnryfaprdl1f2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint2"]
-position = Vector2(710, 323.25)
+position = Vector2(710, 325.25)
 shape = SubResource("RectangleShape2D_ei3m6")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -37,6 +39,7 @@ offset_top = 133.0
 offset_right = 39.0
 offset_bottom = 223.0
 color = Color(0.581033, 0.581033, 0.581033, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="EntryPoint" type="Area2D" parent="."]
 script = ExtResource("1_ei3m6")
@@ -44,5 +47,5 @@ Direction = 4
 metadata/_custom_type_script = "uid://cnryfaprdl1f2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint"]
-position = Vector2(19, 183)
+position = Vector2(19, 180)
 shape = SubResource("RectangleShape2D_ei3m6")

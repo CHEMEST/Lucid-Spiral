@@ -1,4 +1,5 @@
 using Godot;
+using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.MapTools.MapUtils;
 using System;
@@ -108,15 +109,45 @@ public partial class MapManager : Node2D
         }
         else
         {
-            Room room = RandomRoomWithOppositeEntry(entryPoint);
-            rooms[cursor] = room;
-            activeRoomParent.AddChild(room);
+            AddNewRoom(entryPoint);
         }
-
-        // move player to new room
-        Player player = Global.Player;
-        player.Position = rooms[cursor].Position + (rooms[cursor].Size)/2;
+        MovePlayer(entryPoint);
 
         GD.Print(cursor);
+    }
+
+    private void MovePlayer(EntryPoint entryInital)
+    {
+        Direction dir = entryInital.GetOppositeDirection();
+        EntryPoint oppositeEntry = null;
+        foreach ( EntryPoint entry in rooms[cursor].Entries)
+        {
+            if (entry.Direction == dir)
+            {
+                oppositeEntry = entry;
+                break;
+            }
+        }
+
+        Player player = Global.Player;
+        Vector2 pos;
+        if (oppositeEntry == null) // move to center of room if no opposite entry
+        {
+            pos = rooms[cursor].Position + (rooms[cursor].Size) / 2;
+        }
+        else // move to an offset of the entry location
+        {
+            pos = oppositeEntry.GetChild<CollisionShape2D>(0).GlobalPosition + oppositeEntry.Dir * -50;
+        }
+
+        player.GlobalPosition = pos;
+
+    }
+
+    private void AddNewRoom(EntryPoint entryPoint)
+    {
+        Room room = RandomRoomWithOppositeEntry(entryPoint);
+        rooms[cursor] = room;
+        activeRoomParent.AddChild(room);
     }
 }
