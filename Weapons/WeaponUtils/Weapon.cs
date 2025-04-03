@@ -1,5 +1,6 @@
 ﻿using Godot;
 using LucidSpiral.Actions.ActionUtils;
+using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.Managers;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Behaviors.Weapons.WeaponUtils
 {
-    internal abstract partial class Weapon : CharacterBody2D, IWeapon
+    internal abstract partial class Weapon : Entity, IWeapon
     {
         [Export] public CharacterBody2D Source { get; private set; }
         [Export] public bool IsActive { get; set; } = true;

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bddgxxpy2hmjh"]
+
+[ext_resource type="Script" uid="uid://bf1f3xjqk5bb0" path="res://MapTools/Map/MapManager.cs" id="1_l6vpa"]
+[ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="3_y7xtv"]
+
+[node name="Map" type="Node2D" node_paths=PackedStringArray("activeRoomParent", "organizationParent")]
+script = ExtResource("1_l6vpa")
+activeRoomParent = NodePath("RoomContainer")
+organizationParent = NodePath("OrganizationParent")
+
+[node name="Player" parent="." instance=ExtResource("3_y7xtv")]
+position = Vector2(246, 293)
+
+[node name="RoomContainer" type="Node2D" parent="."]
+
+[node name="OrganizationParent" type="Node2D" parent="."]
+visible = false

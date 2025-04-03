@@ -3,8 +3,8 @@ using System;
 [GlobalClass]
 public partial class NavCam : Camera2D
 {
-    [Export] public float ZoomSpeed = 0.1f;
-    [Export] public float MinZoom = 0.05f;
+    [Export] public float ZoomSpeed = 0.01f;
+    [Export] public float MinZoom = 0.005f;
     [Export] public float MaxZoom = 5.0f;
     [Export] public float PanSpeed = 1.0f;
 

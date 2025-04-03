@@ -16,14 +16,15 @@ public partial class Player : Entity
     public override void _Process(double delta)
     {
         base._Process(delta);
+        //GD.Print(GlobalPosition);
         //GD.Print(this);
-        GD.Print(Utils.FindStatus<Health>(this));
+        //GD.Print(Utils.FindStatus<Health>(this));
         //GD.Print(Utils.FindManager<EffectManager>(this));
     }
 
     public override string ToString()
     {
-        string log = "Player \n { \n";
+        string log = "Player {";
         foreach (Node node in GetNodeOrNull("ManagerHub").GetChildren())
         {
             if (node is IManager manager)
@@ -32,7 +33,7 @@ public partial class Player : Entity
 
             }
         }
-        log += "\n}";
+        log += "}";
         return log;
     }
 

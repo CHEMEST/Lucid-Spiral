@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://byfx6joeg45nb"
+path="res://.godot/imported/Floor Plain 3.aseprite-5063d8c0b31abbdc9c68bb55ae24d852.res"
+
+[deps]
+
+source_file="res://Assets/Sprites/Tiles/Floors Aseprite/Floor Plain 3.aseprite"
+dest_files=["res://.godot/imported/Floor Plain 3.aseprite-5063d8c0b31abbdc9c68bb55ae24d852.res"]
+
+[params]
+

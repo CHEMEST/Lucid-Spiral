@@ -1,34 +1,33 @@
-[gd_scene load_steps=18 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=16 format=3 uid="uid://bue7ta0253pjc"]
 
-[ext_resource type="Script" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
+[ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
-[ext_resource type="Script" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
-[ext_resource type="Script" path="res://Managers/WeaponManager.cs" id="4_4gjqr"]
-[ext_resource type="Script" path="res://Managers/ActionManager.cs" id="4_p88h7"]
-[ext_resource type="Script" path="res://Managers/StatusManager.cs" id="4_saco2"]
-[ext_resource type="Script" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
-[ext_resource type="PackedScene" uid="uid://drdnt0xl2mtmg" path="res://Weapons/Katana/Katana.tscn" id="5_ob61e"]
-[ext_resource type="Script" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
-[ext_resource type="Script" path="res://Managers/MovementManager.cs" id="7_6grap"]
-[ext_resource type="Script" path="res://Statuses/Speed.cs" id="7_blgq1"]
-[ext_resource type="Script" path="res://Managers/CollisionManager.cs" id="10_c4ctk"]
-[ext_resource type="Script" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="11_od378"]
-[ext_resource type="Script" path="res://Managers/StateManager.cs" id="12_wbvux"]
-[ext_resource type="Script" path="res://Statuses/Health.cs" id="13_tcdwu"]
+[ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
+[ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="4_p88h7"]
+[ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_saco2"]
+[ext_resource type="Script" uid="uid://cdoeravh8xq7v" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
+[ext_resource type="Script" uid="uid://b6agf180if448" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
+[ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="7_6grap"]
+[ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_blgq1"]
+[ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="10_c4ctk"]
+[ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="11_od378"]
+[ext_resource type="Script" uid="uid://bbfwkh8kvrm5q" path="res://Managers/StateManager.cs" id="12_wbvux"]
+[ext_resource type="Script" uid="uid://bl48r683xbon7" path="res://Statuses/Health.cs" id="13_tcdwu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
 radius = 11.0
-height = 66.0
+height = 52.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv2sh"]
-radius = 19.0
-height = 78.0
+radius = 12.0
+height = 56.0
 
 [node name="Player" type="CharacterBody2D"]
+top_level = true
 script = ExtResource("1_w1wst")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 30)
+position = Vector2(0, 14)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_14e03")
 debug_color = Color(0.657587, 0.0671721, 0.592715, 0.42)
@@ -36,19 +35,14 @@ debug_color = Color(0.657587, 0.0671721, 0.592715, 0.42)
 [node name="Player" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, -10)
-scale = Vector2(3.0625, 3.0625)
+scale = Vector2(2.1875, 2.1875)
 texture = ExtResource("2_tb6ca")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.515, 0.515)
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
-
-[node name="WeaponManager" type="Node2D" parent="ManagerHub"]
-script = ExtResource("4_4gjqr")
-
-[node name="Katana" parent="ManagerHub/WeaponManager" instance=ExtResource("5_ob61e")]
-position = Vector2(0, -3)
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("4_p88h7")
@@ -89,6 +83,6 @@ Type = 1
 [node name="HitBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/HitBox"]
-position = Vector2(0, 23)
+position = Vector2(0, 13)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_uv2sh")

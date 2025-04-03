@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Lucid Spiral"
-run/main_scene="res://MapTools/Rooms/TestingArea.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+run/main_scene="uid://bghyslsskf1lw"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,13 +20,18 @@ config/icon="res://icon.svg"
 Global="*res://Globals/Global.cs"
 Utils="*res://Globals/Utils.cs"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+
 [dotnet]
 
 project/assembly_name="Lucid Spiral"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
