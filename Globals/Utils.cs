@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace LucidSpiral.Globals
 {
 #nullable enable
-    partial class Utils : Node
+    internal partial class Utils : Node
     {
 
         /// <typeparam name="T"></typeparam>
@@ -98,5 +98,39 @@ namespace LucidSpiral.Globals
             manager.AddChild(effect);
         }
 
+        // CGPT
+        public static List<PackedScene> LoadScenesFromFolder(string folderPath)
+        {
+            DirAccess dir = DirAccess.Open(folderPath);
+            if (dir == null)
+            {
+                GD.PrintErr("Failed to open directory: " + folderPath);
+                return new();
+            } 
+
+            dir.ListDirBegin();
+            string fileName = dir.GetNext();
+            List<PackedScene> loadedScenes = new();
+
+            while (!string.IsNullOrEmpty(fileName))
+            {
+                if (fileName.EndsWith(".tscn") || fileName.EndsWith(".scn"))
+                {
+                    string filePath = folderPath + fileName;
+                    PackedScene scene = ResourceLoader.Load<PackedScene>(filePath);
+                    if (scene != null)
+                    {
+                        loadedScenes.Add(scene);
+                        //GD.Print("Loaded scene: " + filePath);
+                    }
+                    else
+                    {
+                        GD.PrintErr("Failed to load scene: " + filePath);
+                    }
+                }
+                fileName = dir.GetNext();
+            }
+            return loadedScenes;
+        }
     }
 }

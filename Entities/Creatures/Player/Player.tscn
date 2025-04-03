@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=16 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
-[ext_resource type="Script" uid="uid://d0brv1pqiyupx" path="res://Utility/NavCam.cs" id="3_y2etw"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" uid="uid://cdoeravh8xq7v" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
@@ -41,8 +40,6 @@ texture = ExtResource("2_tb6ca")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.515, 0.515)
-script = ExtResource("3_y2etw")
-ZoomSpeed = 0.005
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")

@@ -36,8 +36,10 @@ namespace LucidSpiral.MapTools.MapUtils
         {
             base._Ready();
             Debug.Assert(Direction != Direction.Null, Name + " has unset direction");
-            Debug.Assert(GetParent() is Room, Name + "'s parent is not a " + nameof(Room));
-            Room = GetParent() as Room;
+            Node parent = GetParent();
+
+            Debug.Assert(parent is Room, Name + "'s parent is not a " + nameof(Room));
+            Room = parent as Room;
             FindMapManager();
             AreaEntered += OnAreaEntered;
 
@@ -62,7 +64,7 @@ namespace LucidSpiral.MapTools.MapUtils
             Entity entity = Utils.FindEntityCarrying(area);
             if (entity is Player)
             {
-                map.Call("SwitchRoom", this);
+                map.CallDeferred("SwitchRoom", this);
             }
         }
 

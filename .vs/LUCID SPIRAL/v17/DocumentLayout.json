@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\generator\\bspmapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BD465718-9BFC-4122-BD6F-13A35EBAA66A}|Lucid Spiral.csproj|solutionrelative:maptools\\generator\\bspmapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9761957-E9C0-48D9-8C7F-B04CEBB4FE78}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\maputils\\entrypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9761957-E9C0-48D9-8C7F-B04CEBB4FE78}|Lucid Spiral.csproj|solutionrelative:maptools\\maputils\\entrypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9761957-E9C0-48D9-8C7F-B04CEBB4FE78}|Lucid Spiral.csproj|c:\\users\\cheme\\onedrive\\desktop\\codeandassets\\code\\godot stuff\\lucid-spiral\\maptools\\map\\mapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9761957-E9C0-48D9-8C7F-B04CEBB4FE78}|Lucid Spiral.csproj|solutionrelative:maptools\\map\\mapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 171,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -25,16 +29,33 @@
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BSPMapGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\BSPMapGenerator.cs",
-              "RelativeDocumentMoniker": "MapTools\\Generator\\BSPMapGenerator.cs",
-              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Generator\\BSPMapGenerator.cs",
-              "RelativeToolTip": "MapTools\\Generator\\BSPMapGenerator.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAADwv+kAAAAFAAAAAAAAAA==",
+              "Title": "EntryPoint.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\MapUtils\\EntryPoint.cs",
+              "RelativeDocumentMoniker": "MapTools\\MapUtils\\EntryPoint.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\MapUtils\\EntryPoint.cs",
+              "RelativeToolTip": "MapTools\\MapUtils\\EntryPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T03:24:49.892Z",
+              "WhenOpened": "2025-04-02T23:59:27.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MapManager.cs",
+              "DocumentMoniker": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Map\\MapManager.cs",
+              "RelativeDocumentMoniker": "MapTools\\Map\\MapManager.cs",
+              "ToolTip": "C:\\Users\\cheme\\OneDrive\\Desktop\\CodeAndAssets\\Code\\Godot Stuff\\Lucid-Spiral\\MapTools\\Map\\MapManager.cs",
+              "RelativeToolTip": "MapTools\\Map\\MapManager.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T23:52:53.13Z",
               "EditorCaption": ""
             }
           ]
