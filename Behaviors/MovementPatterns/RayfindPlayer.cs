@@ -13,9 +13,10 @@ using LucidSpiral.Globals;
 namespace LucidSpiral.MovementPatterns
 {
     [GlobalClass]
-    internal partial class PathfindPlayer : MovementPattern
+    internal partial class RayfindPlayer : MovementPattern
     {
         private RayCast2D raycast;
+        [Export] private float VisionRange = 500f;
 
         public override void _Ready()
         {
@@ -28,31 +29,53 @@ namespace LucidSpiral.MovementPatterns
                 CollideWithAreas = false,
                 CollideWithBodies = true
             };
-            Body.AddChild(raycast); // error here, call defer maybe?
+
+            AddChild(raycast);
+        }
+        public override void _Process(double delta)
+        {
+            QueueRedraw();
+        }
+
+        public override void _Draw()
+        {
+
+            Vector2 endPoint = Body.ToLocal(raycast.GlobalPosition + raycast.TargetPosition);
+            DrawLine(Vector2.Zero, endPoint, Colors.Red, 2);
         }
         // worked with CGPT to make this
         // PS. make this a cone later for better vision and make the body move to the last location of the player if not found
         public override void Move(double delta) // Called externally every physics process
         {
-            float speed = (float)Utils.FindStatus<Speed>(Body).Value;
+            float maxSpeed = (float)Utils.FindStatus<Speed>(Body).Value;
             float dt = (float)delta * Global.dtk;
             CharacterBody2D Player = Global.Player;
+            Vector2 toPlayer = Player.GlobalPosition - Body.GlobalPosition;
+            float distance = toPlayer.Length();
 
-            // Update the RayCast2D to point toward the player
-            Vector2 directionToPlayer = (Player.GlobalPosition - Body.GlobalPosition).Normalized();
-            raycast.TargetPosition = directionToPlayer * 20f; // Extend ray to a reasonable distance
+            if (distance > VisionRange)
+            {
+                // Player is out of vision range
+                Body.Velocity = Body.Velocity.MoveToward(Vector2.Zero, dt);
+                Body.MoveAndSlide();
+                return;
+            }
+
+            // Point raycast directly to the player (within range)
+            Vector2 direction = toPlayer.Normalized();
+            raycast.TargetPosition = direction * distance;
             raycast.ForceRaycastUpdate();
+
 
             // Check if the enemy has a clear line of sight to the player
             if (!raycast.IsColliding() || raycast.GetCollider() == Player)
             {
                 // Move towards the player if visible
-                Body.Velocity = directionToPlayer * speed;
+                Body.Velocity = Body.Velocity.MoveToward(direction * maxSpeed, dt);
             }
             else
             {
-                // Implement pathfinding or alternative behavior when the player isn't visible
-                Body.Velocity = Vector2.Zero; // Stop movement or use pathfinding instead
+                Body.Velocity = Body.Velocity.MoveToward(Vector2.Zero, dt);
             }
 
             Body.MoveAndSlide();

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucid Spiral"
-run/main_scene="uid://bghyslsskf1lw"
+run/main_scene="uid://d4ehxkct06wcd"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

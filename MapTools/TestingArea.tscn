@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4ehxkct06wcd"]
+[gd_scene load_steps=4 format=3 uid="uid://d4ehxkct06wcd"]
 
 [ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_meg27"]
 [ext_resource type="PackedScene" uid="uid://c5dsqo6kai6j" path="res://Entities/Creatures/Enemies/Ghoul.tscn" id="2_psi2g"]
+[ext_resource type="PackedScene" uid="uid://bn0baym3n04kp" path="res://Objects/Large/Crate.tscn" id="3_qjewu"]
 
 [node name="TestingArea" type="Node2D"]
 
@@ -18,3 +19,12 @@ position = Vector2(748, 463)
 
 [node name="Ghoul" parent="." instance=ExtResource("2_psi2g")]
 position = Vector2(82, 85)
+
+[node name="Crate" parent="." instance=ExtResource("3_qjewu")]
+position = Vector2(318, 262)
+
+[node name="Crate2" parent="." instance=ExtResource("3_qjewu")]
+position = Vector2(288, 298)
+
+[node name="Crate3" parent="." instance=ExtResource("3_qjewu")]
+position = Vector2(257, 333)
