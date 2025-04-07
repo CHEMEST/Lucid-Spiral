@@ -13,7 +13,7 @@ namespace LucidSpiral.Statuses
         public Speed(double value) : base(value)
         {
         }
-        public Speed() : base(0)
+        public Speed()
         {
 
         }

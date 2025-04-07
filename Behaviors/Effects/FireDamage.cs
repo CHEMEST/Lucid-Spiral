@@ -12,15 +12,19 @@ namespace LucidSpiral.Behaviors.Effects
 {
     internal partial class FireDamage : Effect
     {
-        private double _dmg;
+        private double dmg;
         public FireDamage(double lifespanS, double delayS, double dmg, bool auto = true) : base(lifespanS, delayS, auto)
         {
-            _dmg = dmg;
+            this.dmg = dmg;
         }
 
         public override void Affect()
         {
-            Utils.FindStatus<Health>(Utils.FindEntityCarrying(this)).Modify(x => x -= _dmg);
+            Entities.Creatures.Entity root = Utils.FindEntityCarrying(this);
+
+            Health health = Utils.FindStatus<Health>(root);
+            GD.Print(dmg);
+            health.Modify(x => x -= dmg);
         }
     }
 }

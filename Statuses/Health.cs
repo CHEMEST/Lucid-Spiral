@@ -10,10 +10,8 @@ namespace LucidSpiral.StatusesAndEffects.Statuses
     [GlobalClass]
     internal partial class Health : StatusD
     {
+        public Health() { }
         private double past = 0;
-        public Health(double value) : base(value)
-        {
-        }
         public override void _Process(double delta)
         {
             base._Process(delta);
@@ -23,6 +21,6 @@ namespace LucidSpiral.StatusesAndEffects.Statuses
                 GD.Print(this);
             }
         }
-        public Health() : base(0) { }
+        public Health(double value) : base(value) { }
     }
 }

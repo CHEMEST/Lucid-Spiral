@@ -6,4 +6,6 @@ Public Variables: NameName
 Private Variables (including in code blocks): nameName
 Items from Global.CS (ignoring private/public usage): NameName
 
+Lucidity works the same as Health so the player's Health Status is referenced as the Lucidity stat (there is no actual Lucidity stat)
+
 C# project

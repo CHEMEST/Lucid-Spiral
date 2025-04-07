@@ -9,9 +9,35 @@ using System.Collections.Generic;
 /// <typeparam></typeparam>
 public partial class StatusD : Node, IStatus
 {
-    [Export] public double Value { get; private set; } = 0;
-    public StatusD(double value) => Value = value;
+    [Signal] public delegate void StatusChangedEventHandler(double value);
 
-    public void Modify(Func<double, double> modifier) => Value = modifier.Invoke(Value);
+    [Export] public double Value { get; protected set; } = 0;
+    /// <summary>
+    /// If Max == -1, Max = inital Value
+    /// </summary>
+    [Export] public double Max { get; private set; } = Double.MaxValue;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        //if (Max == -1) Max = Value;
+    }
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        //if (Value > Max) Value = Max;
+    }
+    public StatusD() { }
+    public StatusD(double value, double maxValue = -1)
+    {
+        Value = value;
+        Max = maxValue;
+    }
+
+    public void Modify(Func<double, double> modifier)
+    {
+        modifier.Invoke(Value);
+        EmitSignal(SignalName.StatusChanged, Value);
+    }
     public override string ToString() => $"{GetType().Name}: ({Value})";
 }

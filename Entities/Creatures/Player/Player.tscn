@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=17 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
+[ext_resource type="Script" uid="uid://4b8sblhtxur6" path="res://Entities/Creatures/Player/LucidityBar.cs" id="3_5waka"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_saco2"]
@@ -41,6 +42,24 @@ texture = ExtResource("2_tb6ca")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.515, 0.515)
 
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -931.0
+offset_top = -523.0
+offset_right = 930.0
+offset_bottom = 527.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 467.0
+offset_bottom = 92.0
+script = ExtResource("3_5waka")
+metadata/_edit_use_anchors_ = true
+
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
 
@@ -72,6 +91,7 @@ Value = 700.0
 [node name="Health" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("13_tcdwu")
 Value = 100.0
+Max = 150.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")

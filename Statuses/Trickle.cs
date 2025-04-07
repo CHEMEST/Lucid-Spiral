@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LucidSpiral.StatusesAndEffects.Statuses
+namespace LucidSpiral.Statuses
 {
     [GlobalClass]
-    internal partial class Damage : StatusD
+    internal partial class Trickle : StatusD
     {
-        public Damage(double value) : base(value)
+        public Trickle() { }
+        public Trickle(double value) : base(value)
         {
         }
-        public Damage() { }
     }
 }
