@@ -20,12 +20,12 @@ public partial class StatusD : Node, IStatus
     public override void _Ready()
     {
         base._Ready();
-        //if (Max == -1) Max = Value;
+        if (Max == -1) Max = Value;
     }
     public override void _Process(double delta)
     {
         base._Process(delta);
-        //if (Value > Max) Value = Max;
+        if (Value > Max) Value = Max;
     }
     public StatusD() { }
     public StatusD(double value, double maxValue = -1)
@@ -36,7 +36,7 @@ public partial class StatusD : Node, IStatus
 
     public void Modify(Func<double, double> modifier)
     {
-        modifier.Invoke(Value);
+        Value = modifier.Invoke(Value);
         EmitSignal(SignalName.StatusChanged, Value);
     }
     public override string ToString() => $"{GetType().Name}: ({Value})";

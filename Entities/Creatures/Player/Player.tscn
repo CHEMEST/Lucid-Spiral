@@ -91,7 +91,6 @@ Value = 700.0
 [node name="Health" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("13_tcdwu")
 Value = 100.0
-Max = 150.0
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")

@@ -21,16 +21,17 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         /// </summary>
         //// Values of 0 or less mean no timed trigger, only triggers by external action
         [Export] public double RepeatDelayS { get; private set; } = 0;
-        public bool _ready { get; protected set; } = false;
+        private bool ready { get; set; } = false;
+        public bool Enabled { get; set; } = true;
 
         private int _repeated = 0;
         private Timer _delayTimer;
         public void Act(double delta) 
         {
-            if (!_ready) return;
+            if (!ready || !Enabled) return;
 
             Behavior.Act(delta);
-            _ready = false;
+            ready = false;
 
         }
 
@@ -61,7 +62,7 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         }
         public void Trigger()
         {
-            _ready = true;
+            ready = true;
         }
         public override string ToString()
         {
@@ -72,10 +73,10 @@ namespace LucidSpiral.Behaviors.BehaviorUtils
         {
             if (_repeated < RepeatMax || RepeatMax < 1)
             {
-                if (_ready) return;
+                if (ready) return;
                 
                 if (RepeatMax >= 1) _repeated++;
-                _ready = true;
+                ready = true;
             }
             else
             {

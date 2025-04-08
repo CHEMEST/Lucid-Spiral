@@ -15,8 +15,11 @@ namespace LucidSpiral.MovementPatterns
     [GlobalClass]
     internal partial class RayfindPlayer : MovementPattern
     {
+        [Signal] public delegate void VisionChangedEventHandler(bool isPlayerVisible);
         private RayCast2D raycast;
         [Export] private float VisionRange = 500f;
+        private bool wasPlayerVisible = false;
+        private bool isPlayerVisible = false;
 
         public override void _Ready()
         {
@@ -56,6 +59,7 @@ namespace LucidSpiral.MovementPatterns
             if (distance > VisionRange)
             {
                 // Player is out of vision range
+                isPlayerVisible = false;
                 Body.Velocity = Body.Velocity.MoveToward(Vector2.Zero, dt);
                 Body.MoveAndSlide();
                 return;
@@ -71,13 +75,21 @@ namespace LucidSpiral.MovementPatterns
             if (!raycast.IsColliding() || raycast.GetCollider() == Player)
             {
                 // Move towards the player if visible
+                isPlayerVisible = true;
                 Body.Velocity = Body.Velocity.MoveToward(direction * maxSpeed, dt);
             }
             else
             {
+                isPlayerVisible = false;
                 Body.Velocity = Body.Velocity.MoveToward(Vector2.Zero, dt);
             }
 
+            // Emit a signal if the visibility state changes
+            if (isPlayerVisible != wasPlayerVisible)
+            {
+                wasPlayerVisible = isPlayerVisible;
+                EmitSignal(SignalName.VisibilityChanged, isPlayerVisible);
+            }
             Body.MoveAndSlide();
         }
     }

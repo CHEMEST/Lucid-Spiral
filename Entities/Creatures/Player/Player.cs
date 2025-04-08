@@ -11,6 +11,13 @@ public partial class Player : Entity
     public override void _Ready()
     {
         Global.Player = this;
+        Utils.FindManager<StatusManager>(this).GetStatus<Health>().HealthDepleted += PlayerDeath;
+    }
+
+    private void PlayerDeath()
+    {
+        Engine.Singleton.TimeScale = 0;
+        // load death screen and 
     }
 
     public override void _Process(double delta)

@@ -10,7 +10,7 @@ namespace LucidSpiral.Statuses
     [GlobalClass]
     internal partial class Trickle : StatusD
     {
-        public Trickle() { }
+        public Trickle() : base(0) { }
         public Trickle(double value) : base(value)
         {
         }

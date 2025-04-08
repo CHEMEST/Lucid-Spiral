@@ -10,15 +10,14 @@ namespace LucidSpiral.StatusesAndEffects.Statuses
     [GlobalClass]
     internal partial class Health : StatusD
     {
-        public Health() { }
-        private double past = 0;
-        public override void _Process(double delta)
+        [Signal] public delegate void HealthDepletedEventHandler();
+        public Health() : base(0){ }
+        public new void Modify(Func<double, double> modifer)
         {
-            base._Process(delta);
-            if (past != Value)
+            base.Modify(modifer);
+            if (Value < 0)
             {
-                past = Value;
-                GD.Print(this);
+                EmitSignal(SignalName.HealthDepleted);
             }
         }
         public Health(double value) : base(value) { }

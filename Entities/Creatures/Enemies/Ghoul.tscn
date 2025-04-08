@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_uafii"]
 [ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="8_bgq24"]
+[ext_resource type="Script" uid="uid://bpy7aseaxmux0" path="res://Behaviors/Actions/ActionSets/AllowIfRayFindingPlayer.cs" id="8_l45cl"]
 [ext_resource type="Script" uid="uid://du0ol03w86qqp" path="res://Behaviors/Actions/ProjectileSummon.cs" id="9_h7rpm"]
-[ext_resource type="Script" uid="uid://bryi0amakxlnh" path="res://Behaviors/Actions/ActionUtils/ActionSet.cs" id="9_nogrb"]
 [ext_resource type="PackedScene" uid="uid://b6rorvdt8oyhg" path="res://Entities/Projectiles/FireProjectile.tscn" id="10_v54nl"]
 [ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="11_l7e5k"]
 [ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_w5cif"]
@@ -54,12 +54,13 @@ Value = 400.0
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")
 
-[node name="ActionSet" type="Node" parent="ManagerHub/ActionManager"]
-script = ExtResource("9_nogrb")
+[node name="AllowIfRayFindingPlayer" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("8_l45cl")
 RepeatMax = -1
 RepeatDelayS = 1.0
+metadata/_custom_type_script = "uid://bpy7aseaxmux0"
 
-[node name="ProjectileSummon" type="Node" parent="ManagerHub/ActionManager/ActionSet"]
+[node name="ProjectileSummon" type="Node" parent="ManagerHub/ActionManager/AllowIfRayFindingPlayer"]
 script = ExtResource("9_h7rpm")
 projectileScene = ExtResource("10_v54nl")
 

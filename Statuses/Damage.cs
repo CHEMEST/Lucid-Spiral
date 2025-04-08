@@ -13,6 +13,6 @@ namespace LucidSpiral.StatusesAndEffects.Statuses
         public Damage(double value) : base(value)
         {
         }
-        public Damage() { }
+        public Damage() : base(0) { }
     }
 }
