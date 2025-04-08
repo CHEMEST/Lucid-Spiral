@@ -40,7 +40,7 @@ script = ExtResource("1_j0iih")
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("2_4dcmn")
 
-[node name="PathfindPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
+[node name="RayfindPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
 script = ExtResource("4_l45cl")
 metadata/_custom_type_script = "uid://66lyw7rpbjwf"
 

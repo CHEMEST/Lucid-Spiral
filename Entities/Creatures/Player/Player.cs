@@ -16,7 +16,7 @@ public partial class Player : Entity
 
     private void PlayerDeath()
     {
-        Engine.Singleton.TimeScale = 0;
+        //Engine.Singleton.TimeScale = 0;
         // load death screen and 
     }
 

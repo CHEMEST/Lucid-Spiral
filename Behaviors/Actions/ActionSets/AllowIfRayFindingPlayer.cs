@@ -1,6 +1,7 @@
 ﻿using Godot;
 using LucidSpiral.Behaviors.Actions.ActionUtils;
 using LucidSpiral.Behaviors.MovementPatterns.MovementUtils;
+using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.Managers;
 using LucidSpiral.MovementPatterns;
@@ -20,11 +21,25 @@ namespace LucidSpiral.Behaviors.Actions.ActionSets
         {
             base._Ready();
             // Connect to the RayfindPlayer's VisionChanged signal
-            IMovement movement = Utils.FindManager<MovementManager>(Utils.FindEntityCarrying(this)).GetActiveBehavior();
+            CallDeferred("Init");
+        }
+
+        private void Init()
+        {
+            Entity entity = Utils.FindEntityCarrying(this);
+            MovementManager movementManager = Utils.FindManager<MovementManager>(entity);
+            IMovement movement = movementManager.GetActiveBehavior();
             if (movement is RayfindPlayer rayfindPlayer)
             {
                 rayfindPlayer.VisionChanged += OnVisionChanged;
-            } else
+
+                foreach (var conn in rayfindPlayer.GetSignalConnectionList("VisionChanged"))
+                {
+                    GD.Print($"Target: {conn.Values.First()}, Method: {conn.Values}");
+                }
+
+            }
+            else
             {
                 GD.PrintErr("AllowIfRayFindingPlayer: No RayfindPlayer found in the active movement pattern.");
             }
@@ -33,6 +48,7 @@ namespace LucidSpiral.Behaviors.Actions.ActionSets
         private void OnVisionChanged(bool isPlayerVisible)
         {
             this.Enabled = isPlayerVisible;
+            GD.Print("Recieved: " +  isPlayerVisible);
         }
     }
 }
