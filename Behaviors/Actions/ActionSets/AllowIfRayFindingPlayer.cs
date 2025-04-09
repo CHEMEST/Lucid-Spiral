@@ -32,12 +32,6 @@ namespace LucidSpiral.Behaviors.Actions.ActionSets
             if (movement is RayfindPlayer rayfindPlayer)
             {
                 rayfindPlayer.VisionChanged += OnVisionChanged;
-
-                foreach (var conn in rayfindPlayer.GetSignalConnectionList("VisionChanged"))
-                {
-                    GD.Print($"Target: {conn.Values.First()}, Method: {conn.Values}");
-                }
-
             }
             else
             {

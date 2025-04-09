@@ -19,7 +19,7 @@ namespace LucidSpiral.MovementPatterns
         private RayCast2D raycast;
         [Export] private float VisionRange = 500f;
         private bool wasPlayerVisible = false;
-        private bool isPlayerVisible = false;
+        public bool isPlayerVisible = false;
 
         public override void _Ready()
         {
@@ -42,9 +42,9 @@ namespace LucidSpiral.MovementPatterns
 
         public override void _Draw()
         {
-
             Vector2 endPoint = Body.ToLocal(raycast.GlobalPosition + raycast.TargetPosition);
             DrawLine(Vector2.Zero, endPoint, Colors.Red, 2);
+
         }
         // worked with CGPT to make this
         // PS. make this a cone later for better vision and make the body move to the last location of the player if not found
@@ -89,7 +89,7 @@ namespace LucidSpiral.MovementPatterns
             {
                 wasPlayerVisible = isPlayerVisible;
                 GD.Print("Emitted: " +  isPlayerVisible);
-                EmitSignal(SignalName.VisibilityChanged, isPlayerVisible);
+                EmitSignal(SignalName.VisionChanged, isPlayerVisible);
             }
             Body.MoveAndSlide();
         }
