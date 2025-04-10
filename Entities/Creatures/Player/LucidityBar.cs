@@ -14,7 +14,7 @@ public partial class LucidityBar : ProgressBar
     }
     private void init()
     {
-        Health lucidity = Utils.FindManager<StatusManager>(Utils.FindEntityCarrying(this)).GetStatus<Health>();
+        Lucidity lucidity = Utils.FindManager<StatusManager>(Utils.FindEntityCarrying(this)).GetStatus<Lucidity>();
         lucidity.StatusChanged += LucidityChanged;
         this.MaxValue = lucidity.Max;
         LucidityChanged(lucidity.Value);

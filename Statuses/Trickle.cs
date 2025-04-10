@@ -1,5 +1,4 @@
 ﻿using Godot;
-using LucidSpiral.Statuses.Enums;
 using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 using System.Collections.Generic;
@@ -12,15 +11,20 @@ namespace LucidSpiral.Statuses
     [GlobalClass]
     internal partial class Trickle : Node2D, IStatus
     {
+        [Signal] public delegate void StatusChangedEventHandler(double value);
         private int idx = 0;
         // make these actual values later (using an exp eq)
         private List<double> trickleValues = new()
         {
             1,
             2,
-            3,
-            4
+            4,
+            6
         };
+        public double Max
+        {
+            get { return trickleValues.Last(); }
+        }
         public double Value
         {
             get
@@ -29,16 +33,27 @@ namespace LucidSpiral.Statuses
             }
         }
         public Trickle() { }
-        public void IncreaseTrickle()
+        public void IncreaseTrickle(int repititions = 1)
         {
-            if (idx >= trickleValues.Count)
+            DeltaTrickle(repititions);
+        }
+        public void DecreaseTrickle (int repititions = 1)
+        {
+            DeltaTrickle(-repititions);
+        }
+        public void DeltaTrickle(int idxDelta)
+        {
+            idx += idxDelta;
+            if (idx <= 0)
             {
                 idx = 0;
             }
-            else
+            if (idx > trickleValues.Count)
             {
-                idx++;
+                idx = trickleValues.Count;
             }
+            EmitSignal(SignalName.StatusChanged, Value);
         }
+
     }
 }
