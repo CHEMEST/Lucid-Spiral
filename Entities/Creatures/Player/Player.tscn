@@ -1,22 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=19 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
-[ext_resource type="Script" uid="uid://4b8sblhtxur6" path="res://Entities/Creatures/Player/LucidityBar.cs" id="3_5waka"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ioqc6"]
-[ext_resource type="Script" uid="uid://dkalgedxw37jb" path="res://Entities/Creatures/Player/TrickleBar.cs" id="4_4ca5h"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="4_p88h7"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_saco2"]
 [ext_resource type="Script" uid="uid://cdoeravh8xq7v" path="res://Behaviors/Actions/PlayerDash.cs" id="5_0ag6w"]
 [ext_resource type="Script" uid="uid://b6agf180if448" path="res://Behaviors/MovementPatterns/PlayerMovement.cs" id="5_ulenn"]
 [ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="7_6grap"]
 [ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_blgq1"]
+[ext_resource type="Script" uid="uid://c2iv0fefsuguw" path="res://Behaviors/Actions/LucidityTrickle.cs" id="8_knhds"]
+[ext_resource type="Script" uid="uid://bryi0amakxlnh" path="res://Behaviors/Actions/ActionUtils/ActionSet.cs" id="8_sq1ni"]
 [ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="10_c4ctk"]
 [ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="11_od378"]
 [ext_resource type="Script" uid="uid://bbfwkh8kvrm5q" path="res://Managers/StateManager.cs" id="12_wbvux"]
 [ext_resource type="Script" uid="uid://bl48r683xbon7" path="res://Statuses/Health.cs" id="13_tcdwu"]
 [ext_resource type="Script" uid="uid://btkl866dpssjd" path="res://Statuses/Trickle.cs" id="14_u3cfe"]
-[ext_resource type="Script" uid="uid://drwu3wlwxydqu" path="res://Statuses/Lucidity.cs" id="15_knhds"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
 radius = 11.0
@@ -43,31 +42,6 @@ scale = Vector2(2.1875, 2.1875)
 texture = ExtResource("2_tb6ca")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.515, 0.515)
-
-[node name="Control" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -931.0
-offset_top = -523.0
-offset_right = 930.0
-offset_bottom = 527.0
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Control"]
-layout_mode = 0
-offset_right = 468.0
-offset_bottom = 168.0
-
-[node name="LucidityBar" type="ProgressBar" parent="Camera2D/Control/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("3_5waka")
-metadata/_edit_use_anchors_ = true
-
-[node name="TrickleBar" type="ProgressBar" parent="Camera2D/Control/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("4_4ca5h")
-metadata/_edit_use_anchors_ = true
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("3_ioqc6")
@@ -80,6 +54,15 @@ script = ExtResource("5_0ag6w")
 dashTime = 0.3
 dashCooldown = 0.5
 Source = NodePath("../../..")
+
+[node name="ActionSet" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("8_sq1ni")
+RepeatDelayS = 2.0
+metadata/_custom_type_script = "uid://bryi0amakxlnh"
+
+[node name="LucidityTrickle" type="Node" parent="ManagerHub/ActionManager/ActionSet"]
+script = ExtResource("8_knhds")
+metadata/_custom_type_script = "uid://c2iv0fefsuguw"
 
 [node name="MovementManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("7_6grap")
@@ -104,12 +87,6 @@ Value = 100.0
 [node name="Trickle" type="Node2D" parent="ManagerHub/StatusManager"]
 script = ExtResource("14_u3cfe")
 metadata/_custom_type_script = "uid://btkl866dpssjd"
-
-[node name="Lucidity" type="Node" parent="ManagerHub/StatusManager"]
-script = ExtResource("15_knhds")
-Value = 100.0
-Max = -1.0
-metadata/_custom_type_script = "uid://drwu3wlwxydqu"
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("10_c4ctk")

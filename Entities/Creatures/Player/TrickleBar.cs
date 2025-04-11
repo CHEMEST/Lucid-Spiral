@@ -11,11 +11,11 @@ public partial class TrickleBar : ProgressBar
     public override void _Ready()
     {
         base._Ready();
-        CallDeferred("init");
+        Global.PlayerLoaded += init;
     }
     private void init()
     {
-        Trickle trickle = Utils.FindManager<StatusManager>(Utils.FindEntityCarrying(this)).GetStatus<Trickle>();
+        Trickle trickle = Utils.FindManager<StatusManager>(Global.Player).GetStatus<Trickle>();
         trickle.StatusChanged += TrickleChanged;
         this.MaxValue = trickle.Max;
         TrickleChanged(trickle.Value);

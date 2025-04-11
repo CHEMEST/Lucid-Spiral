@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucid Spiral"
-run/main_scene="uid://d4ehxkct06wcd"
+run/main_scene="uid://bxqvwii2m7oka"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,8 +22,9 @@ Utils="*res://Globals/Utils.cs"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [dotnet]
 
