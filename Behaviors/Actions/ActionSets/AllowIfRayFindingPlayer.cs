@@ -42,7 +42,6 @@ namespace LucidSpiral.Behaviors.Actions.ActionSets
         private void OnVisionChanged(bool isPlayerVisible)
         {
             this.Enabled = isPlayerVisible;
-            GD.Print("Recieved: " +  isPlayerVisible);
         }
     }
 }

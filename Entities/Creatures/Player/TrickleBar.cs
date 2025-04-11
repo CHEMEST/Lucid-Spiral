@@ -11,9 +11,9 @@ public partial class TrickleBar : ProgressBar
     public override void _Ready()
     {
         base._Ready();
-        Global.PlayerLoaded += init;
+        Global.Instance.PlayerLoaded += Init;
     }
-    private void init()
+    private void Init()
     {
         Trickle trickle = Utils.FindManager<StatusManager>(Global.Player).GetStatus<Trickle>();
         trickle.StatusChanged += TrickleChanged;

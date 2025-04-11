@@ -17,9 +17,9 @@ namespace LucidSpiral.Statuses
         private List<double> trickleValues = new()
         {
             1,
-            2,
-            4,
-            6
+            1.5,
+            2.5,
+            4
         };
         public double Max
         {

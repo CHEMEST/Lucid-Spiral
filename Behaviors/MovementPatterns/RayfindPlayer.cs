@@ -88,7 +88,6 @@ namespace LucidSpiral.MovementPatterns
             if (isPlayerVisible != wasPlayerVisible)
             {
                 wasPlayerVisible = isPlayerVisible;
-                GD.Print("Emitted: " +  isPlayerVisible);
                 EmitSignal(SignalName.VisionChanged, isPlayerVisible);
             }
             Body.MoveAndSlide();
