@@ -7,6 +7,6 @@ public partial class VHSShader : TextureRect
     public override void _Process(double delta)
     {
         _time += (float)delta;
-        Material.Set("shader_param/time", _time);
+        Material.Set("time", _time);
     }
 }

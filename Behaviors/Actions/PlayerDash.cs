@@ -87,9 +87,9 @@ namespace LucidSpiral.Behaviors.Actions
 
             // Calculating direction
             Vector2 mousePosition = Global.MousePos;
-            Vector2 playerPosition = player.GlobalPosition;
+            Vector2 playerPosition = player.Position;
             Vector2 dashDirection = playerPosition.DirectionTo(mousePosition);
-            GD.Print(dashDirection);
+
 
             // hyper
             float speedMult = (isHyper) ? dashSpeedMult * hyperDashMult : dashSpeedMult;
