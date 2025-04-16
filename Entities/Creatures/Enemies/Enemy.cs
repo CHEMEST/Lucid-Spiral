@@ -1,4 +1,7 @@
 ﻿using Godot;
+using LucidSpiral.Globals;
+using LucidSpiral.Managers;
+using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +14,24 @@ namespace LucidSpiral.Entities.Creatures.Enemies
     internal partial class Enemy : Entity
     {
         [Export] public EnemyValue Value = EnemyValue.None; 
-        public void Kill()
+        public override void Kill()
         {
             Global.Score += (int)Value;
+            QueueFree();
+        }
+        public override void _Ready()
+        {
+            base._Ready();
+            CallDeferred(nameof(init));
+        }
+        private void init()
+        {
+            Health health = Utils.FindManager<StatusManager>(this).GetStatus<Health>();
+            health.HealthDepleted += OnHealthDepleted;
+        }
+        public void OnHealthDepleted()
+        {
+            Kill();
         }
     }
 }

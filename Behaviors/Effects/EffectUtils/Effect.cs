@@ -36,7 +36,6 @@ namespace LucidSpiral.Behaviors.Effects.EffectUtils
                 _lifeTimer.Timeout += End;
             }
         }
-
         /// <summary>
         /// Affect() should be able to assume that the Effect node is placed in an EffectManager of the thing it is affecting
         /// </summary>

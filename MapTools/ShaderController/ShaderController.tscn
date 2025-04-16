@@ -21,7 +21,6 @@ material = SubResource("ShaderMaterial_53cfm")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("ViewportTexture_a3f2p")
-stretch_mode = 4
 script = ExtResource("3_dpe2n")
 
 [node name="SubViewport" type="SubViewport" parent="."]

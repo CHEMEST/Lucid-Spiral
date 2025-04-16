@@ -50,5 +50,9 @@ namespace LucidSpiral.Managers
             }
             return EmptyStatus.Instance as T;
         }
+        public override string ToString()
+        {
+            return $"{GetType().Name} : {string.Join(", ", Statuses.Select(kvp => $"{kvp.Value}"))}";
+        }
     }
 }

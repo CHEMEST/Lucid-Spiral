@@ -34,19 +34,25 @@ public partial class Global : Node
         }
 
     }
-    public void HandleMouseInput(InputEventMouseButton mouseEvent)
+    public void HandleMouseInput(InputEventMouse mouseEvent)
     {
         if (Root == null) return;
 
         Vector2 globalMouse = mouseEvent.GlobalPosition;
-        MousePos = globalMouse;
         var screenRect = Root.GetChild<TextureRect>(0).GetGlobalRect();
+        if (screenRect.Size == Vector2.Zero) return;
 
-        Vector2 localInViewport = (globalMouse - screenRect.Position) / screenRect.Size * (Root.FindChild("SubViewport") as SubViewport).Size;
+        // Calculate normalized mouse position within the TextureRect
+        Vector2 normalizedPos = (globalMouse - screenRect.Position) / screenRect.Size;
 
-        MousePos = localInViewport;  
+        // Scale to SubViewport resolution
+        SubViewport subViewport = Root.FindChild("SubViewport") as SubViewport;
+        if (subViewport == null) return;
 
-        //GD.Print($"Mouse {mouseEvent.ButtonIndex} clicked at: {MousePos}");
+        Vector2 localInViewport = normalizedPos * subViewport.Size;
+        MousePos = localInViewport;
+
+        GD.Print($"Mouse at: {MousePos}");
     }
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bue7ta0253pjc"]
+[gd_scene load_steps=21 format=3 uid="uid://bue7ta0253pjc"]
 
 [ext_resource type="Script" uid="uid://drhb7dx4oxmtf" path="res://Entities/Creatures/Player/Player.cs" id="1_w1wst"]
 [ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="2_tb6ca"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://bbfwkh8kvrm5q" path="res://Managers/StateManager.cs" id="12_wbvux"]
 [ext_resource type="Script" uid="uid://bl48r683xbon7" path="res://Statuses/Health.cs" id="13_tcdwu"]
 [ext_resource type="Script" uid="uid://btkl866dpssjd" path="res://Statuses/Trickle.cs" id="14_u3cfe"]
+[ext_resource type="Script" uid="uid://d4dntuvbwefy5" path="res://Managers/WeaponManager.cs" id="17_sq1ni"]
+[ext_resource type="PackedScene" uid="uid://drdnt0xl2mtmg" path="res://Weapons/Katana/Katana.tscn" id="18_2efm0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14e03"]
 radius = 11.0
@@ -101,3 +103,9 @@ Type = 1
 position = Vector2(0, 13)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_uv2sh")
+
+[node name="WeaponManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("17_sq1ni")
+metadata/_custom_type_script = "uid://d4dntuvbwefy5"
+
+[node name="Katana" parent="ManagerHub/WeaponManager" instance=ExtResource("18_2efm0")]

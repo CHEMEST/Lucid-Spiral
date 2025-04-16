@@ -12,5 +12,15 @@ namespace LucidSpiral.Managers
     [GlobalClass]
     internal partial class WeaponManager : FocusedManager<IWeapon>
     {
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            IWeapon iweapon = GetActiveBehavior();
+            if (iweapon == null) return;
+            if (iweapon is Node2D weapon)
+            {
+                weapon.GlobalPosition = Global.MousePos;
+            }
+        }
     }
 }

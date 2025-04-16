@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5dsqo6kai6j"]
+[gd_scene load_steps=15 format=3 uid="uid://c5dsqo6kai6j"]
 
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_j0iih"]
 [ext_resource type="Script" uid="uid://wvxvrdads7g8" path="res://Entities/Creatures/Enemies/Enemy.cs" id="1_l45cl"]
 [ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="2_4dcmn"]
 [ext_resource type="Script" uid="uid://66lyw7rpbjwf" path="res://Behaviors/MovementPatterns/RayfindPlayer.cs" id="4_l45cl"]
 [ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="4_uafii"]
+[ext_resource type="Script" uid="uid://bl48r683xbon7" path="res://Statuses/Health.cs" id="7_awj70"]
 [ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="7_nar8j"]
 [ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="8_bgq24"]
 [ext_resource type="Script" uid="uid://bpy7aseaxmux0" path="res://Behaviors/Actions/ActionSets/AllowIfRayFindingPlayer.cs" id="8_l45cl"]
@@ -51,6 +52,11 @@ script = ExtResource("4_uafii")
 [node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
 script = ExtResource("7_nar8j")
 Value = 400.0
+
+[node name="Health" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("7_awj70")
+Value = 100.0
+metadata/_custom_type_script = "uid://bl48r683xbon7"
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("8_bgq24")

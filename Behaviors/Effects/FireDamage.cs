@@ -23,7 +23,7 @@ namespace LucidSpiral.Behaviors.Effects
             Entities.Creatures.Entity root = Utils.FindEntityCarrying(this);
 
             Health health = Utils.FindStatus<Health>(root);
-            health.Modify(x => x -= dmg);
+            health?.Modify(x => x -= dmg);
         }
     }
 }

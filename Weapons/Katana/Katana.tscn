@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://drdnt0xl2mtmg"]
+[gd_scene load_steps=12 format=3 uid="uid://drdnt0xl2mtmg"]
 
 [ext_resource type="Script" uid="uid://y57tl01iibnf" path="res://Weapons/Katana/Katana.cs" id="1_asfmp"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_p6ui4"]
 [ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="2_no7ik"]
 [ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="3_u85xw"]
 [ext_resource type="Script" uid="uid://u1t1x1aghbyc" path="res://Managers/WeaponActionManager.cs" id="5_6gmoj"]
+[ext_resource type="Script" uid="uid://b5jiqt7jy0gu2" path="res://Behaviors/Actions/SimpleSwordHurt.cs" id="6_nrovd"]
 [ext_resource type="Script" uid="uid://pbx47llplcsx" path="res://Behaviors/Actions/CheckColliding.cs" id="6_ugywe"]
-[ext_resource type="Script" uid="uid://d4mc0vofukvog" path="res://Behaviors/Actions/BounceAwayNearby.cs" id="8_s2iin"]
+[ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="8_4ixeg"]
+[ext_resource type="Script" uid="uid://hcakku6w20ey" path="res://Statuses/Damage.cs" id="9_kgh2a"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qt7g0"]
 b = Vector2(0, 0)
@@ -51,8 +53,18 @@ shape = SubResource("RectangleShape2D_whutq")
 [node name="WeaponActionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("5_6gmoj")
 
+[node name="SimpleSwordHurt" type="Node" parent="ManagerHub/WeaponActionManager"]
+script = ExtResource("6_nrovd")
+metadata/_custom_type_script = "uid://b5jiqt7jy0gu2"
+
 [node name="CheckColliding" type="Node" parent="ManagerHub/WeaponActionManager"]
 script = ExtResource("6_ugywe")
 
-[node name="BounceAwayNearby" type="Node" parent="ManagerHub/WeaponActionManager"]
-script = ExtResource("8_s2iin")
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("8_4ixeg")
+metadata/_custom_type_script = "uid://dvqpik3dfhow8"
+
+[node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("9_kgh2a")
+Value = 20.0
+metadata/_custom_type_script = "uid://hcakku6w20ey"

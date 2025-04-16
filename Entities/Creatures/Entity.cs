@@ -10,5 +10,9 @@ namespace LucidSpiral.Entities.Creatures
     [GlobalClass]
     public partial class Entity : CharacterBody2D
     {
+        public virtual void Kill()
+        {
+            QueueFree();
+        }
     }
 }

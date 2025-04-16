@@ -13,7 +13,7 @@ public partial class LinkRootToGlobal : Node2D
     }
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+        if (@event is InputEventMouse mouseEvent)
         {
             Global.Instance.HandleMouseInput(mouseEvent);
         }

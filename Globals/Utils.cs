@@ -94,6 +94,7 @@ namespace LucidSpiral.Globals
                 root.GetNodeOrNull<ManagerHub>("ManagerHub")?.AddChild(newManager);
                 manager = newManager;
             }
+            
 
             manager.AddChild(effect);
         }
