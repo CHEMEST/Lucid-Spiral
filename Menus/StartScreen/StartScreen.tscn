@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bghyslsskf1lw"]
 
-[ext_resource type="Script" uid="uid://en8nr5e2yvsr" path="res://Utility/SwitchSceneOnPress.cs" id="1_xvupn"]
+[ext_resource type="Script" uid="uid://c3b0t3e0lmeqq" path="res://Menus/StartScreen/StartButton.cs" id="1_xvupn"]
 
 [sub_resource type="FontFile" id="FontFile_flx72"]
 cache/0/16/0/ascent = 0.0

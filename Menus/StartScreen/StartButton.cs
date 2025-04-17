@@ -1,4 +1,5 @@
 using Godot;
+using LucidSpiral.Globals;
 using System;
 
 public partial class StartButton : Button
@@ -12,6 +13,6 @@ public partial class StartButton : Button
     private void OnButtonPressed()
     {
         GetTree().ChangeSceneToFile(ScenePath);
-        Engine.Singleton.TimeScale = 1;
+        Utils.UnPauseGame();
     }
 }

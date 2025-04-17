@@ -17,6 +17,7 @@ namespace LucidSpiral.Entities.Creatures.Enemies
         public override void Kill()
         {
             Global.Score += (int)Value;
+            Utils.FindStatus<Health>(Global.Player).Modify((v) => v + (int)Value);
             QueueFree();
         }
         public override void _Ready()

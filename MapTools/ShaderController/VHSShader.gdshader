@@ -1,53 +1,40 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-
 uniform float time : hint_range(0, 10);
 
 void fragment() {
-	// horiz CRT
-	float scanline = sin(UV.y * 800.0) * 0.5;
-	COLOR.rgb = texture(screen_texture, UV).rgb - scanline;
-	// Chromatic Aberration
-	vec2 offset = vec2(0.002, 0.0);
-	vec3 col;
-	col.r = texture(screen_texture, UV + offset).r;
-	col.g = texture(screen_texture, UV).g;
-	col.b = texture(screen_texture, UV - offset).b;
-	COLOR.rgb = col;
-	// Lens dist
 	vec2 center = vec2(0.5);
 	vec2 uv = UV;
 
-	// Push UVs inward slightly to give distortion room to breathe
+	// Push UVs slightly inward to leave room for distortion
 	float margin = 0.05;
-	uv = mix(center, uv, 1.0 - margin); // 5% inward shift
+	uv = mix(center, uv, 1.0 - margin);
 
-	// Apply lens distortion
+	// Lens distortion (barrel type)
 	vec2 from_center = uv - center;
 	float radius = length(from_center);
-	uv += from_center * radius * 0.4;
+	float distortion_strength = 1.0;
+	uv = from_center * (1.0 + distortion_strength * pow(radius, 6.0)) + center;
 
-	// Clamp final UVs to stay safe
+	// Clamp to prevent out-of-bounds sampling
 	uv = clamp(uv, vec2(0.0), vec2(1.0));
 
-	COLOR = texture(screen_texture, uv);
-	
-	// vignette
+	// Chromatic aberration on final UVs
+	vec2 offset = vec2(0.0001, 0.0);
+	vec3 col;
+	col.r = texture(screen_texture, uv + offset).r;
+	col.g = texture(screen_texture, uv).g;
+	col.b = texture(screen_texture, uv - offset).b;
+
+	// Vignette
 	vec2 aspect = vec2(2.5, SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x);
 	float dist = length((UV - center) * aspect);
-
-
-	// Parameters
-	float Vradius = 0.8;      // How far the vignette reaches before fading
-	float softness = 0.9;    // How gradually it fades
-	float strength = 0.5;    // 0 = no vignette, 1 = full black at edges
-
-	// Vignette mask using smoothstep
+	float Vradius = 0.8;
+	float softness = 0.6;
+	float strength = 0.5;
 	float vignette = smoothstep(Vradius, Vradius + softness, dist);
+	col *= mix(1.0, 1.0 - strength, vignette);
 
-	// Apply to color
-	COLOR.rgb *= mix(1.0, 1.0 - strength, vignette);
-
+	COLOR.rgb = col;
 }
-

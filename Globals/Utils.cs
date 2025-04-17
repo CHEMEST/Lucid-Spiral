@@ -133,7 +133,7 @@ namespace LucidSpiral.Globals
             }
             return loadedScenes;
         }
-        public static void DisableSubtree(Node root)
+        public static void SetSubTreeEnabled(Node root, bool to)
         {
             var stack = new Stack<Node>();
             stack.Push(root);
@@ -142,17 +142,29 @@ namespace LucidSpiral.Globals
             {
                 Node current = stack.Pop();
 
-                current.SetProcess(false);
-                current.SetPhysicsProcess(false);
-                current.SetProcessInput(false);
-                current.SetProcessUnhandledInput(false);
-                current.SetProcessUnhandledKeyInput(false);
+                current.SetProcess(to);
+                current.SetPhysicsProcess(to);
+                current.SetProcessInput(to);
+                current.SetProcessUnhandledInput(to);
+                current.SetProcessUnhandledKeyInput(to);
 
                 foreach (Node child in current.GetChildren())
                 {
                     stack.Push(child);
                 }
             }
+        }
+        internal static void PauseGame()
+        {
+            Engine.Singleton.TimeScale = 0;
+            SetSubTreeEnabled(Global.Main.World, false);
+            SetSubTreeEnabled(Global.Main.GUI, false);
+        }
+        internal static void UnPauseGame()
+        {
+            Engine.Singleton.TimeScale = 1;
+            SetSubTreeEnabled(Global.Main.World, true);
+            SetSubTreeEnabled(Global.Main.GUI, true);
         }
 
 

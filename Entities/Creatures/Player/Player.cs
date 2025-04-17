@@ -9,17 +9,17 @@ using System;
 public partial class Player : Entity
 {
     [Export] private PackedScene deathScreen;
+    [Export] private Camera2D camera;
     public override void _Ready()
     {
         Global.Player = this;
+        Global.Camera = camera;
         Utils.FindManager<StatusManager>(this).GetStatus<Health>().HealthDepleted += PlayerDeath;
     }
 
     private void PlayerDeath()
     {
-        Engine.Singleton.TimeScale = 0;
-        Utils.DisableSubtree(Global.Main.World);
-        Utils.DisableSubtree(Global.Main.GUI);
+        Utils.PauseGame();
         Global.Main.Menu.AddChild(deathScreen.Instantiate());
         // load death screen and 
     }

@@ -1,4 +1,5 @@
 using Godot;
+using LucidSpiral.Globals;
 using System;
 
 public partial class Global : Node
@@ -13,6 +14,7 @@ public partial class Global : Node
     public static Random Random = new Random();
 
     public static Main Main;
+    public static Camera2D Camera;
 
     private bool playerInitialized = false;
     public override void _Ready()

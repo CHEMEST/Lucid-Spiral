@@ -13,7 +13,7 @@ public partial class StatusD : Node, IStatus
 
     [Export] public double Value { get; protected set; } = 0;
     /// <summary>
-    /// If Max == -1, Max = inital Value
+    /// If Max == -1 on ready, Max = inital Value
     /// </summary>
     [Export] public double Max { get; private set; } = Double.MaxValue;
 
