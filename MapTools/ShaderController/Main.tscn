@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxqvwii2m7oka"]
+
+[ext_resource type="PackedScene" uid="uid://d4ehxkct06wcd" path="res://MapTools/TestingArea.tscn" id="1_a3f2p"]
+[ext_resource type="Script" uid="uid://dfgai4u5a52kg" path="res://MapTools/ShaderController/Main.cs" id="1_gic4t"]
+[ext_resource type="Shader" uid="uid://do8sospgogjf1" path="res://MapTools/ShaderController/VHSShader.gdshader" id="2_gic4t"]
+[ext_resource type="Script" uid="uid://bd78m144or07i" path="res://MapTools/ShaderController/VHSShader.cs" id="3_dpe2n"]
+[ext_resource type="PackedScene" uid="uid://bqjbvk5dri2vb" path="res://Menus/PlayerUI/GUI.tscn" id="4_rlvy5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gic4t"]
+shader = ExtResource("2_gic4t")
+shader_parameter/time = 0.0
+
+[node name="ShaderController" type="Node2D" node_paths=PackedStringArray("Menu", "Shader", "GUI", "World")]
+script = ExtResource("1_gic4t")
+Menu = NodePath("Menus")
+Shader = NodePath("Shader")
+GUI = NodePath("GUI")
+World = NodePath("World")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="TestingArea" parent="World" instance=ExtResource("1_a3f2p")]
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="MainShader" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_gic4t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dpe2n")
+metadata/_edit_use_anchors_ = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Gui" parent="GUI" instance=ExtResource("4_rlvy5")]
+z_index = 10
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Menus" type="CanvasLayer" parent="."]

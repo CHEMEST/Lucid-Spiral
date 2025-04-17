@@ -133,5 +133,28 @@ namespace LucidSpiral.Globals
             }
             return loadedScenes;
         }
+        public static void DisableSubtree(Node root)
+        {
+            var stack = new Stack<Node>();
+            stack.Push(root);
+
+            while (stack.Count > 0)
+            {
+                Node current = stack.Pop();
+
+                current.SetProcess(false);
+                current.SetPhysicsProcess(false);
+                current.SetProcessInput(false);
+                current.SetProcessUnhandledInput(false);
+                current.SetProcessUnhandledKeyInput(false);
+
+                foreach (Node child in current.GetChildren())
+                {
+                    stack.Push(child);
+                }
+            }
+        }
+
+
     }
 }

@@ -8,6 +8,7 @@ using System;
 
 public partial class Player : Entity
 {
+    [Export] private PackedScene deathScreen;
     public override void _Ready()
     {
         Global.Player = this;
@@ -16,8 +17,16 @@ public partial class Player : Entity
 
     private void PlayerDeath()
     {
-        //Engine.Singleton.TimeScale = 0;
+        Engine.Singleton.TimeScale = 0;
+        Utils.DisableSubtree(Global.Main.World);
+        Utils.DisableSubtree(Global.Main.GUI);
+        Global.Main.Menu.AddChild(deathScreen.Instantiate());
         // load death screen and 
+    }
+
+    public override void Kill()
+    {
+        PlayerDeath();
     }
 
     public override void _Process(double delta)

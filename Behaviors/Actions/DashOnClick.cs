@@ -14,7 +14,7 @@ namespace LucidSpiral.Behaviors.Actions
     /// <summary>
     /// Makes player invincible during dash, every some number of dashes triggers a hyper dash (faster)
     /// </summary>
-    internal partial class PlayerDash : ActionPattern
+    internal partial class DashOnClick : ActionPattern
     {
         [Export] private int dashesForHyper = 3;
         [Export] private float dashSpeedMult = 4;
@@ -60,9 +60,8 @@ namespace LucidSpiral.Behaviors.Actions
                 EndDash();
             }
 
-            Player player = Global.Player;
-            player.Velocity = player.Velocity.MoveToward(Vector2.Zero, (float)delta * Global.dtk);
-            player.MoveAndSlide();
+            Source.Velocity = Source.Velocity.MoveToward(Vector2.Zero, (float)delta * Global.dtk);
+            Source.MoveAndSlide();
         }
 
         private void StartDash()
@@ -71,7 +70,7 @@ namespace LucidSpiral.Behaviors.Actions
             Utils.SetState(Source, State.Dashing);
             // invincibility & passthrough by turning off hitbox
             Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = false;
-            sourcePhysicsCollider.Disabled = true; 
+            sourcePhysicsCollider.Disabled = true;
             // Cutting active movement during dash
             Utils.GetActiveMovementPattern(Source).CanMove = false;
 
@@ -83,11 +82,10 @@ namespace LucidSpiral.Behaviors.Actions
             isDashing = true;
             dashTimer = dashTime;
             cooldownTimer = dashCooldown;
-            Player player = Global.Player;
 
             // Calculating direction
-            Vector2 mousePosition = Global.MousePos;
-            Vector2 playerPosition = player.Position;
+            Vector2 mousePosition = Source.GetGlobalMousePosition();
+            Vector2 playerPosition = Source.Position;
             Vector2 dashDirection = playerPosition.DirectionTo(mousePosition);
 
 
@@ -101,8 +99,8 @@ namespace LucidSpiral.Behaviors.Actions
             double sourceSpeed = Utils.FindStatus<Speed>(Source).Value;
             float speed = (float)sourceSpeed * speedMult;
 
-            player.Velocity = dashDirection * speed;
-            player.MoveAndSlide();
+            Source.Velocity = dashDirection * speed;
+            Source.MoveAndSlide();
         }
 
         private void EndDash()

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y57tl01iibnf" path="res://Weapons/Katana/Katana.cs" id="1_asfmp"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_p6ui4"]
+[ext_resource type="Texture2D" uid="uid://50fpjcrygptg" path="res://Assets/Sprites/Weapons/Brute Sword.png" id="2_4ixeg"]
 [ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="2_no7ik"]
 [ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="3_u85xw"]
 [ext_resource type="Script" uid="uid://u1t1x1aghbyc" path="res://Managers/WeaponActionManager.cs" id="5_6gmoj"]
@@ -13,28 +14,22 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qt7g0"]
 b = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whutq"]
-size = Vector2(8, 73)
-
 [node name="Katana" type="CharacterBody2D"]
 script = ExtResource("1_asfmp")
 
 [node name="EmptyCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
 shape = SubResource("SegmentShape2D_qt7g0")
 disabled = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(1.6, 1.6)
-color = Color(0.381215, 0.23748, 0.819122, 1)
-polygon = PackedVector2Array(3.7401, -5.77969, 3, -8, 3, -9, 4, -12, 2, -14, 2, -54, 0, -58, -2, -54, -2, -38.7821, -1, -37, -2, -35.6547, -2, -14, -4, -12, -3, -9, -3, -8, -3.78226, -5.65322, -3.54679, -4.39572, -1, -1, 1, -1, 3.51715, -4.3562)
-
-[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
-position = Vector2(0, -1.15385)
-scale = Vector2(0.75, 0.846154)
-color = Color(0.199796, 0.100191, 0.468632, 1)
-polygon = PackedVector2Array(3.7401, -5.77969, 3, -8, 3, -9, 4, -12, 2, -14, -2, -14, -4, -12, -3, -9, -3, -8, -3.78226, -5.65322, -3.54679, -4.39572, -1, -1, 1, -1, 3.51715, -4.3562)
+[node name="BruteSword" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -39)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4ixeg")
 
 [node name="ManagerHub" type="Node2D" parent="."]
+position = Vector2(0, 12)
 script = ExtResource("1_p6ui4")
 
 [node name="CollisionManager" type="Node2D" parent="ManagerHub"]
@@ -46,9 +41,10 @@ Type = 1
 
 [node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
-position = Vector2(0, -56.5)
-shape = SubResource("RectangleShape2D_whutq")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
+position = Vector2(-0.819642, -55.2533)
+scale = Vector2(1.08036, 2.39338)
+polygon = PackedVector2Array(7.23802, 12.6404, 7.23802, -9.08618, -6.64628, -14.9356, -13.1256, -9.08618, -5.72066, 12.6404)
 
 [node name="WeaponActionManager" type="Node2D" parent="ManagerHub"]
 script = ExtResource("5_6gmoj")

@@ -1,13 +1,14 @@
 using Godot;
 using System;
 
-public partial class Bed : Area2D
+public partial class Bed : Node2D
 {
-    [Export] public string MapPath = "";
+    [Export] private string MapPath = "";
+    [Export] private Area2D Area;
 
     public override void _Ready()
     {
-        AreaEntered += OnAreaEntered;
+        Area.AreaEntered += OnAreaEntered;
     }
 
     private async void OnAreaEntered(Area2D area)

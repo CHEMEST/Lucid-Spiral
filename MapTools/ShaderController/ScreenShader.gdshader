@@ -1,19 +1,17 @@
 shader_type canvas_item;
 
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-
 uniform float time : hint_range(0, 10);
 
 void fragment() {
 	// horiz CRT
 	float scanline = sin(UV.y * 800.0) * 0.5;
-	COLOR.rgb = texture(screen_texture, UV).rgb - scanline;
+	COLOR.rgb = texture(TEXTURE, UV).rgb - scanline;
 	// Chromatic Aberration
 	vec2 offset = vec2(0.002, 0.0);
 	vec3 col;
-	col.r = texture(screen_texture, UV + offset).r;
-	col.g = texture(screen_texture, UV).g;
-	col.b = texture(screen_texture, UV - offset).b;
+	col.r = texture(TEXTURE, UV + offset).r;
+	col.g = texture(TEXTURE, UV).g;
+	col.b = texture(TEXTURE, UV - offset).b;
 	COLOR.rgb = col;
 	// Lens dist
 	vec2 center = vec2(0.5);
@@ -31,7 +29,7 @@ void fragment() {
 	// Clamp final UVs to stay safe
 	uv = clamp(uv, vec2(0.0), vec2(1.0));
 
-	COLOR = texture(screen_texture, uv);
+	COLOR = texture(TEXTURE, uv);
 	
 	// vignette
 	vec2 aspect = vec2(2.5, SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x);
