@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://km5yem502b1v"]
+[gd_scene load_steps=4 format=3 uid="uid://cxp2elxkm7111"]
 
 [ext_resource type="Script" uid="uid://daysc3bel23qv" path="res://MapTools/MapUtils/Room.cs" id="1_8ujvg"]
 [ext_resource type="Script" uid="uid://cnryfaprdl1f2" path="res://MapTools/MapUtils/EntryPoint.cs" id="2_vrdm2"]

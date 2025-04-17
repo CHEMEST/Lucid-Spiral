@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>LucidSpiral</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Statuses\Enums\" />
+  </ItemGroup>
 </Project>

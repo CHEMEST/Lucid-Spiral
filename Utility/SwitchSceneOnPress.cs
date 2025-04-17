@@ -3,7 +3,7 @@ using System;
 
 public partial class SwitchSceneOnPress : Button
 {
-    [Export] public string LobbyPath = "";
+    [Export] public string ScenePath = "";
     public override void _Ready()
     {
         Pressed += OnButtonPressed;
@@ -11,6 +11,6 @@ public partial class SwitchSceneOnPress : Button
 
     private void OnButtonPressed()
     {
-        GetTree().ChangeSceneToFile(LobbyPath);
+        GetTree().ChangeSceneToFile(ScenePath);
     }
 }

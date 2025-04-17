@@ -1,0 +1,195 @@
+[gd_scene load_steps=18 format=3 uid="uid://drdnt0xl2mtmg"]
+
+[ext_resource type="Script" uid="uid://y57tl01iibnf" path="res://Weapons/BruteSword/BruteSword.cs" id="1_asfmp"]
+[ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="1_p6ui4"]
+[ext_resource type="Texture2D" uid="uid://50fpjcrygptg" path="res://Assets/Sprites/Weapons/Brute Sword.png" id="2_4ixeg"]
+[ext_resource type="Texture2D" uid="uid://cxja1vpbpvm32" path="res://Assets/Sprites/VFX/AoE Cracks.png" id="2_5ip7o"]
+[ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="2_no7ik"]
+[ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="3_u85xw"]
+[ext_resource type="Script" uid="uid://u1t1x1aghbyc" path="res://Managers/WeaponActionManager.cs" id="5_6gmoj"]
+[ext_resource type="Script" uid="uid://b5jiqt7jy0gu2" path="res://Behaviors/Actions/SimpleSwordHurt.cs" id="6_nrovd"]
+[ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="8_4ixeg"]
+[ext_resource type="Script" uid="uid://hte3yldifd5w" path="res://Behaviors/Actions/AoEHurt.cs" id="9_hprj1"]
+[ext_resource type="Script" uid="uid://hcakku6w20ey" path="res://Statuses/Damage.cs" id="9_kgh2a"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qt7g0"]
+b = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_4ixeg"]
+resource_name = "Attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1.7411, 0.999998, 1),
+"update": 0,
+"values": [0.0, -1.0472, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kgh2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpecialRange:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.483333, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruteSword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BruteSword:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nrovd"]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruteSword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.766667, 0.98056, 1.18235, 1.43045),
+"transitions": PackedFloat32Array(1.68179, 1, 8.87655, 1.03526, 1.03526, 1.03526, 1.68179),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -24), Vector2(0, -24), Vector2(0, 8), Vector2(0, 8), Vector2(0, 8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruteSword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.998211, 1.2, 1.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -3.14159, -3.14159, -3.14159, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecialRange:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.767653, 0.866667, 0.966667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.483333, 1, 0), Color(0, 0.483333, 1, 0.152941), Color(0, 0.483333, 1, 0.717647), Color(0, 0.483333, 1, 0.717647), Color(0, 0.483333, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bwh4"]
+_data = {
+&"BasicAttack": SubResource("Animation_4ixeg"),
+&"RESET": SubResource("Animation_kgh2a"),
+&"SpecialAttack": SubResource("Animation_nrovd")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kgh2a"]
+radius = 250.008
+
+[node name="Brute Sword" type="CharacterBody2D" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("1_asfmp")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="EmptyCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("SegmentShape2D_qt7g0")
+disabled = true
+
+[node name="SpecialRange" type="Sprite2D" parent="."]
+modulate = Color(0, 0.483333, 1, 0)
+position = Vector2(8, 92)
+scale = Vector2(3.875, 3.875)
+texture = ExtResource("2_5ip7o")
+
+[node name="BruteSword" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_4ixeg")
+offset = Vector2(-0.37976, -23.9033)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5bwh4")
+}
+
+[node name="ManagerHub" type="Node2D" parent="."]
+position = Vector2(0, 12)
+script = ExtResource("1_p6ui4")
+
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("2_no7ik")
+
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("3_u85xw")
+Type = 1
+
+[node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
+position = Vector2(-1.81964, -63.2533)
+scale = Vector2(1.08036, 2.39338)
+polygon = PackedVector2Array(7.23802, 12.6404, 7.23802, -9.08618, -6.64628, -14.9356, -13.1256, -9.08618, -5.72066, 12.6404)
+
+[node name="SecondaryHitBox" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("3_u85xw")
+Type = 2
+metadata/_custom_type_script = "uid://bsbouh73nd5ev"
+
+[node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/SecondaryHitBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/SecondaryHitBox/Area2D"]
+position = Vector2(9, 82)
+shape = SubResource("CircleShape2D_kgh2a")
+debug_color = Color(0.97, 0, 0.468834, 0.0352941)
+
+[node name="WeaponActionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("5_6gmoj")
+
+[node name="SimpleSwordHurt" type="Node" parent="ManagerHub/WeaponActionManager"]
+script = ExtResource("6_nrovd")
+metadata/_custom_type_script = "uid://b5jiqt7jy0gu2"
+
+[node name="AoEHurt" type="Node" parent="ManagerHub/WeaponActionManager"]
+script = ExtResource("9_hprj1")
+
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("8_4ixeg")
+metadata/_custom_type_script = "uid://dvqpik3dfhow8"
+
+[node name="Damage" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("9_kgh2a")
+Value = 20.0
+metadata/_custom_type_script = "uid://hcakku6w20ey"

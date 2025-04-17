@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://onb0ibds3vhx"]
+[gd_scene load_steps=24 format=3 uid="uid://onb0ibds3vhx"]
 
-[ext_resource type="Texture2D" uid="uid://cg0lr1tyewx1a" path="res://icon.svg" id="1_qc445"]
+[ext_resource type="Texture2D" uid="uid://dpd10nwot43hd" path="res://Assets/Sprites/Projectiles/SimpleProjectile.png" id="1_3yags"]
+[ext_resource type="Script" uid="uid://dpgb88r32nbfn" path="res://Utility/AutoPlayAnim.cs" id="2_ddjc1"]
 [ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="2_g102k"]
 [ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="3_34p4i"]
 [ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="4_kfnkf"]
@@ -15,8 +16,72 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gn3d3"]
 b = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iutlm"]
-size = Vector2(18, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddjc1"]
+atlas = ExtResource("1_3yags")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grpec"]
+atlas = ExtResource("1_3yags")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrwmc"]
+atlas = ExtResource("1_3yags")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8vdn"]
+atlas = ExtResource("1_3yags")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqr88"]
+atlas = ExtResource("1_3yags")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtsud"]
+atlas = ExtResource("1_3yags")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dawa"]
+atlas = ExtResource("1_3yags")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a53r8"]
+atlas = ExtResource("1_3yags")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxfxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddjc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grpec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrwmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8vdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqr88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtsud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dawa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a53r8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhvbw"]
+radius = 8.0
 
 [node name="BasicProjectile" type="CharacterBody2D"]
 
@@ -24,9 +89,11 @@ size = Vector2(18, 19)
 shape = SubResource("SegmentShape2D_gn3d3")
 disabled = true
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("1_qc445")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_nxfxw")
+frame_progress = 0.591114
+script = ExtResource("2_ddjc1")
 
 [node name="ManagerHub" type="Node2D" parent="."]
 script = ExtResource("2_g102k")
@@ -41,7 +108,7 @@ Type = 1
 [node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
-shape = SubResource("RectangleShape2D_iutlm")
+shape = SubResource("CircleShape2D_jhvbw")
 
 [node name="ActionManager" type="Node" parent="ManagerHub"]
 script = ExtResource("5_72bki")

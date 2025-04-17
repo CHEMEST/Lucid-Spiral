@@ -94,6 +94,7 @@ namespace LucidSpiral.Globals
                 root.GetNodeOrNull<ManagerHub>("ManagerHub")?.AddChild(newManager);
                 manager = newManager;
             }
+            
 
             manager.AddChild(effect);
         }
@@ -132,5 +133,43 @@ namespace LucidSpiral.Globals
             }
             return loadedScenes;
         }
+        public static void SetSubTreeEnabled(Node root, bool to)
+        {
+            var stack = new Stack<Node>();
+            stack.Push(root);
+
+            while (stack.Count > 0)
+            {
+                Node current = stack.Pop();
+
+                current.SetProcess(to);
+                current.SetPhysicsProcess(to);
+                current.SetProcessInput(to);
+                current.SetProcessUnhandledInput(to);
+                current.SetProcessUnhandledKeyInput(to);
+
+                foreach (Node child in current.GetChildren())
+                {
+                    stack.Push(child);
+                }
+            }
+        }
+        internal static void PauseGame()
+        {
+            Engine.Singleton.TimeScale = 0;
+            SetSubTreeEnabled(Global.Main.World, false);
+            SetSubTreeEnabled(Global.Main.GUI, false);
+            Global.Paused = true;
+        }
+        internal static void UnPauseGame()
+        {
+            Engine.Singleton.TimeScale = 1;
+            if (Global.Main == null) return;
+            SetSubTreeEnabled(Global.Main.World, true);
+            SetSubTreeEnabled(Global.Main.GUI, true);
+            Global.Paused = false;
+        }
+
+
     }
 }

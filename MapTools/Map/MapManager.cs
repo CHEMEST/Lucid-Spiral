@@ -1,4 +1,5 @@
 using Godot;
+using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.MapTools.MapUtils;
 using System;
@@ -23,11 +24,15 @@ public partial class MapManager : Node2D
     public override void _Ready()
     {
         base._Ready();
+        CallDeferred(nameof(DeferredSetup));
+    }
 
+    private void DeferredSetup()
+    {
         loadRooms();
         organizeRoomsByDirection();
 
-        // print rooms by direction
+        // Debug print
         foreach (var entry in roomsByDirection)
         {
             GD.Print(entry.Key + ": ");
@@ -39,7 +44,37 @@ public partial class MapManager : Node2D
 
         cursor = Vector2I.Zero;
         Room room = RandomRoom();
-        activeRoomParent.AddChild(room);
+        rooms[cursor] = room;
+
+        if (activeRoomParent != null)
+        {
+            activeRoomParent.AddChild(room);
+        }
+        else
+        {
+            GD.PushWarning("activeRoomParent is null in DeferredSetup");
+        }
+        foreach (Node child in activeRoomParent.GetChildren())
+        {
+            if (child is Room roomChild)
+            {
+                GD.Print(child.Name);
+            }
+        }
+
+        CallDeferred(nameof(InitializePlayer));
+    }
+
+
+    private void InitializePlayer()
+    {
+        Vector2 pos = rooms[cursor].GlobalPosition + (rooms[cursor].Size) / 2;
+        GD.Print("Initialized Player at ", pos);
+        Global.Player.GlobalPosition = pos;
+        GD.Print("Player is at ", Global.Player.GlobalPosition);
+
+        Room room = activeRoomParent.GetChild<Room>(0);
+        GD.Print("Room is at", room.GlobalPosition + room.Size/2);
     }
 
     private void organizeRoomsByDirection()
@@ -108,15 +143,45 @@ public partial class MapManager : Node2D
         }
         else
         {
-            Room room = RandomRoomWithOppositeEntry(entryPoint);
-            rooms[cursor] = room;
-            activeRoomParent.AddChild(room);
+            AddNewRoom(entryPoint);
         }
-
-        // move player to new room
-        Player player = Global.Player;
-        player.Position = rooms[cursor].Position + (rooms[cursor].Size)/2;
+        MovePlayer(entryPoint);
 
         GD.Print(cursor);
+    }
+
+    private void MovePlayer(EntryPoint entryInital)
+    {
+        Direction dir = entryInital.GetOppositeDirection();
+        EntryPoint oppositeEntry = null;
+        foreach ( EntryPoint entry in rooms[cursor].Entries)
+        {
+            if (entry.Direction == dir)
+            {
+                oppositeEntry = entry;
+                break;
+            }
+        }
+
+        Player player = Global.Player;
+        Vector2 pos;
+        if (oppositeEntry == null) // move to center of room if no opposite entry
+        {
+            pos = rooms[cursor].Position + (rooms[cursor].Size) / 2;
+        }
+        else // move to an offset of the entry location
+        {
+            pos = oppositeEntry.GetChild<CollisionShape2D>(0).GlobalPosition + oppositeEntry.Dir * -50;
+        }
+
+        player.GlobalPosition = pos;
+
+    }
+
+    private void AddNewRoom(EntryPoint entryPoint)
+    {
+        Room room = RandomRoomWithOppositeEntry(entryPoint);
+        rooms[cursor] = room;
+        activeRoomParent.AddChild(room);
     }
 }

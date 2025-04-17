@@ -1,4 +1,6 @@
 using Godot;
+using LucidSpiral.Behaviors.Actions;
+using LucidSpiral.Behaviors.Actions.ActionUtils;
 using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.Managers;
@@ -8,9 +10,25 @@ using System;
 
 public partial class Player : Entity
 {
+    [Export] private PackedScene deathScreen;
+    [Export] private Camera2D camera;
     public override void _Ready()
     {
         Global.Player = this;
+        Global.Camera = camera;
+        Utils.FindManager<StatusManager>(this).GetStatus<Health>().HealthDepleted += PlayerDeath;
+    }
+
+    private void PlayerDeath()
+    {
+        Utils.PauseGame();
+        Global.Main.Menu.AddChild(deathScreen.Instantiate());
+        // load death screen and 
+    }
+
+    public override void Kill()
+    {
+        PlayerDeath();
     }
 
     public override void _Process(double delta)
@@ -37,4 +55,8 @@ public partial class Player : Entity
         return log;
     }
 
+    internal void StartTrickle()
+    {
+        Utils.FindManager<ActionManager>(this).GetNode<ActionSet>("LuciditySet").GetNode<LucidityTrickle>("LucidityTrickle").Started = true;
+    }
 }

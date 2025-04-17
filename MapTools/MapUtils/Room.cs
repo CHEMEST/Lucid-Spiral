@@ -14,7 +14,8 @@ namespace LucidSpiral.MapTools.MapUtils
         [Export] private Control container;
         public List<EntryPoint> Entries { get; private set; } = new();
 
-        public Vector2 Size { get
+        public Vector2 Size {
+            get
             {
                 return new Vector2(container.Size.X, container.Size.Y);
             } 
