@@ -31,7 +31,7 @@ namespace LucidSpiral.Behaviors.Actions
         public override void _Ready()
         {
             base._Ready();
-            sourcePhysicsCollider = Source.GetChild<CollisionShape2D>(0);
+            sourcePhysicsCollider = Source.GetNode<CollisionShape2D>("PhysicsShape");
             dashesUntilHyper = dashesForHyper;
         }
 
@@ -70,7 +70,7 @@ namespace LucidSpiral.Behaviors.Actions
             Utils.SetState(Source, State.Dashing);
             // invincibility & passthrough by turning off hitbox
             Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = false;
-            sourcePhysicsCollider.Disabled = true;
+            Source.CollisionLayer = 2;
             // Cutting active movement during dash
             Utils.GetActiveMovementPattern(Source).CanMove = false;
 
@@ -110,7 +110,7 @@ namespace LucidSpiral.Behaviors.Actions
             Utils.SetState(Source, State.Idle);
             // Re-enable hitbox
             Utils.FindCollisionSet(Source, CollisionType.Hitbox).IsDetectable = true;
-            sourcePhysicsCollider.Disabled = false;
+            Source.CollisionLayer = 1;
             // Re-enable movement
             Utils.GetActiveMovementPattern(Source).CanMove = true;
         }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqjbvk5dri2vb"]
+[gd_scene load_steps=7 format=3 uid="uid://bqjbvk5dri2vb"]
 
 [ext_resource type="Script" uid="uid://4b8sblhtxur6" path="res://Menus/PlayerUI/LucidityBar.cs" id="1_irfgh"]
 [ext_resource type="Script" uid="uid://dkalgedxw37jb" path="res://Menus/PlayerUI/TrickleBar.cs" id="2_bqtxa"]
-[ext_resource type="Script" uid="uid://bly1m33pwhplh" path="res://Menus/PlayerUI/ScoreLabel.cs" id="3_bqtxa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch6y1"]
 bg_color = Color(0.0117647, 0, 0.258824, 1)
@@ -75,10 +74,3 @@ value = 18.38
 show_percentage = false
 script = ExtResource("2_bqtxa")
 metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "Score:"
-fit_content = true
-script = ExtResource("3_bqtxa")

@@ -2,7 +2,7 @@ using Godot;
 using LucidSpiral.Globals;
 using System;
 
-public partial class Ghoul : CharacterBody2D
+public partial class REMnant : CharacterBody2D
 {
 
 }

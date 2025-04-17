@@ -1,52 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bghyslsskf1lw"]
+[gd_scene load_steps=7 format=3 uid="uid://bghyslsskf1lw"]
 
 [ext_resource type="Script" uid="uid://c3b0t3e0lmeqq" path="res://Menus/StartScreen/StartButton.cs" id="1_xvupn"]
-
-[sub_resource type="FontFile" id="FontFile_flx72"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
-cache/0/60/0/ascent = 0.0
-cache/0/60/0/descent = 0.0
-cache/0/60/0/underline_position = 0.0
-cache/0/60/0/underline_thickness = 0.0
-cache/0/60/0/scale = 1.0
-cache/0/120/0/ascent = 0.0
-cache/0/120/0/descent = 0.0
-cache/0/120/0/underline_position = 0.0
-cache/0/120/0/underline_thickness = 0.0
-cache/0/120/0/scale = 1.0
-
-[sub_resource type="FontFile" id="FontFile_xvupn"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/30/0/ascent = 0.0
-cache/0/30/0/descent = 0.0
-cache/0/30/0/underline_position = 0.0
-cache/0/30/0/underline_thickness = 0.0
-cache/0/30/0/scale = 1.0
+[ext_resource type="FontFile" uid="uid://pknnss57ww7j" path="res://Assets/ThemeA/MiTica.otf" id="2_3vy6m"]
+[ext_resource type="Texture2D" uid="uid://c7duuo0aq23y1" path="res://Assets/Sprites/MenusAndUI/Start.png" id="2_flx72"]
+[ext_resource type="Texture2D" uid="uid://dah7r1awbpe4q" path="res://Assets/Sprites/Player/player.png" id="3_ih310"]
+[ext_resource type="Texture2D" uid="uid://50fpjcrygptg" path="res://Assets/Sprites/Weapons/Brute Sword.png" id="4_3vy6m"]
+[ext_resource type="Texture2D" uid="uid://didv4qpioao4s" path="res://Assets/Sprites/Weapons/Lightning Sword.png" id="5_hrfmn"]
 
 [node name="StartScreen" type="Node2D"]
+
+[node name="Start" type="Sprite2D" parent="."]
+position = Vector2(720, 405)
+texture = ExtResource("2_flx72")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -54,26 +19,17 @@ anchors_preset = 0
 offset_right = 1440.0
 offset_bottom = 810.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.412552, 0.152486, 0.739684, 1)
-
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -391.0
-offset_top = 120.0
+offset_top = 203.0
 offset_right = 391.0
-offset_bottom = 318.0
+offset_bottom = 401.0
 grow_horizontal = 2
-theme_override_fonts/normal_font = SubResource("FontFile_flx72")
+theme_override_fonts/normal_font = ExtResource("2_3vy6m")
 theme_override_font_sizes/normal_font_size = 120
 text = "Lucid Blade"
 horizontal_alignment = 1
@@ -87,20 +43,38 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -480.0
-offset_top = 14.0
+offset_top = 146.0
 offset_right = 480.0
-offset_bottom = 114.0
+offset_bottom = 296.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Button" type="Button" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = SubResource("FontFile_xvupn")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_3vy6m")
+theme_override_font_sizes/font_size = 90
 text = "Start"
 script = ExtResource("1_xvupn")
 ScenePath = "res://MapTools/ShaderController/Main.tscn"
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(938, 457)
+rotation = 0.352473
+scale = Vector2(8.14263, 8.14263)
+texture = ExtResource("3_ih310")
+
+[node name="BruteSword" type="Sprite2D" parent="."]
+position = Vector2(1259, 306)
+rotation = 0.41505
+scale = Vector2(6.75, 6.75)
+texture = ExtResource("4_3vy6m")
+
+[node name="LightningSword" type="Sprite2D" parent="."]
+position = Vector2(180, 392)
+rotation = -0.292069
+scale = Vector2(7.875, 7.875)
+texture = ExtResource("5_hrfmn")

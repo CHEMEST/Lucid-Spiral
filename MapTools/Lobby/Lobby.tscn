@@ -25,6 +25,7 @@ position = Vector2(864, 316)
 position = Vector2(1275, 830)
 
 [node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(1667, 1087, 1668, 60, 67, 63, 53, 1093, 15, 1128, 7, -2, 1718, -4, 1721, 1118, 8, 1136, 7, 1135, 55, 1084)

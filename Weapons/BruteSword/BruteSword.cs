@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace LucidSpiral.Behaviors.Weapons
 {
     [GlobalClass]
-    internal partial class Katana : Weapon
+    internal partial class BruteSword : Weapon
     {
     }
 }

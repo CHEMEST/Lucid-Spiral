@@ -9,6 +9,7 @@ public partial class Global : Node
 
     public static Player Player;
     public static int Score = 0;
+    public static bool Paused = false;
 
     public static float dtk = 1000f; // delta time const
     public static Random Random = new Random();

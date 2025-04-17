@@ -27,7 +27,7 @@ scroll_scale = Vector2(0.3, 0.3)
 [node name="SampleRoomFlooring" type="Sprite2D" parent="Parallax/Parallax2D"]
 texture_repeat = 2
 position = Vector2(960, 540)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_jbfh2")
 region_enabled = true
 region_rect = Rect2(0, 0, 3840, 2160)

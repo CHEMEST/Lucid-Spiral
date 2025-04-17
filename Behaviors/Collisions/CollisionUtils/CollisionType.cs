@@ -10,6 +10,6 @@ namespace LucidSpiral.Behaviors.Collisions.CollisionUtils
     {
         Empty,
         Hitbox,
-        EffectPickup
+        SecondaryHitbox,
     }
 }

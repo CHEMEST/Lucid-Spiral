@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace LucidSpiral.Behaviors.Effects
 {
-    internal partial class FireDamage : Effect
+    internal partial class Poison : Effect
     {
         private double dmg;
-        public FireDamage(double lifespanS, double delayS, double dmg, bool auto = true) : base(lifespanS, delayS, auto)
+        public Poison(double lifespanS, double delayS, double dmg, bool auto = true) : base(lifespanS, delayS, auto)
         {
             this.dmg = dmg;
         }

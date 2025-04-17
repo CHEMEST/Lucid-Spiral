@@ -1,4 +1,6 @@
 using Godot;
+using LucidSpiral.Behaviors.Actions;
+using LucidSpiral.Behaviors.Actions.ActionUtils;
 using LucidSpiral.Entities.Creatures;
 using LucidSpiral.Globals;
 using LucidSpiral.Managers;
@@ -53,4 +55,8 @@ public partial class Player : Entity
         return log;
     }
 
+    internal void StartTrickle()
+    {
+        Utils.FindManager<ActionManager>(this).GetNode<ActionSet>("LuciditySet").GetNode<LucidityTrickle>("LucidityTrickle").Started = true;
+    }
 }

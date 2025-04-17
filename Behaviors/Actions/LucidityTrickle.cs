@@ -15,8 +15,12 @@ namespace LucidSpiral.Behaviors.Actions
     [GlobalClass]
     internal partial class LucidityTrickle : ActionPattern
     {
+        public bool Started { get; set; } = false;
         public override void Action(double delta)
         {
+            GD.Print(Started, Global.Paused);
+            if (Global.Paused || !Started) return;
+
             Trickle trickle = Utils.FindManager<StatusManager>(GetOwner()).GetStatus<Trickle>();
             Health health = Utils.FindManager<StatusManager>(GetOwner()).GetStatus<Health>();
 

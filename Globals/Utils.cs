@@ -159,12 +159,15 @@ namespace LucidSpiral.Globals
             Engine.Singleton.TimeScale = 0;
             SetSubTreeEnabled(Global.Main.World, false);
             SetSubTreeEnabled(Global.Main.GUI, false);
+            Global.Paused = true;
         }
         internal static void UnPauseGame()
         {
             Engine.Singleton.TimeScale = 1;
+            if (Global.Main == null) return;
             SetSubTreeEnabled(Global.Main.World, true);
             SetSubTreeEnabled(Global.Main.GUI, true);
+            Global.Paused = false;
         }
 
 

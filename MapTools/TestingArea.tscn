@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4ehxkct06wcd"]
+[gd_scene load_steps=6 format=3 uid="uid://d4ehxkct06wcd"]
 
 [ext_resource type="PackedScene" uid="uid://bue7ta0253pjc" path="res://Entities/Creatures/Player/Player.tscn" id="1_meg27"]
 [ext_resource type="Texture2D" uid="uid://brbwbw1hdtnpc" path="res://Assets/Sprites/Tiles/Floors/SampleRoomFlooring.png" id="1_x3a6a"]
-[ext_resource type="PackedScene" uid="uid://c5dsqo6kai6j" path="res://Entities/Creatures/Enemies/Ghoul.tscn" id="2_psi2g"]
+[ext_resource type="PackedScene" uid="uid://c5dsqo6kai6j" path="res://Entities/Creatures/Enemies/REMnant.tscn" id="2_psi2g"]
 [ext_resource type="PackedScene" uid="uid://bn0baym3n04kp" path="res://Objects/Large/Crate.tscn" id="3_qjewu"]
+[ext_resource type="PackedScene" uid="uid://cca112tk0toyn" path="res://Entities/Creatures/Enemies/Somnosite.tscn" id="5_fksbm"]
 
 [node name="TestingArea" type="Node2D"]
 
@@ -27,3 +28,6 @@ position = Vector2(288, 298)
 
 [node name="Crate3" parent="." instance=ExtResource("3_qjewu")]
 position = Vector2(257, 333)
+
+[node name="REMnant" parent="." instance=ExtResource("5_fksbm")]
+position = Vector2(151, 597)

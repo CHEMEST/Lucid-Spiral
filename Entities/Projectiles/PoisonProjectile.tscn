@@ -1,0 +1,128 @@
+[gd_scene load_steps=23 format=3 uid="uid://b6rorvdt8oyhg"]
+
+[ext_resource type="Texture2D" uid="uid://qceuu7vhyoii" path="res://Assets/Sprites/Projectiles/PoisonProjectile.png" id="1_rir82"]
+[ext_resource type="Script" uid="uid://dpgb88r32nbfn" path="res://Utility/AutoPlayAnim.cs" id="2_qgjaj"]
+[ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="3_ctg63"]
+[ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="4_avwvp"]
+[ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="5_45dcy"]
+[ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="6_bq7u1"]
+[ext_resource type="Script" uid="uid://b4f400f4lhqd5" path="res://Behaviors/Actions/InflictAndDie/InflictPoison.cs" id="7_ns5ay"]
+[ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="8_4mofj"]
+[ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="9_6c88w"]
+[ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="10_j705h"]
+[ext_resource type="Script" uid="uid://c40qm5sw23pyd" path="res://Behaviors/MovementPatterns/StraightLineMotionToPlayer.cs" id="11_so1rp"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gn3d3"]
+b = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0u0p"]
+atlas = ExtResource("1_rir82")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxpoe"]
+atlas = ExtResource("1_rir82")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqs6"]
+atlas = ExtResource("1_rir82")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tnqi"]
+atlas = ExtResource("1_rir82")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmso8"]
+atlas = ExtResource("1_rir82")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5532"]
+atlas = ExtResource("1_rir82")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d88ov"]
+atlas = ExtResource("1_rir82")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e40q"]
+atlas = ExtResource("1_rir82")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jani4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0u0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxpoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tnqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmso8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5532")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d88ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e40q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7ala"]
+
+[node name="PoisonProjectile" type="CharacterBody2D"]
+
+[node name="EmptyCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_gn3d3")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_jani4")
+frame_progress = 0.134878
+script = ExtResource("2_qgjaj")
+
+[node name="ManagerHub" type="Node2D" parent="."]
+script = ExtResource("3_ctg63")
+
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("4_avwvp")
+
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("5_45dcy")
+Type = 1
+
+[node name="Area2D" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/Area2D"]
+shape = SubResource("CircleShape2D_m7ala")
+
+[node name="ActionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("6_bq7u1")
+
+[node name="InflictPoison" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("7_ns5ay")
+
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("8_4mofj")
+
+[node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("9_6c88w")
+Value = 900.0
+
+[node name="MovementManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("10_j705h")
+
+[node name="StraightLineMotionToPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
+script = ExtResource("11_so1rp")

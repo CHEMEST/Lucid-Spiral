@@ -40,12 +40,12 @@ namespace LucidSpiral.MovementPatterns
             QueueRedraw();
         }
 
-        public override void _Draw()
-        {
-            Vector2 endPoint = Body.ToLocal(raycast.GlobalPosition + raycast.TargetPosition);
-            DrawLine(Vector2.Zero, endPoint, Colors.Red, 2);
+        //public override void _Draw()
+        //{
+        //    Vector2 endPoint = Body.ToLocal(raycast.GlobalPosition + raycast.TargetPosition);
+        //    DrawLine(Vector2.Zero, endPoint, Colors.Red, 2);
 
-        }
+        //}
         // worked with CGPT to make this
         // PS. make this a cone later for better vision and make the body move to the last location of the player if not found
         public override void Move(double delta) // Called externally every physics process

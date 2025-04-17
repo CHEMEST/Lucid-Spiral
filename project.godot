@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucid Spiral"
-run/main_scene="uid://bxqvwii2m7oka"
+run/main_scene="uid://bghyslsskf1lw"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -71,6 +71,12 @@ Dash={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="All"
+2d_physics/layer_2="Walls"
+2d_physics/layer_3="Objects"
 
 [rendering]
 

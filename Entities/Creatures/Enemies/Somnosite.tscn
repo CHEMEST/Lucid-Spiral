@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=3 uid="uid://cca112tk0toyn"]
+
+[ext_resource type="Script" uid="uid://wvxvrdads7g8" path="res://Entities/Creatures/Enemies/Enemy.cs" id="1_ry41m"]
+[ext_resource type="Script" uid="uid://bgokgoswkuoap" path="res://Managers/ManagerUtils/ManagerHub.cs" id="2_y4vxn"]
+[ext_resource type="Script" uid="uid://dau6d0uf0y7l0" path="res://Managers/MovementManager.cs" id="3_oy08g"]
+[ext_resource type="Script" uid="uid://66lyw7rpbjwf" path="res://Behaviors/MovementPatterns/RayfindPlayer.cs" id="4_cf814"]
+[ext_resource type="Script" uid="uid://dvqpik3dfhow8" path="res://Managers/StatusManager.cs" id="5_2ktct"]
+[ext_resource type="Script" uid="uid://durak7a76m11b" path="res://Statuses/Speed.cs" id="6_yfhbj"]
+[ext_resource type="Script" uid="uid://bl48r683xbon7" path="res://Statuses/Health.cs" id="7_cqaiw"]
+[ext_resource type="Script" uid="uid://doa3qgewah1de" path="res://Managers/ActionManager.cs" id="8_q37i5"]
+[ext_resource type="Script" uid="uid://bpy7aseaxmux0" path="res://Behaviors/Actions/ActionSets/AllowIfRayFindingPlayer.cs" id="9_jcc1b"]
+[ext_resource type="Script" uid="uid://du0ol03w86qqp" path="res://Behaviors/Actions/ProjectileSummon.cs" id="10_7xbq5"]
+[ext_resource type="Script" uid="uid://cf6ds4cr7qpo7" path="res://Managers/CollisionManager.cs" id="11_danq0"]
+[ext_resource type="PackedScene" uid="uid://b6rorvdt8oyhg" path="res://Entities/Projectiles/PoisonProjectile.tscn" id="11_y4vxn"]
+[ext_resource type="Script" uid="uid://bsbouh73nd5ev" path="res://Behaviors/Collisions/CollisionUtils/CollisionSet.cs" id="12_1fdpn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ifk0"]
+radius = 20.025
+
+[node name="Somnosite" type="CharacterBody2D"]
+script = ExtResource("1_ry41m")
+Value = 15
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 11)
+polygon = PackedVector2Array(-20, -19, 0, -34, 20, -19, 10, 7, 0, 0, -10, 7)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1, -24)
+color = Color(0, 0.286275, 0.184314, 1)
+polygon = PackedVector2Array(1, 1, -19, 16, -9, 42, 1, 35, 11, 42, 21, 16)
+uv = PackedVector2Array(1, 1, -15, 17, 1, 67, 16, 16)
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(0, 8)
+scale = Vector2(0.596878, 0.691919)
+color = Color(0.0196224, 0.134158, 0.117818, 1)
+polygon = PackedVector2Array(-6.70154, 5.78102, -13.4031, 39.0219, 1.67538, 14.4526, 16.7538, 39.0219, 10.0523, 5.78102, 1.67538, -2.89051)
+
+[node name="ManagerHub" type="Node2D" parent="."]
+script = ExtResource("2_y4vxn")
+
+[node name="MovementManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("3_oy08g")
+
+[node name="RayfindPlayer" type="Node2D" parent="ManagerHub/MovementManager"]
+script = ExtResource("4_cf814")
+metadata/_custom_type_script = "uid://66lyw7rpbjwf"
+
+[node name="StatusManager" type="Node" parent="ManagerHub"]
+script = ExtResource("5_2ktct")
+
+[node name="Speed" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("6_yfhbj")
+Value = 400.0
+
+[node name="Health" type="Node" parent="ManagerHub/StatusManager"]
+script = ExtResource("7_cqaiw")
+Value = 100.0
+metadata/_custom_type_script = "uid://bl48r683xbon7"
+
+[node name="ActionManager" type="Node" parent="ManagerHub"]
+script = ExtResource("8_q37i5")
+
+[node name="AllowIfRayFindingPlayer" type="Node" parent="ManagerHub/ActionManager"]
+script = ExtResource("9_jcc1b")
+RepeatMax = -1
+RepeatDelayS = 1.0
+metadata/_custom_type_script = "uid://bpy7aseaxmux0"
+
+[node name="ProjectileSummon" type="Node" parent="ManagerHub/ActionManager/AllowIfRayFindingPlayer"]
+script = ExtResource("10_7xbq5")
+projectileScene = ExtResource("11_y4vxn")
+
+[node name="CollisionManager" type="Node2D" parent="ManagerHub"]
+script = ExtResource("11_danq0")
+
+[node name="CollisionSet" type="Node2D" parent="ManagerHub/CollisionManager"]
+script = ExtResource("12_1fdpn")
+Type = 1
+
+[node name="HurtBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/HurtBox"]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_2ifk0")

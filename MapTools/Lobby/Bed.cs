@@ -1,4 +1,9 @@
 using Godot;
+using LucidSpiral.Actions.ActionUtils;
+using LucidSpiral.Behaviors.Actions;
+using LucidSpiral.Globals;
+using LucidSpiral.Managers;
+using LucidSpiral.StatusesAndEffects.Statuses;
 using System;
 
 public partial class Bed : Node2D
@@ -25,6 +30,7 @@ public partial class Bed : Node2D
     }
     private void CleanUp()
     {
+        Global.Player.StartTrickle();
         foreach (Node child in Global.Main.World.GetChildren())
         {
             if (child != _mapInstance)
