@@ -3,21 +3,6 @@
 [ext_resource type="Script" uid="uid://4b8sblhtxur6" path="res://Menus/PlayerUI/LucidityBar.cs" id="1_irfgh"]
 [ext_resource type="Script" uid="uid://dkalgedxw37jb" path="res://Menus/PlayerUI/TrickleBar.cs" id="2_bqtxa"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch6y1"]
-bg_color = Color(0.0117647, 0, 0.258824, 1)
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-shadow_color = Color(0.0117647, 0, 0.258824, 1)
-shadow_size = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqb0x"]
-bg_color = Color(0.0663426, 0, 0.571085, 1)
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-shadow_color = Color(0.027451, 0, 0.580392, 1)
-shadow_size = 2
-shadow_offset = Vector2(2, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tlnp"]
 bg_color = Color(0.0117647, 0, 0.258824, 1)
 corner_radius_top_right = 32
@@ -27,6 +12,21 @@ shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpmys"]
 bg_color = Color(0.111798, 0, 0.716285, 1)
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+shadow_color = Color(0.027451, 0, 0.580392, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch6y1"]
+bg_color = Color(0.0117647, 0, 0.258824, 1)
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+shadow_color = Color(0.0117647, 0, 0.258824, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqb0x"]
+bg_color = Color(0.0663426, 0, 0.571085, 1)
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 shadow_color = Color(0.027451, 0, 0.580392, 1)
@@ -46,31 +46,37 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.993329, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="TrickleBar" type="ProgressBar" parent="."]
+layout_mode = 2
+anchor_left = 6.99374e-05
+anchor_top = 0.709877
+anchor_right = 0.185487
+anchor_bottom = 0.709877
 offset_left = 15.0
-offset_top = 15.0
-offset_right = 483.0
-offset_bottom = 183.0
-theme_override_constants/separation = 8
-
-[node name="LucidityBar" type="ProgressBar" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_ch6y1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hqb0x")
-value = 50.0
-show_percentage = false
-script = ExtResource("1_irfgh")
-metadata/_edit_use_anchors_ = true
-
-[node name="TrickleBar" type="ProgressBar" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
+offset_top = 123.0
+offset_right = 85.0
+offset_bottom = 148.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5tlnp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jpmys")
 value = 18.38
 show_percentage = false
 script = ExtResource("2_bqtxa")
 metadata/_edit_use_anchors_ = true
+
+[node name="LucidityBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00908841
+anchor_top = 0.00123457
+anchor_right = 0.0570051
+anchor_bottom = 0.728395
+offset_right = 8.0
+offset_bottom = 100.0
+theme_override_constants/outline_size = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_ch6y1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqb0x")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_irfgh")

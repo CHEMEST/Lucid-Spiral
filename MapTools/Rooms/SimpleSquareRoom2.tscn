@@ -11,7 +11,7 @@ size = Vector2(26, 111)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gobv4"]
 size = Vector2(42, 179)
 
-[node name="SimpleSquareRoom" type="Node2D" node_paths=PackedStringArray("container")]
+[node name="SimpleSquareRoom2" type="Node2D" node_paths=PackedStringArray("container")]
 script = ExtResource("1_sln1s")
 container = NodePath("ColorRect")
 

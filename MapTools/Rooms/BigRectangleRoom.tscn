@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://ddiw1hcn3bgp6"]
+[gd_scene load_steps=8 format=4 uid="uid://b7aifloerkvvm"]
 
 [ext_resource type="Script" uid="uid://daysc3bel23qv" path="res://MapTools/MapUtils/Room.cs" id="1_7mdho"]
 [ext_resource type="TileSet" uid="uid://dk1ej6fpb4psi" path="res://Assets/Sprites/Tiles/Floors/TileSetA.tres" id="2_hoxny"]
 [ext_resource type="Script" uid="uid://cnryfaprdl1f2" path="res://MapTools/MapUtils/EntryPoint.cs" id="2_jab4d"]
-[ext_resource type="PackedScene" uid="uid://cca112tk0toyn" path="res://Entities/Creatures/Enemies/Somnosite.tscn" id="4_fvaot"]
-[ext_resource type="PackedScene" uid="uid://c5dsqo6kai6j" path="res://Entities/Creatures/Enemies/REMnant.tscn" id="5_t1td7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei3m6"]
 size = Vector2(37, 101.5)
@@ -92,18 +90,3 @@ shape = SubResource("RectangleShape2D_jab4d")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]
 position = Vector2(383.75, 249.5)
 shape = SubResource("RectangleShape2D_jab4d")
-
-[node name="Somnosite" parent="." instance=ExtResource("4_fvaot")]
-position = Vector2(257, 614)
-
-[node name="Somnosite2" parent="." instance=ExtResource("4_fvaot")]
-position = Vector2(737, 783)
-
-[node name="REMnant" parent="." instance=ExtResource("5_t1td7")]
-position = Vector2(690, 145)
-
-[node name="REMnant2" parent="." instance=ExtResource("5_t1td7")]
-position = Vector2(1179, 486)
-
-[node name="REMnant3" parent="." instance=ExtResource("5_t1td7")]
-position = Vector2(1119, 42)

@@ -24,7 +24,7 @@ public partial class Bed : Node2D
             await ToSignal(GetTree(), "process_frame");
             _mapInstance = map.Instantiate<Node2D>();
             Global.Main.World.AddChild(_mapInstance);
-            Global.Camera.Zoom = new Vector2(1, 1);
+            //Global.Camera.Zoom = new Vector2(1, 1);
             CallDeferred(nameof(CleanUp));
         }
     }
