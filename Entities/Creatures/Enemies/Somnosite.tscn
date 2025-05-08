@@ -82,6 +82,5 @@ Type = 1
 [node name="HurtBox" type="Area2D" parent="ManagerHub/CollisionManager/CollisionSet"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManagerHub/CollisionManager/CollisionSet/HurtBox"]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_2ifk0")

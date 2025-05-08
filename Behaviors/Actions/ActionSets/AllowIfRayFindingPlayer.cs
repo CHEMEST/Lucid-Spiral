@@ -21,6 +21,7 @@ namespace LucidSpiral.Behaviors.Actions.ActionSets
         {
             base._Ready();
             // Connect to the RayfindPlayer's VisionChanged signal
+            Enabled = false;
             CallDeferred("Init");
         }
 
